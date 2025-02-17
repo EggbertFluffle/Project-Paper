@@ -1,8 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GRManager : MonoBehaviour {
+
+    public static GRManager Instance;
+    
     public float NoLimbChance = 0.15f;
 
     public int GraveRobs = 2;
@@ -13,7 +17,9 @@ public class GRManager : MonoBehaviour {
 
     public Grave[] Graves;
 
-    public static GRManager Instance;
+    public Animator[] GraveUIAnimations;
+
+    private bool graveUIActive = false;
 
     private void Awake() {
         if(Instance == null) Instance = this;
@@ -41,7 +47,21 @@ public class GRManager : MonoBehaviour {
         }
     }
 
-    public void HandleGraveClick(Grave g) {
+
+    public void ShowUI()
+    {
+        foreach (Animator anim in GraveUIAnimations) 
+        {
+            anim.Play(graveUIActive ? "ClosePanel" : "OpenPanel");
+        }
+
+        graveUIActive = !graveUIActive;
+    }
+
+    public void HandleGraveClick(Grave g) 
+    {
+        ShowUI();
+
         if(g.State == Grave.GraveState.Robbed) {
             g.Rob();
         } else {

@@ -27,6 +27,6 @@ public class Grave : MonoBehaviour {
     public void DenyGraveRob() {
         // Do some shit to deny the grave rob
         // Shake the grave and make a "no" noise
-        Debug.Log("Out of grave robs grave robs");
+        Debug.Log("Out of grave robs");
     }
 }
