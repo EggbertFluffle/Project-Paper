@@ -41,12 +41,16 @@ public class GRManager : MonoBehaviour {
         }
     }
 
-    public void HandleGraveClick(Grave grave) {
-        if(GraveRobs == 0) {
-            Debug.Log("Cannot rob anymore graves!");
+    public void HandleGraveClick(Grave g) {
+        if(g.State == Grave.GraveState.Robbed) {
+            g.Rob();
         } else {
-            GraveRobs--;
-            grave.Rob();
+            if(GraveRobs == 0) {
+                g.DenyGraveRob();
+            } else {
+                GraveRobs--;
+                g.Rob();
+            }
         }
     }
 }

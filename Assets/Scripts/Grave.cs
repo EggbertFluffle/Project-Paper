@@ -17,14 +17,16 @@ public class Grave : MonoBehaviour {
 
     public void Rob() {
         State = GraveState.Robbed;
-        for(int i = 0; i < BodyParts.Length; i++) {
-            if(BodyParts[i] != null) {
-                Debug.Log("My " + i + "th body part is " + BodyParts[i].Name);
-            }
-        }
+        GravePicker.Instance.SelectGrave(this);
     }
 
     public void SetBodyPart(int i, BodyPart b) {
         BodyParts[i] = b;
+    }
+
+    public void DenyGraveRob() {
+        // Do some shit to deny the grave rob
+        // Shake the grave and make a "no" noise
+        Debug.Log("Out of grave robs grave robs");
     }
 }
