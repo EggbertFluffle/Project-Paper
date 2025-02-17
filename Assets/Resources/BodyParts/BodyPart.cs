@@ -1,8 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Body Part", menuName = "Body Part")]
-public class BodyPart : ScriptableObject
-{
+public class BodyPart : ScriptableObject {
     public LimbType Limb;
     public string Name;
     
@@ -18,8 +17,7 @@ public class BodyPart : ScriptableObject
     [Range(0, 100), Header("Legs Only")]
     public int Evasion;
 
-    public enum LimbType
-    {
+    public enum LimbType {
          Arm, Leg
     }
 }
