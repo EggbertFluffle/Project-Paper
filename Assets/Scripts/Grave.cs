@@ -6,17 +6,32 @@ public class Grave : MonoBehaviour {
 
     public enum GraveState { Untouched, Robbed };
     public GraveState State;
+    
+    public SpriteRenderer GraveHighlight;
+    public Sprite RobbedGraveSprite;
+
+    private SpriteRenderer graveSpriteRenderer;
 
     private void Start() {
         State = GraveState.Untouched;
+        graveSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void OnMouseDown() {
+    private void OnMouseDown() {
         GRManager.Instance.HandleGraveClick(this);
+    }
+
+    private void OnMouseEnter() {
+        GraveHighlight.enabled = true;
+    }
+
+    private void OnMouseExit() {
+        GraveHighlight.enabled = false;
     }
 
     public void Rob() {
         State = GraveState.Robbed;
+        graveSpriteRenderer.sprite = RobbedGraveSprite;
         GravePicker.Instance.SelectGrave(this);
     }
 
