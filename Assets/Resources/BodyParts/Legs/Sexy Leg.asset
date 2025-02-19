@@ -15,7 +15,9 @@ MonoBehaviour:
   Limb: 1
   Name: Sexy Leg
   Description: Sexy Leg
-  LimbSprite: {fileID: 5596842366552303514, guid: 353f58c2551a992419b1eb98ccdaf302, type: 3}
+  GraveLimbSprite: {fileID: 5596842366552303514, guid: 353f58c2551a992419b1eb98ccdaf302, type: 3}
+  BackLimbSprite: {fileID: 0}
+  FrontLimbSprite: {fileID: 0}
   Durability: 15
   Accuracy: 90
   Strength: 1
