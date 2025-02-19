@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 7e5118cda238a2444aa16a30266f9538
+guid: 4bd6173027a8dd347a3c82f9d10abd8e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1394811641107744311
-    second: Headstones_0
-  - first:
-      213: -1691649895888912427
-    second: Headstones_1
-  - first:
-      213: -5842553959843912107
-    second: Headstones_2
-  - first:
-      213: -8954204880652548279
-    second: Headstones_3
+      213: -6189289526238714443
+    second: Particles_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -122,89 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Headstones_0
+      name: Particles_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 520
-        width: 280
-        height: 504
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c97133d332a4ace0800000000000000
-      internalID: -1394811641107744311
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Headstones_1
-      rect:
-        serializedVersion: 2
-        x: 295
-        y: 520
-        width: 281
-        height: 504
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5dff637e16d0688e0800000000000000
-      internalID: -1691649895888912427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Headstones_2
-      rect:
-        serializedVersion: 2
-        x: 456
         y: 0
-        width: 280
-        height: 520
+        width: 8
+        height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 556a372f0241beea0800000000000000
-      internalID: -5842553959843912107
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Headstones_3
-      rect:
-        serializedVersion: 2
-        x: 744
-        y: 0
-        width: 280
-        height: 520
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 947c2aa3a164cb380800000000000000
-      internalID: -8954204880652548279
+      spriteID: 5b5ee78d7f93b1aa0800000000000000
+      internalID: -6189289526238714443
       vertices: []
       indices: 
       edges: []
@@ -213,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8f985aa0817425446818700628dc03bd
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Headstones_0: -1394811641107744311
-      Headstones_1: -1691649895888912427
-      Headstones_2: -5842553959843912107
-      Headstones_3: -8954204880652548279
+      Particles_0: -6189289526238714443
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

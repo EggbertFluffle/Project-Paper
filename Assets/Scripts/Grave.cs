@@ -10,6 +10,8 @@ public class Grave : MonoBehaviour {
     public SpriteRenderer GraveHighlight;
     public Sprite RobbedGraveSprite;
 
+    public ParticleSystem GraveDigParticles;
+
     private SpriteRenderer graveSpriteRenderer;
 
     private void Start() {
@@ -29,9 +31,17 @@ public class Grave : MonoBehaviour {
         GraveHighlight.enabled = false;
     }
 
+    public bool CanRob() {
+        return State != GraveState.Robbed;
+    }
+
     public void Rob() {
         State = GraveState.Robbed;
         graveSpriteRenderer.sprite = RobbedGraveSprite;
+        GraveDigParticles.Play();
+    }
+
+    public void Select() {
         GravePicker.Instance.SelectGrave(this);
     }
 

@@ -48,28 +48,23 @@ public class GRManager : MonoBehaviour {
     }
 
 
-    public void ShowUI()
-    {
-        foreach (Animator anim in GraveUIAnimations) 
-        {
+    public void ShowUI() {
+        foreach (Animator anim in GraveUIAnimations) {
             anim.Play(graveUIActive ? "ClosePanel" : "OpenPanel");
         }
 
         graveUIActive = !graveUIActive;
     }
 
-    public void HandleGraveClick(Grave g) 
-    {
-        ShowUI();
-
-        if(g.State == Grave.GraveState.Robbed) {
-            g.Rob();
-        } else {
-            if(GraveRobs == 0) {
-                g.DenyGraveRob();
-            } else {
+    public void HandleGraveClick(Grave g) {
+        if(CameraManager.Instance.CanTransition()) {
+            if(GraveRobs != 0 && g.CanRob()) {
+                ShowUI();
                 GraveRobs--;
                 g.Rob();
+            } else if(!g.CanRob()) {
+                ShowUI();
+                g.Select();
             }
         }
     }
