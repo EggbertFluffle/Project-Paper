@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SexyBodyParts_0: -1535134060125017383
+      SexyBodyParts_1: -916164111195469362
+      SexyBodyParts_2: 5596842366552303514
+      SexyBodyParts_3: 297723551128841597
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
