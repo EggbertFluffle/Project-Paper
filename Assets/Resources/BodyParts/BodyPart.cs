@@ -7,7 +7,9 @@ public class BodyPart : ScriptableObject {
     
     [TextArea]
     public string Description;
-    public Sprite LimbSprite;
+    public Sprite GraveLimbSprite;
+    public Sprite BackLimbSprite;
+    public Sprite FrontLimbSprite;
     public int Durability;
 
     [Range(50, 100), Header("Arms Only")]
