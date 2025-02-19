@@ -3,7 +3,7 @@ using UnityEngine;
 public class ArenaManager : MonoBehaviour {
     public static ArenaManager Instance;
 
-    public void OnAwake() {
+    private void Awake() {
         if(Instance == null) Instance = this;
     }
 

@@ -5,7 +5,7 @@ public class Player : MonoBehaviour {
 
     public SpriteRenderer[] Arms;
 
-    public void OnAwake() {
+    private void Awake() {
         if(Instance == null) Instance = this;
     }
 

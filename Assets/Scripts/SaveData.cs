@@ -14,6 +14,7 @@ public class SaveData
         }
 
         public string Name;
+        public int Durability;
 
         public BodyPart.LimbType LimbType;
     }

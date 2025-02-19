@@ -4,9 +4,11 @@ using UnityEngine.U2D.IK;
 public class Enemy : MonoBehaviour {
     public static Enemy Instance;
 
+    public float Health;
+
     public SpriteRenderer[] Limbs;
 
-    public void OnAwake() {
+    private void Awake() {
         if(Instance == null) Instance = this;
     }
 

@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     {
         if (GRManager.Instance)
         {
+            // Change this bullshit immediatly
+            // Also persist durability when converting from BodyRefs to BodyParts
             return instance.activeSave.BodyPartInventory.Select(bodyPartRef => bodyPartRef.LimbType == BodyPart.LimbType.Arm
                     ? GRManager.Instance.AllArms.Find(arm => arm.Name.Equals(bodyPartRef.Name))
                     : GRManager.Instance.AllLegs.Find(leg => leg.Name.Equals(bodyPartRef.Name))).ToArray();
