@@ -47,6 +47,9 @@ TagManager:
   - name: Ambient
     uniqueID: 1919908799
     locked: 0
+  - name: SubFore
+    uniqueID: 2954409763
+    locked: 0
   - name: Foreground
     uniqueID: 1486516623
     locked: 0
