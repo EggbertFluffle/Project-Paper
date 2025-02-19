@@ -18,7 +18,9 @@ public class SaveData
         public BodyPart.LimbType LimbType;
     }
 
-    public List<BodyPartRef> AllBodyParts;
+    public List<BodyPartRef> BodyPartInventory;
+
+    public List<BodyPartRef> EquippedParts;
 
     public List<bool> Checkpoints;
 
