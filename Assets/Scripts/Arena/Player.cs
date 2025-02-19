@@ -8,4 +8,9 @@ public class Player : MonoBehaviour {
     public void OnAwake() {
         if(Instance == null) Instance = this;
     }
+
+    private void LoadLimbs(BodyPart[] bodyParts) {
+        Arms[0].sprite = bodyParts[0].FrontLimbSprite;
+        Arms[1].sprite = bodyParts[1].BackLimbSprite;
+    }
 }

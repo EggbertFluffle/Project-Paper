@@ -6,4 +6,8 @@ public class ArenaManager : MonoBehaviour {
     public void OnAwake() {
         if(Instance == null) Instance = this;
     }
+
+    public void Start() {
+        
+    }
 }
