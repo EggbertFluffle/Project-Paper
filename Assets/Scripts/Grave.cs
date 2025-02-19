@@ -39,6 +39,7 @@ public class Grave : MonoBehaviour {
         State = GraveState.Robbed;
         graveSpriteRenderer.sprite = RobbedGraveSprite;
         GraveDigParticles.Play();
+        Select();
     }
 
     public void Select() {

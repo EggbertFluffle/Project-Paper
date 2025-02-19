@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dfab5285dfdd7b4dbf0fcd79742d6cb, type: 3}
-  m_Name: Human Arm
+  m_Name: Athlete Leg
   m_EditorClassIdentifier: 
-  Limb: 0
-  Name: Human Arm
-  Description: Human Arm.
-  LimbSprite: {fileID: -345606283706192561, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
-  Durability: 10
+  Limb: 1
+  Name: Athelete Leg
+  Description: Athelete Leg.
+  LimbSprite: {fileID: -519780176676208610, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
+  Durability: 15
   Accuracy: 90
   Strength: 1
   Evasion: 0

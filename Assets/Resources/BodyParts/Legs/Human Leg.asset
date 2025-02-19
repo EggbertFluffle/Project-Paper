@@ -15,7 +15,7 @@ MonoBehaviour:
   Limb: 1
   Name: Human Leg (L)
   Description: Human Leg.
-  LimbSprite: {fileID: 0}
+  LimbSprite: {fileID: 899686695125549701, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
   Durability: 15
   Accuracy: 90
   Strength: 1
