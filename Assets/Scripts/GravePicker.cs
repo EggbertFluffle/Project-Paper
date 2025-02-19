@@ -33,6 +33,7 @@ public class GravePicker : MonoBehaviour {
                 BodyPartImages[i].enabled = false;
             } else {
                 BodyPartImages[i].sprite = g.BodyParts[i].LimbSprite;
+                BodyPartImages[i].SetNativeSize();
             }
         }
     }
