@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Hekyll_and_Jibe_0: 7130349404116459731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
