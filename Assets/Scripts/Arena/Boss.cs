@@ -23,7 +23,7 @@ public class Boss : MonoBehaviour {
 
     public void Start() {
         // Get current boss from the GameManager
-        currentBossBattle = GameManager.Instance.CurrentBossBattle;
+        currentBossBattle = GameManager.CurrentBossBattle;
         transform.localScale = new Vector3(currentBossBattle.Scale, currentBossBattle.Scale, currentBossBattle.Scale);
         MaxHealth = currentBossBattle.Health;
         Health = MaxHealth;

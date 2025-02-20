@@ -1,46 +1,53 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static SaveData ActiveSave => instance.activeSave;
 
-    public static SaveData ActiveSave => Instance.activeSave;
-
-    public static UnityEvent OnSaveDataLoaded = new UnityEvent();
+    public static BossBattle CurrentBossBattle => instance.currentBossBattle;
 
     public SaveData activeSave;
 
-    private List<string> bossOrder = new List<string>{
+    private static GameManager instance;
+
+    private List<BossBattle> bossBattles;
+
+    private BossBattle currentBossBattle;
+
+    private readonly List<string> bossOrder = new List<string>
+    {
         "Maria Sheila",
         "Frank N. Stein",
         "Heckyll and Jibe",
         "Hazabe",
         "Chimera"
     };
-    private List<BossBattle> bossBattles;
-    public BossBattle CurrentBossBattle;
+
+    private void OnEnable()
+    {
+        LoadInstance();
+        if (instance.activeSave != null)
+        {
+            Debug.Log("Successfully loaded save.");
+        }
+    }
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
             Destroy(gameObject);
         
-        bossBattles = new List<BossBattle>();
-        foreach(string bossName in bossOrder) {
-            bossBattles.Add(Resources.Load<BossBattle>("Arena/" + bossName));
-        }
-        CurrentBossBattle = bossBattles[0];
+        bossBattles = bossOrder.Select(bossName => Resources.Load<BossBattle>($"Arena/{bossName}")).ToList();
+        currentBossBattle = bossBattles[0];
     }
 
     private void NextBossInstance() {
@@ -48,23 +55,35 @@ public class GameManager : MonoBehaviour
     }
 
     public static void NextBoss() {
-        Instance.NextBossInstance();
+        instance.NextBossInstance();
     }
 
-    public static void Save()
+    private void SaveInstance()
     {
-        string json = JsonUtility.ToJson(Instance.activeSave);
-
+        string json = JsonUtility.ToJson(instance.activeSave);
         Debug.Log("The string is " + json.Length + "chars long.");
-
         PlayerPrefs.SetString("Save", json);
+ 
     }
 
-    public static void Load()
+    public static void Save() => instance.SaveInstance();
+
+    private void LoadInstance()
     {
         string json = PlayerPrefs.GetString("Save");
-        Instance.activeSave = string.IsNullOrEmpty(json) ? new SaveData() : JsonUtility.FromJson<SaveData>(json);
+        instance.activeSave = string.IsNullOrEmpty(json) ? new SaveData() : JsonUtility.FromJson<SaveData>(json);
     }
 
-    public static void LoadScene(string sceneName) => SceneManager.LoadScene(sceneName);
+    public static void Load() => instance.LoadInstance();
+
+    public static void LoadScene(string sceneName)
+    {
+        instance.SaveInstance();
+        SceneManager.LoadScene(sceneName);
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveInstance();
+    }
 }
