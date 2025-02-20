@@ -4,6 +4,8 @@ public class MainMenu : MonoBehaviour {
 
     public Cutscene OpeningCutscene;
 
+    private int cutsceneIndex = 0;
+
     public Animator BackgroundAnimator;
     public Animator FadeToBlack;
 
@@ -13,6 +15,17 @@ public class MainMenu : MonoBehaviour {
 
     public void Start() {
         AudioManager.PlayMusic("Main Menu");
+    }
+
+    public void PlayCutscene()
+    {
+        if (cutsceneIndex < OpeningCutscene.AllEvents.Count)
+        {
+            OpeningCutscene.Play(cutsceneIndex);
+            cutsceneIndex++;
+        }
+        else
+            OpeningCutscene.Finish();
     }
 
     public void Update() {
