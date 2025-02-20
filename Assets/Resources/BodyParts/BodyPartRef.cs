@@ -20,6 +20,8 @@ public class BodyPartRef
         public int Accuracy;
         public int Evasion;
         public int Speed;
+
+        public string ActiveName;
     }
 
     public string Name;
@@ -30,12 +32,12 @@ public class BodyPartRef
 
     public Constants LimbConstants;
 
-    public BodyPartRef(BodyPart bodyPart)
-    {
+    public BodyPartRef(BodyPart bodyPart) {
         Name = bodyPart.Name;
 
+        // I think this is changing based of rarity
         HP = bodyPart.HP + UnityEngine.Random.Range(-bodyPart.HPDeviation, bodyPart.HPDeviation);
-        Strength = UnityEngine.Random.Range(-bodyPart.AttackDeviation, bodyPart.AttackDeviation);
+        Strength = bodyPart.Strength + UnityEngine.Random.Range(-bodyPart.AttackDeviation, bodyPart.AttackDeviation);
 
         SetConstants(bodyPart);
     }

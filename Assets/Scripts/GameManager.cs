@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     private SaveData activeSave;
 
-    public List<BodyPart> BodyPartInventory;
-
     private void Awake()
     {
         if (instance == null)
