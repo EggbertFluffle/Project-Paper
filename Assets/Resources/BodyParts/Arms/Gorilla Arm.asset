@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dfab5285dfdd7b4dbf0fcd79742d6cb, type: 3}
-  m_Name: Sexy Arm
+  m_Name: Gorilla Arm
   m_EditorClassIdentifier: 
   Limb: 0
   LimbRarity: 0
-  Name: Sexy Arm
-  Description: Sexy Arm.
-  SpeicialMoveName: Heal
-  GraveLimbSprite: {fileID: -916164111195469362, guid: 353f58c2551a992419b1eb98ccdaf302, type: 3}
-  BackLimbSprite: {fileID: 297723551128841597, guid: 353f58c2551a992419b1eb98ccdaf302, type: 3}
-  FrontLimbSprite: {fileID: -1535134060125017383, guid: 353f58c2551a992419b1eb98ccdaf302, type: 3}
-  Durability: 10
+  Name: Gorilla Arm
+  Description: Gorilla Arm.
+  SpeicialMoveName: Flex
+  GraveLimbSprite: {fileID: 9012488942959063395, guid: 8322db7029d2fde4783c32c393ea4c79, type: 3}
+  BackLimbSprite: {fileID: -5450755423670098242, guid: 8322db7029d2fde4783c32c393ea4c79, type: 3}
+  FrontLimbSprite: {fileID: -2042819080703154106, guid: 8322db7029d2fde4783c32c393ea4c79, type: 3}
+  Durability: 5
   DurabilityDeviation: 0
-  Strength: 50
-  AttackDeviation: 0
+  Strength: 55
+  AttackDeviation: 5
   HP: 0
   HPDeviation: 0
   Evasion: 0

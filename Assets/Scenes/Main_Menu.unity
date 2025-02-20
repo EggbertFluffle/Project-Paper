@@ -1020,7 +1020,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects: []
-  music: []
+  music:
+  - name: Main Menu
+    clip: {fileID: 8300000, guid: 9d0a3fb886058b946be65360bedcf199, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Battle Music
+    clip: {fileID: 8300000, guid: 7355156ebf6fd3c439abc48b6b778825, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

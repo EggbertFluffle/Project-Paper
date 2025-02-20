@@ -13,12 +13,19 @@ MonoBehaviour:
   m_Name: Human Arm
   m_EditorClassIdentifier: 
   Limb: 0
+  LimbRarity: 0
   Name: Human Arm
   Description: Human Arm.
+  SpeicialMoveName: Human Sprit
   GraveLimbSprite: {fileID: -345606283706192561, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
   BackLimbSprite: {fileID: 3530086672280056128, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
   FrontLimbSprite: {fileID: 8212628185873528291, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
   Durability: 10
-  Accuracy: 90
-  Strength: 1
+  DurabilityDeviation: 0
+  Strength: 30
+  AttackDeviation: 0
+  HP: 0
+  HPDeviation: 0
   Evasion: 0
+  Speed: 0
+  LegAbility: 0

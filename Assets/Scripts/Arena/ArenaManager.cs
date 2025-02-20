@@ -3,10 +3,15 @@ using UnityEngine;
 public class ArenaManager : MonoBehaviour {
     public static ArenaManager Instance;
 
-    public bool PlayerTurn = true;
+    public bool PlayerTurn;
 
     private void Awake() {
         if(Instance == null) Instance = this;
+    }
+
+    public void Start() {
+        AudioManager.PlayMusic("Battle Music");
+        PlayerTurn = true;
     }
 
     public void SetUpBattle() {

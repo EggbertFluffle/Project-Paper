@@ -24,23 +24,39 @@ public class Player : MonoBehaviour {
         BodyParts = GameManager.ActiveSave.EquippedParts;
 
         // Set arm sprites according to equipped parts
-        Arms[0].sprite = BodyParts[0].LimbConstants.BackLimbSprite;
-        Arms[1].sprite = BodyParts[1].LimbConstants.BackLimbSprite;
+        if(BodyParts[0] != null) Arms[0].sprite = BodyParts[0].LimbConstants.BackLimbSprite;
+        if(BodyParts[1] != null) Arms[1].sprite = BodyParts[1].LimbConstants.BackLimbSprite;
 
         // Take into account leg stats
-        TotalEvasion = BodyParts[2].LimbConstants.Evasion + BodyParts[3].LimbConstants.Evasion;
-        MaxHealth = 100 + BodyParts[2].HP + BodyParts[3].HP;
+        MaxHealth = 100;
+
+        // Load leg stats if applicable
+        if(BodyParts[2] != null) {
+            MaxHealth += BodyParts[2].HP;
+            TotalEvasion += BodyParts[2].LimbConstants.Evasion;
+        }
+
+        if(BodyParts[3] != null) {
+            MaxHealth += BodyParts[3].HP;
+            TotalEvasion += BodyParts[3].LimbConstants.Evasion;
+        }
+
         Health = MaxHealth;
     }
 
     public void SetupAttacks() {
-        // Make all buttons say the names of arms
-        // Make all special moves have the correct names
+        ArenaUI.Instance.LoadAttackOptions(BodyParts);
+    }
+
+    public void Heal() {
+        // TODO: add indicator for healing
+        // Heal 50 percent of health
+        Health += (int)Mathf.Floor(0.5f * MaxHealth);
     }
 
     public void AttackButtonHandle(int buttonNum) {
-        if(buttonNum == 0 || buttonNum == 2) {
-            if(Random.Range(0.0f, 1.0f) > 0.9f) {
+        if(buttonNum == 0 || buttonNum == 1) {
+            if(UnityEngine.Random.Range(0.0f, 1.0f) > 0.9f) {
                 // Attack misses
                 // IMPLEMENT ME
                 // IMPLEMENT ME
@@ -68,7 +84,7 @@ public class Player : MonoBehaviour {
     }
 
     public void SendAttack(int damage) {
-        if(Random.Range(0.0f, 1.0f) < TotalEvasion) {
+        if(UnityEngine.Random.Range(0.0f, 1.0f) < TotalEvasion) {
             // Take care of evading the attack
             // IMPLEMENT ME
             // IMPLEMENT ME

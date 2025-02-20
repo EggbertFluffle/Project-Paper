@@ -10,6 +10,12 @@ public class Boss : MonoBehaviour {
     public Animator BossAnimator;
 
     private BossBattle currentBossBattle;
+    private Transform transform;
+
+    // TODO: Give an indicator for bleeding
+    private bool bleeding = false; 
+    private int bleedOut;
+    private int bleedTimer = 0;
 
     private void Awake() {
         if(Instance == null) Instance = this;
@@ -17,7 +23,28 @@ public class Boss : MonoBehaviour {
 
     public void Start() {
         // Get current boss from the GameManager
-        // currentBossBattle = GameManager.CurrentBoss;
+        currentBossBattle = GameManager.Instance.CurrentBossBattle;
+        transform.localScale = new Vector3(currentBossBattle.Scale, currentBossBattle.Scale, currentBossBattle.Scale);
+        MaxHealth = currentBossBattle.Health;
+        Health = MaxHealth;
+    }
+
+    public void TakeTurn() {
+        if(bleeding) {
+            bleedTimer--;
+            TakeDamage(bleedOut);
+            bleeding = bleedTimer != 0;
+        }
+
+        Player.Instance.SendAttack(currentBossBattle.Damage);
+    }
+
+    public void TakeBleed(int _bleedOut) {
+        bleeding = true;
+        bleedOut = _bleedOut;
+
+        // How long should the bleed last
+        bleedTimer = 5;
     }
 
     public void SendAttack(int damage) {

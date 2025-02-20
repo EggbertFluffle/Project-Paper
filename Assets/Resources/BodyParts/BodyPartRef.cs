@@ -13,12 +13,12 @@ public class BodyPartRef
         public PassiveAbility Ability;
 
         public string Description;
+        public string SpeicialMoveName;
         public Sprite GraveLimbSprite;
         public Sprite BackLimbSprite;
         public Sprite FrontLimbSprite;
 
-        public int Accuracy;
-        public int Evasion;
+        public float Evasion;
         public int Speed;
 
         public string ActiveName;
@@ -26,9 +26,10 @@ public class BodyPartRef
 
     public string Name;
 
-    public int HP;
-
     public int Strength;
+    public int Durability;
+
+    public int HP;
 
     public Constants LimbConstants;
 
@@ -38,6 +39,7 @@ public class BodyPartRef
         // I think this is changing based of rarity
         HP = bodyPart.HP + UnityEngine.Random.Range(-bodyPart.HPDeviation, bodyPart.HPDeviation);
         Strength = bodyPart.Strength + UnityEngine.Random.Range(-bodyPart.AttackDeviation, bodyPart.AttackDeviation);
+        Durability = bodyPart.Durability + UnityEngine.Random.Range(-bodyPart.DurabilityDeviation, bodyPart.DurabilityDeviation);
 
         SetConstants(bodyPart);
     }
@@ -47,6 +49,7 @@ public class BodyPartRef
         LimbConstants = new Constants
         {
             Description = bodyPart.Description,
+            SpeicialMoveName = bodyPart.SpeicialMoveName,
             Limb = bodyPart.Limb,
 
             // Legs only
@@ -55,7 +58,6 @@ public class BodyPartRef
             BackLimbSprite = bodyPart.BackLimbSprite,
             FrontLimbSprite = bodyPart.FrontLimbSprite,
 
-            Accuracy = bodyPart.Accuracy,
             Evasion = bodyPart.Evasion,
             Speed = bodyPart.Speed,
         };

@@ -1,14 +1,21 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class AreanaUI : MonoBehaviour {
-    public static AreanaUI Instance;
+public class ArenaUI : MonoBehaviour {
+    public static ArenaUI Instance;
+    public static List<AttackButton> AttackButtons;
 
     private void Awake() {
         if(Instance == null) Instance = this;
     }
 
-    public void LoadAttackOptions(BodyPart[] bodyParts) {
-       // Attacks will be present on body parts 
+    public void LoadAttackOptions(List<BodyPartRef> bodyParts) {
+        // Put the correct sprites onto player arms
+        AttackButtons[0].Text.text = bodyParts[0].Name;
+        AttackButtons[1].Text.text = bodyParts[1].Name;
+        AttackButtons[2].Text.text = bodyParts[0].LimbConstants.SpeicialMoveName;
+        AttackButtons[3].Text.text = bodyParts[1].LimbConstants.SpeicialMoveName;
     }
 }

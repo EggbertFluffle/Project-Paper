@@ -3,42 +3,56 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    public static SaveData ActiveSave => instance.activeSave;
+    public static GameManager Instance;
+
+    public static SaveData ActiveSave => Instance.activeSave;
 
     public static UnityEvent OnSaveDataLoaded = new UnityEvent();
 
-    private static GameManager instance;
     private SaveData activeSave;
+
+    private List<string> bossOrder = new List<string>{
+        "Maria Sheila",
+        "Frank N. Stein",
+        "Heckyll and Jibe",
+        "Hazabe",
+        "Chimera"
+    };
+    private List<BossBattle> bossBattles;
+    public BossBattle CurrentBossBattle;
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
             Destroy(gameObject);
+        
+        foreach(string bossName in bossOrder) {
+            bossBattles.Add(Resources.Load<BossBattle>("Arena/" + bossName));
+        }
+        CurrentBossBattle = bossBattles[0];
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    private void NextBossInstance() {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public static void NextBoss() {
+        Instance.NextBossInstance();
     }
 
     public static void Save()
     {
-        string json = JsonUtility.ToJson(instance.activeSave);
+        string json = JsonUtility.ToJson(Instance.activeSave);
 
         Debug.Log("The string is " + json.Length + "chars long.");
 
@@ -48,7 +62,7 @@ public class GameManager : MonoBehaviour
     public static void Load()
     {
         string json = PlayerPrefs.GetString("Save");
-        instance.activeSave = string.IsNullOrEmpty(json) ? new SaveData() : JsonUtility.FromJson<SaveData>(json);
+        Instance.activeSave = string.IsNullOrEmpty(json) ? new SaveData() : JsonUtility.FromJson<SaveData>(json);
     }
 
     public static void LoadScene(string sceneName) => SceneManager.LoadScene(sceneName);

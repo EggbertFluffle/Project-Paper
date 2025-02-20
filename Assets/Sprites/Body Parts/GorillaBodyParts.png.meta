@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 7934b6d286072524a9a29d0b09f3a79d
+guid: 8322db7029d2fde4783c32c393ea4c79
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3334738622998220081
-    second: Sign_0
+      213: -2042819080703154106
+    second: GorillaBodyParts_0
   - first:
-      213: 262019434342110170
-    second: Sign_1
+      213: 9012488942959063395
+    second: GorillaBodyParts_1
+  - first:
+      213: 5632595450179875893
+    second: GorillaBodyParts_2
+  - first:
+      213: -5450755423670098242
+    second: GorillaBodyParts_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -116,45 +122,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sign_0
+      name: GorillaBodyParts_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 280
-        width: 368
-        height: 224
+        x: 55
+        y: 671
+        width: 510
+        height: 594
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 140, y: 124, z: 137, w: 98}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 13d85920c1f574e20800000000000000
-      internalID: 3334738622998220081
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sign_1
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 8
-        width: 400
-        height: 256
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ad3d53c8941e2a300800000000000000
-      internalID: 262019434342110170
+      spriteID: 6486c429ed276a3e0800000000000000
+      internalID: -2042819080703154106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorillaBodyParts_1
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 352
+        width: 490
+        height: 858
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 361f53381fac21d70800000000000000
+      internalID: 9012488942959063395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorillaBodyParts_2
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 367
+        width: 326
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 534f37b18bffa2e40800000000000000
+      internalID: 5632595450179875893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GorillaBodyParts_3
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 39
+        width: 510
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb62c9e42d60b54b0800000000000000
+      internalID: -5450755423670098242
       vertices: []
       indices: 
       edges: []
@@ -163,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ae718b12695edee40a44cb517e67384b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -172,9 +222,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Sign_0: 3334738622998220081
-      Sign_1: 262019434342110170
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
