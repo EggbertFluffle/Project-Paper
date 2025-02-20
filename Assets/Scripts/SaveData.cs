@@ -9,6 +9,6 @@ public class SaveData {
 
     public SaveData() {
         Inventory = new List<BodyPartRef>();
-        EquippedParts = new List<BodyPartRef>{null, null, null, null};
+        EquippedParts = new List<BodyPartRef> {null, null, null, null};
     }
 }

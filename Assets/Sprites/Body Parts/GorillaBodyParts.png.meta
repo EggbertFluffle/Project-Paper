@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GorillaBodyParts_0: -2042819080703154106
+      GorillaBodyParts_1: 9012488942959063395
+      GorillaBodyParts_2: 5632595450179875893
+      GorillaBodyParts_3: -5450755423670098242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
