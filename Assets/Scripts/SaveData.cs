@@ -4,22 +4,7 @@ using UnityEngine;
 
 public class SaveData
 {
-    [Serializable]
-    public class BodyPartRef
-    {
-        public BodyPartRef(BodyPart bodyPart)
-        {
-            Name = bodyPart.Name;
-            LimbType = bodyPart.Limb;
-        }
-
-        public string Name;
-        public int Durability;
-
-        public BodyPart.LimbType LimbType;
-    }
-
-    public List<BodyPartRef> BodyPartInventory;
+    public List<BodyPartRef> Inventory;
 
     public List<BodyPartRef> EquippedParts;
 
@@ -33,6 +18,7 @@ public class SaveData
             "Boss 2" => 1,
             "Boss 3" => 2,
             "Boss 4" => 3,
+            "Boss 5" => 4,
             _ => -1,
         };
 
@@ -41,6 +27,9 @@ public class SaveData
 
     public SaveData()
     {
+        Inventory = new List<BodyPartRef>();
+        EquippedParts = new List<BodyPartRef>();
+
         Checkpoints = new List<bool>
         {
             false,
