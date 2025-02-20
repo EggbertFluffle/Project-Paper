@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
     public static Player Instance;
@@ -12,9 +13,15 @@ public class Player : MonoBehaviour {
     public Slider PlayerHealthBar;
     public Animator PlayerAnimator;
 
+    // List of BodyPartRef
+    // public List<BodyPartRef> BodyParts;
+
     private void Awake() {
         if(Instance == null) Instance = this;
-        PlayerHealthBar.value = 0.5f;
+    }
+
+    public void Start() {
+        // LoadLimbs(GameManager.ActiveSave.)
     }
 
     private void LoadLimbs(BodyPart[] bodyParts) {
