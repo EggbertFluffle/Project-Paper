@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public static UnityEvent OnSaveDataLoaded = new UnityEvent();
 
-    private SaveData activeSave;
+    public SaveData activeSave;
 
     private List<string> bossOrder = new List<string>{
         "Maria Sheila",
