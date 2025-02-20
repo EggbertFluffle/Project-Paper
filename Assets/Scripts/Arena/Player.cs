@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class Player : MonoBehaviour {
     public static Player Instance;
@@ -8,6 +9,9 @@ public class Player : MonoBehaviour {
     public int MaxHealth;
     public int Health;
     public float TotalEvasion;
+
+    public TextMeshProUGUI PlayerHealthCount;
+    public TextMeshProUGUI PlayerHealthMax;
 
     public SpriteRenderer[] Arms;
     public Slider PlayerHealthBar;
@@ -42,6 +46,9 @@ public class Player : MonoBehaviour {
         }
 
         Health = MaxHealth;
+        SetHealth();
+        PlayerHealthCount.text = Health.ToString();
+        PlayerHealthMax.text = MaxHealth.ToString();
     }
 
     public void SetupAttacks() {
@@ -52,6 +59,7 @@ public class Player : MonoBehaviour {
         // TODO: add indicator for healing
         // Heal 50 percent of health
         Health += (int)Mathf.Floor(0.5f * MaxHealth);
+        SetHealth();
     }
 
     public void AttackButtonHandle(int buttonNum) {
@@ -106,6 +114,7 @@ public class Player : MonoBehaviour {
 
     public void SetHealth() {
         PlayerHealthBar.value = (float)Health / MaxHealth;
+        PlayerHealthCount.text = "" + Health;
     }
 
     public void Kill() {

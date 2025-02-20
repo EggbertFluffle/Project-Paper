@@ -2979,10 +2979,12 @@ MonoBehaviour:
   MaxHealth: 0
   Health: 0
   TotalEvasion: 0
+  PlayerHealthCount: {fileID: 814357321}
+  PlayerHealthMax: {fileID: 60339789}
   Arms:
   - {fileID: 765966349}
   - {fileID: 1662619874}
-  PlayerHealthBar: {fileID: 0}
+  PlayerHealthBar: {fileID: 814850369}
   PlayerAnimator: {fileID: 0}
   BodyParts: []
 --- !u!212 &1858954712
