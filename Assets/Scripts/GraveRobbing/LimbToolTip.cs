@@ -34,8 +34,20 @@ public class LimbToolTip : MonoBehaviour {
 
         if(CurrentBodyPart.LimbConstants.Limb == BodyPart.LimbType.Arm) {
             Title.text = CurrentBodyPart.Name + " + Arm\n";
+            // Maybe add some sort of description
+            Content.text = 
+                "Strength: " + CurrentBodyPart.Strength + "\n" + 
+                "Durability: " + CurrentBodyPart.Durability + "\n\n" +
+                "Secondary Move: " + CurrentBodyPart.LimbConstants.SpeicialMoveName +
+                ""; 
+                // ADD DESCRIPTIONS FOR SPECIAL MOVES
         } else if(CurrentBodyPart.LimbConstants.Limb == BodyPart.LimbType.Leg) {
             Title.text = CurrentBodyPart.Name + " + Leg\n";
+            Content.text = 
+                "HP: " + CurrentBodyPart.HP + "\n" + 
+                "Durability: " + CurrentBodyPart.LimbConstants.Evasion + "\n\n" +
+                ""; 
+                // ADD DESCRIPTIONS FOR SPECIAL MOVES
         }
     }
 }
