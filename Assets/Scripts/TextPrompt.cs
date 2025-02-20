@@ -20,13 +20,14 @@ public class TextPrompt : MonoBehaviour {
         if(typewriting) {
             if(waitedFrames >= frameWait) {
                 waitedFrames = 0;
+                TypeWrite();
             }
-            frameWait++;
+            waitedFrames++;
         }
     }
 
     public void TypeWrite() {
-        Text.text = contents.Substring(0, Text.text.Length);
+        Text.text = contents.Substring(0, Text.text.Length + 1);
         if(Text.text.Length == contents.Length) {
             typewriting = false;
         }

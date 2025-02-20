@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
         
+        bossBattles = new List<BossBattle>();
         foreach(string bossName in bossOrder) {
             bossBattles.Add(Resources.Load<BossBattle>("Arena/" + bossName));
         }
