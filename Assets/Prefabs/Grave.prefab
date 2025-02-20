@@ -4963,7 +4963,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1281797991
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5075,7 +5075,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1486516623
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1394811641107744311, guid: 7e5118cda238a2444aa16a30266f9538, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5105,10 +5105,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  State: 0
-  GraveHighlight: {fileID: 8284619113124076833}
+  Robbed: 0
   RobbedGraveSprite: {fileID: -1691649895888912427, guid: 7e5118cda238a2444aa16a30266f9538, type: 3}
-  GraveDigParticles: {fileID: 1317706932970981413}
+  HighlightRenderer: {fileID: 8284619113124076833}
+  DigParticles: {fileID: 1317706932970981413}
 --- !u!50 &2946040399571839635
 Rigidbody2D:
   serializedVersion: 5
