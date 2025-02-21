@@ -22,8 +22,6 @@ public class Grave : MonoBehaviour {
     }
 
     private void GenerateLimbs() {
-        BodyPart[] allArms = Resources.LoadAll<BodyPart>("BodyParts/Arms");
-        BodyPart[] allLegs = Resources.LoadAll<BodyPart>("BodyParts/Legs");
 
         for(int i = 0; i < 4; i++) {
             if(UnityEngine.Random.Range(0.0f, 1.0f) < GRManager.NoLimbChance) {
@@ -32,8 +30,8 @@ public class Grave : MonoBehaviour {
             } else {
                 // Set the body part to a arm or leg depending on limb slot
                 BodyPart b = i < 2 ? 
-                    allArms[UnityEngine.Random.Range(0, allArms.Length)] :
-                    allLegs[UnityEngine.Random.Range(0, allLegs.Length)];
+                    GameManager.AllArms[UnityEngine.Random.Range(0, GameManager.AllArms.Count)] :
+                    GameManager.AllLegs[UnityEngine.Random.Range(0, GameManager.AllLegs.Count)];
                 BodyParts.Add(new BodyPartRef(b));
             }
         }

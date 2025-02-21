@@ -28,21 +28,21 @@ public class Player : MonoBehaviour {
         BodyParts = GameManager.ActiveSave.EquippedParts;
 
         // Set arm sprites according to equipped parts
-        if(BodyParts[0] != null) Arms[0].sprite = BodyParts[0].LimbConstants.BackLimbSprite;
-        if(BodyParts[1] != null) Arms[1].sprite = BodyParts[1].LimbConstants.BackLimbSprite;
+        if (BodyParts[0] != null) Arms[0].sprite = BodyParts[0].BackLimbSprite;
+        if (BodyParts[1] != null) Arms[1].sprite = BodyParts[1].BackLimbSprite;
 
         // Take into account leg stats
         MaxHealth = 100;
 
         // Load leg stats if applicable
-        if(BodyParts[2] != null) {
+        if (BodyParts[2] != null) {
             MaxHealth += BodyParts[2].HP;
-            TotalEvasion += BodyParts[2].LimbConstants.Evasion;
+            TotalEvasion += BodyParts[2].Evasion;
         }
 
         if(BodyParts[3] != null) {
             MaxHealth += BodyParts[3].HP;
-            TotalEvasion += BodyParts[3].LimbConstants.Evasion;
+            TotalEvasion += BodyParts[3].Evasion;
         }
 
         Health = MaxHealth;

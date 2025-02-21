@@ -15,51 +15,48 @@ public class LabManager : MonoBehaviour {
     public InventorySlot[] BodySlots;
 
     public void Start() {
+
         // Seperate each inventory limb into their own inventories
         foreach(BodyPartRef bp in GameManager.ActiveSave.Inventory) {
             if(bp == null) continue;
-            Debug.Log(bp);
             if(bp.IsArm()) {
-                // AddToArmContainer(bp);
+                AddToArmContainer(bp);
             } else if(bp.IsLeg()) {
-                // AddToLegContainer(bp);
+                AddToLegContainer(bp);
             }
         }
 
-        for (int i = 0; i < 4; i++) {
-            BodyPartRef bodyPart = GameManager.ActiveSave.EquippedParts[i];
-
-            if (bodyPart.LimbConstants.Limb == BodyPart.LimbType.Arm) {
+        
+        for (int i = 0; i < BodySlots.Length; i++) 
+        {
+            if (i < 2)
+            {
                 GameObject newArm = Instantiate(DraggableArm, BodySlots[i].transform);
-                newArm.GetComponent<DraggableItem>().SetLimb(bodyPart);
-            } else if (bodyPart.LimbConstants.Limb == BodyPart.LimbType.Leg) {
+                newArm.GetComponent<DraggableItem>().SetLimb(null);
+            }
+            else
+            {
                 GameObject newLeg = Instantiate(DraggableLeg, BodySlots[i].transform);
-                newLeg.GetComponent<DraggableItem>().SetLimb(bodyPart);
+                newLeg.GetComponent<DraggableItem>().SetLimb(null);
             }
         }
     }
 
     public void AddToArmContainer(BodyPartRef bodyPart) {
         GameObject newSlot = Instantiate(InventorySlot);
-        Transform newSlotTransform = newSlot.GetComponent<Transform>();
+        Transform newSlotTransform = newSlot.transform;
         newSlotTransform.SetParent(ArmContainer);
-        newSlot.GetComponent<GridLayoutGroup>().cellSize = new Vector2(200, 400);
         newSlot.GetComponent<InventorySlot>().armSlot = true;
-
-        GameObject newArm = Instantiate(DraggableArm);
-        newArm.GetComponent<Transform>().SetParent(newSlotTransform);
+        GameObject newArm = Instantiate(DraggableArm, newSlotTransform);
         newArm.GetComponent<DraggableItem>().SetLimb(bodyPart);
     }
 
     public void AddToLegContainer(BodyPartRef bodyPart) {
         GameObject newSlot = Instantiate(InventorySlot);
-        Transform newSlotTransform = newSlot.GetComponent<Transform>();
+        Transform newSlotTransform = newSlot.transform;
         newSlotTransform.SetParent(LegContainer);
-        newSlot.GetComponent<GridLayoutGroup>().cellSize = new Vector2(200, 600);
         newSlot.GetComponent<InventorySlot>().armSlot = false;
-
-        GameObject newLeg = Instantiate(DraggableLeg);
-        newLeg.GetComponent<Transform>().SetParent(newSlotTransform);
+        GameObject newLeg = Instantiate(DraggableLeg, newSlotTransform);
         newLeg.GetComponent<DraggableItem>().SetLimb(bodyPart);
     }
 

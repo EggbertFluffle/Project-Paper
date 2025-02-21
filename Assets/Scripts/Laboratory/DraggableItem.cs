@@ -15,9 +15,13 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public bool Reversed = false;
 
     public void SetLimb(BodyPartRef _bodyPart) {
-        bodyPart = _bodyPart;
-        Image.sprite = _bodyPart.LimbConstants.GraveLimbSprite;
-        Image.SetNativeSize();
+        Image.enabled = _bodyPart != null;
+        if (_bodyPart != null)
+        {
+            bodyPart = _bodyPart;
+            Image.sprite = _bodyPart.GraveLimbSprite;
+            Image.SetNativeSize();
+        }
     }
 
     public bool IsArm() {

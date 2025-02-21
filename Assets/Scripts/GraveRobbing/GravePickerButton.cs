@@ -17,7 +17,7 @@ public class GravePickerButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
             Image.enabled = true;
             Button.enabled = true;
             BodyPart = _bodyPart;
-            Image.sprite = _bodyPart.LimbConstants.GraveLimbSprite;
+            Image.sprite = _bodyPart.GraveLimbSprite;
             Image.SetNativeSize();
         }
     }

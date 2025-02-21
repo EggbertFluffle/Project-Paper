@@ -35,7 +35,7 @@ public class Cutscene
 
         Event currentEvent = AllEvents[eventIndex];
 
-        foreach (var prompt in AllTextBoxes)
+        foreach (var prompt in AllTextBoxes.Where(p => p != null))
         {
             prompt.gameObject.SetActive(false);
         }
@@ -49,19 +49,22 @@ public class Cutscene
         AllTextBoxes[currentEvent.ActiveTextBox].contents = currentEvent.Text;
     }
 
-    public void Finish()
+    public void Finish(bool hideImages = true)
     {
-        foreach (var prompt in AllTextBoxes)
+        foreach (var prompt in AllTextBoxes.Where(p => p != null))
         {
             prompt.gameObject.SetActive(false);
         }
 
-        for (int i = 0; i < AllImages.Count; i++)
+        if (hideImages)
         {
-            AllImages[i].SetActive(false);
+            for (int i = 0; i < AllImages.Count; i++)
+            {
+                AllImages[i].SetActive(false);
+            }
         }
 
-        ParentObject.SetActive(false);
+        ParentObject.SetActive(!hideImages);
         OnCutsceneFinished.Invoke();
     }
 

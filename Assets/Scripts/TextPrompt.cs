@@ -7,7 +7,10 @@ public class TextPrompt : MonoBehaviour {
     public Image TextPanel;
     public TextMeshProUGUI Text;
 
+    [TextArea]
     public string contents;
+
+    [Space(10)]
     public int waitedFrames = 0;
     public int frameWait = 20;
     bool typewriting = true;

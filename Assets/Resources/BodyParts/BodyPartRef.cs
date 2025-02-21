@@ -7,34 +7,33 @@ using PassiveAbility = BodyPart.PassiveAbility;
 [Serializable]
 public class BodyPartRef 
 {
-    public class Constants
-    {
-        public LimbType Limb;
-        public PassiveAbility Ability;
+    // Constants ---------------------------------------------------
 
-        public string Description;
-        public string SpeicialMoveName;
-        public Sprite GraveLimbSprite;
-        public Sprite BackLimbSprite;
-        public Sprite FrontLimbSprite;
+    public PassiveAbility Ability { get; private set; }
 
-        public float Evasion;
-        public int Speed;
+    public string Description { get; private set; }
+    public string SpecialMoveName { get; private set; }
+    public Sprite GraveLimbSprite { get; private set; }
+    public Sprite BackLimbSprite { get; private set; }
+    public Sprite FrontLimbSprite { get; private set; }
 
-        public string ActiveName;
-    }
+    public float Evasion { get; private set; }
+    public int Speed { get; private set; }
+
+    public string ActiveName;
+
+    // --------------------------------------------------------------
 
     public string Name;
+    public LimbType Limb;
 
     public int Strength;
     public int Durability;
 
     public int HP;
 
-    public Constants LimbConstants;
-
-    public bool IsArm() => LimbConstants.Limb == BodyPart.LimbType.Arm;
-    public bool IsLeg() => LimbConstants.Limb == BodyPart.LimbType.Leg;
+    public bool IsArm() => Limb == LimbType.Arm;
+    public bool IsLeg() => Limb == LimbType.Leg;
 
     public BodyPartRef(BodyPart bodyPart) {
         Name = bodyPart.Name;
@@ -49,20 +48,16 @@ public class BodyPartRef
 
     public void SetConstants(BodyPart bodyPart)
     {
-        LimbConstants = new Constants
-        {
-            Description = bodyPart.Description,
-            SpeicialMoveName = bodyPart.SpeicialMoveName,
-            Limb = bodyPart.Limb,
+        Description = bodyPart.Description;
+        SpecialMoveName = bodyPart.SpecialMoveName;
 
-            // Legs only
-            Ability = bodyPart.LegAbility,
-            GraveLimbSprite = bodyPart.GraveLimbSprite,
-            BackLimbSprite = bodyPart.BackLimbSprite,
-            FrontLimbSprite = bodyPart.FrontLimbSprite,
+        // Legs only
+        Ability = bodyPart.LegAbility;
+        GraveLimbSprite = bodyPart.GraveLimbSprite;
+        BackLimbSprite = bodyPart.BackLimbSprite;
+        FrontLimbSprite = bodyPart.FrontLimbSprite;
 
-            Evasion = bodyPart.Evasion,
-            Speed = bodyPart.Speed,
-        };
+        Evasion = bodyPart.Evasion;
+        Speed = bodyPart.Speed;
     }
 }

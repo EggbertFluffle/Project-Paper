@@ -15,7 +15,7 @@ public class ArenaUI : MonoBehaviour {
         // Put the correct sprites onto player arms
         AttackButtons[0].Text.text = bodyParts[0].Name;
         AttackButtons[1].Text.text = bodyParts[1].Name;
-        AttackButtons[2].Text.text = bodyParts[0].LimbConstants.SpeicialMoveName;
-        AttackButtons[3].Text.text = bodyParts[1].LimbConstants.SpeicialMoveName;
+        AttackButtons[2].Text.text = bodyParts[0].SpecialMoveName;
+        AttackButtons[3].Text.text = bodyParts[1].SpecialMoveName;
     }
 }

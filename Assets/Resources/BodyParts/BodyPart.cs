@@ -9,7 +9,7 @@ public class BodyPart : ScriptableObject {
     [TextArea]
     public string Description;
     [TextArea]
-    public string SpeicialMoveName;
+    public string SpecialMoveName;
     public Sprite GraveLimbSprite;
     public Sprite BackLimbSprite;
     public Sprite FrontLimbSprite;

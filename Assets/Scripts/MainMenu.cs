@@ -13,6 +13,11 @@ public class MainMenu : MonoBehaviour {
         FadeToBlack.Play("FadeToBlack");
     }
 
+    private void Awake()
+    {
+        OpeningCutscene.ParentObject.SetActive(false);
+    }
+
     public void Start() {
         AudioManager.PlayMusic("Main Menu");
     }
@@ -25,7 +30,7 @@ public class MainMenu : MonoBehaviour {
             cutsceneIndex++;
         }
         else
-            OpeningCutscene.Finish();
+            OpeningCutscene.Finish(false);
     }
 
     public void Update() {
