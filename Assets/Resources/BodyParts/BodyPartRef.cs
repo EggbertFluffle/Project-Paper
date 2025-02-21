@@ -33,6 +33,9 @@ public class BodyPartRef
 
     public Constants LimbConstants;
 
+    public bool IsArm() => LimbConstants.Limb == BodyPart.LimbType.Arm;
+    public bool IsLeg() => LimbConstants.Limb == BodyPart.LimbType.Leg;
+
     public BodyPartRef(BodyPart bodyPart) {
         Name = bodyPart.Name;
 
@@ -61,6 +64,5 @@ public class BodyPartRef
             Evasion = bodyPart.Evasion,
             Speed = bodyPart.Speed,
         };
-
     }
 }

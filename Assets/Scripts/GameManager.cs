@@ -30,8 +30,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         LoadInstance();
-        if (instance.activeSave != null)
-        {
+        if (instance.activeSave != null) {
             Debug.Log("Successfully loaded save.");
         }
     }
@@ -58,18 +57,16 @@ public class GameManager : MonoBehaviour
         instance.NextBossInstance();
     }
 
-    private void SaveInstance()
-    {
+    private void SaveInstance() {
         string json = JsonUtility.ToJson(instance.activeSave);
         Debug.Log("The string is " + json.Length + "chars long.");
         PlayerPrefs.SetString("Save", json);
- 
     }
 
     public static void Save() => instance.SaveInstance();
 
-    private void LoadInstance()
-    {
+    private void LoadInstance() {
+        Debug.Log("Instance: " + instance == null);
         string json = PlayerPrefs.GetString("Save");
         instance.activeSave = string.IsNullOrEmpty(json) ? new SaveData() : JsonUtility.FromJson<SaveData>(json);
     }

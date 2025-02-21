@@ -11,5 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Grave_Robbing.unity
     guid: 021087541ea82d7448a647c3b9a586d4
+  - enabled: 1
+    path: Assets/Scenes/Battle.unity
+    guid: 1b9cfe8cf960b384490efd641cf88d1a
+  - enabled: 1
+    path: Assets/Scenes/Laboratory.unity
+    guid: b7237d5a459fa50408cef67aca4199f9
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

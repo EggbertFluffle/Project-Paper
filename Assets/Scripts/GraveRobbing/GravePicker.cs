@@ -28,7 +28,7 @@ public class GravePicker : MonoBehaviour {
     }
 
     public void HandleLimbPick(BodyPartRef _bodyPart) {
-        // GameManager.ActiveSave.Inventory.Add(_bodyPart);
+        GRManager.Instance.HandleLimbPick(_bodyPart);
         ClosePicker();
     }
 
