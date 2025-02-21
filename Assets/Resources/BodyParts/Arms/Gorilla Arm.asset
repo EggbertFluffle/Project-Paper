@@ -15,13 +15,15 @@ MonoBehaviour:
   Limb: 0
   LimbRarity: 0
   Name: Gorilla Arm
-  Description: Gorilla Arm.
-  SpeicialMoveName: Flex
+  Description: Gorilla Arm
+  SpeicialMoveName: 'Flex
+
+    Feel incredibly strong'
   GraveLimbSprite: {fileID: 9012488942959063395, guid: 8322db7029d2fde4783c32c393ea4c79, type: 3}
   BackLimbSprite: {fileID: -5450755423670098242, guid: 8322db7029d2fde4783c32c393ea4c79, type: 3}
   FrontLimbSprite: {fileID: -2042819080703154106, guid: 8322db7029d2fde4783c32c393ea4c79, type: 3}
   Durability: 5
-  DurabilityDeviation: 0
+  DurabilityDeviation: 2
   Strength: 55
   AttackDeviation: 5
   HP: 0

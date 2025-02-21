@@ -18,22 +18,20 @@ public class LimbToolTip : MonoBehaviour {
 
     public void LateUpdate() {
         if(IsActive) {
-            // Follow the mouse with some stuff
+            Image.rectTransform.position = Input.mousePosition;
         }   
     }
 
     public void DismissTooltip() {
-        IsActive = false;
-        Image.enabled = false;
+        Hide();
     }
 
     public void RequestTooltip(BodyPartRef bodyPart) {
-        IsActive = true;
-        Image.enabled = true;
         CurrentBodyPart = bodyPart;
+        Show();
 
         if(CurrentBodyPart.LimbConstants.Limb == BodyPart.LimbType.Arm) {
-            Title.text = CurrentBodyPart.Name + " + Arm\n";
+            Title.text = CurrentBodyPart.Name;
             // Maybe add some sort of description
             Content.text = 
                 "Strength: " + CurrentBodyPart.Strength + "\n" + 
@@ -42,12 +40,26 @@ public class LimbToolTip : MonoBehaviour {
                 ""; 
                 // ADD DESCRIPTIONS FOR SPECIAL MOVES
         } else if(CurrentBodyPart.LimbConstants.Limb == BodyPart.LimbType.Leg) {
-            Title.text = CurrentBodyPart.Name + " + Leg\n";
+            Title.text = CurrentBodyPart.Name;
             Content.text = 
                 "HP: " + CurrentBodyPart.HP + "\n" + 
                 "Durability: " + CurrentBodyPart.LimbConstants.Evasion + "\n\n" +
                 ""; 
                 // ADD DESCRIPTIONS FOR SPECIAL MOVES
         }
+    }
+    
+    public void Show() {
+        IsActive = true;
+        Image.enabled = true;
+        Title.enabled = true;
+        Content.enabled = true;
+    }
+
+    public void Hide() {
+        IsActive = false;
+        Image.enabled = false;
+        Title.enabled = false;
+        Content.enabled = false;
     }
 }

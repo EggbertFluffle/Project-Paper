@@ -16,12 +16,17 @@ MonoBehaviour:
   LimbRarity: 0
   Name: Human Arm
   Description: Human Arm.
-  SpeicialMoveName: Human Sprit
+  SpeicialMoveName: 'Indomidable Human Spirit
+
+    Prepare to endure a fatal blow.
+
+    One
+    time use.'
   GraveLimbSprite: {fileID: -345606283706192561, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
   BackLimbSprite: {fileID: 3530086672280056128, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
   FrontLimbSprite: {fileID: 8212628185873528291, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
   Durability: 10
-  DurabilityDeviation: 0
+  DurabilityDeviation: 2
   Strength: 30
   AttackDeviation: 0
   HP: 0

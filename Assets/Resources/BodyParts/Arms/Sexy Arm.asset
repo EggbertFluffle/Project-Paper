@@ -16,14 +16,18 @@ MonoBehaviour:
   LimbRarity: 0
   Name: Sexy Arm
   Description: Sexy Arm.
-  SpeicialMoveName: Heal
+  SpeicialMoveName: 'Heal
+
+    Restores 30% of your max hp.
+
+    Uses 3 durability.'
   GraveLimbSprite: {fileID: -916164111195469362, guid: 353f58c2551a992419b1eb98ccdaf302, type: 3}
   BackLimbSprite: {fileID: 297723551128841597, guid: 353f58c2551a992419b1eb98ccdaf302, type: 3}
   FrontLimbSprite: {fileID: -1535134060125017383, guid: 353f58c2551a992419b1eb98ccdaf302, type: 3}
   Durability: 10
-  DurabilityDeviation: 0
-  Strength: 50
-  AttackDeviation: 0
+  DurabilityDeviation: 2
+  Strength: 20
+  AttackDeviation: 5
   HP: 0
   HPDeviation: 0
   Evasion: 0

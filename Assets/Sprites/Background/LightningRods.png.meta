@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 25f2373e7077dcd43baeb1eaa7eeb409
+guid: 097695e745869064989c78435b143f91
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6889247424725613078
-    second: OpeningCut2_0
+      213: 314357854584188011
+    second: LightningRods_0
+  - first:
+      213: -3957541246876893435
+    second: LightningRods_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: OpeningCut2_0
+      name: LightningRods_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 715
-        width: 385
-        height: 365
+        x: 83
+        y: 127
+        width: 414
+        height: 349
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae5847fc7f97460a0800000000000000
-      internalID: -6889247424725613078
+      spriteID: b6c28de9dc2dc5400800000000000000
+      internalID: 314357854584188011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LightningRods_1
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 27
+        width: 418
+        height: 449
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50f32f3343df319c0800000000000000
+      internalID: -3957541246876893435
       vertices: []
       indices: 
       edges: []
@@ -147,8 +172,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      OpeningCut2_0: -6889247424725613078
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

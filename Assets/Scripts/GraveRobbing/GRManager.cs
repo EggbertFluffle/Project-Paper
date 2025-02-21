@@ -15,8 +15,6 @@ public class GRManager : MonoBehaviour {
 
     public Animator[] GraveUIAnimations;
 
-    private bool graveUIActive = false;
-
     private void Awake() {
         if(Instance == null) Instance = this;
     } 

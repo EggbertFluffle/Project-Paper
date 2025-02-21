@@ -12,7 +12,7 @@ public class GravePicker : MonoBehaviour {
     public bool Opened = false;
 
     // Use new tool tipped limbs
-    public UnityEngine.UI.Image[] BodyPartImages;
+    public List<GravePickerButton> LimbButtons;
 
     private void Awake() {
         if(Instance == null) Instance = this;   
@@ -22,24 +22,13 @@ public class GravePicker : MonoBehaviour {
         CurrentGrave = g;
 
         // Go though grave contents and change grave picker UI
-        // Implement me
-        // Implement me
-        // Implement me
-        // Implement me
-        // Implement me
-        // Implement me
-        // for(int i = 0; i < 4; i++) {
-        //     BodyPartImages[i].enabled = true;
-        //     if(g.BodyParts[i] == null) {
-        //         BodyPartImages[i].enabled = false;
-        //     } else {
-        //         BodyPartImages[i].sprite = g.BodyParts[i].GraveLimbSprite;
-        //         BodyPartImages[i].SetNativeSize();
-        //     }
-        // }
+        for(int i = 0; i < 4; i++) {
+            LimbButtons[i].UseBodyPart(g.BodyParts[i]);
+        }
     }
 
     public void HandleLimbPick(BodyPartRef _bodyPart) {
+        // GameManager.ActiveSave.Inventory.Add(_bodyPart);
         ClosePicker();
     }
 

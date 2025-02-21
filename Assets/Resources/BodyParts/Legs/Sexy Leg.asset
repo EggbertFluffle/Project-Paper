@@ -13,12 +13,19 @@ MonoBehaviour:
   m_Name: Sexy Leg
   m_EditorClassIdentifier: 
   Limb: 1
+  LimbRarity: 0
   Name: Sexy Leg
   Description: Sexy Leg
+  SpeicialMoveName: 
   GraveLimbSprite: {fileID: 5596842366552303514, guid: 353f58c2551a992419b1eb98ccdaf302, type: 3}
   BackLimbSprite: {fileID: 0}
   FrontLimbSprite: {fileID: 0}
-  Durability: 15
-  Accuracy: 90
-  Strength: 1
-  Evasion: 0
+  Durability: 0
+  DurabilityDeviation: 0
+  Strength: 0
+  AttackDeviation: 0
+  HP: 20
+  HPDeviation: 5
+  Evasion: 8
+  Speed: 0
+  LegAbility: 0

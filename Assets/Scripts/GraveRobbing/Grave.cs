@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Grave : MonoBehaviour {
-    public List<BodyPart> BodyParts;
+    public List<BodyPartRef> BodyParts;
 
     public bool Robbed = false;
     
@@ -15,7 +15,7 @@ public class Grave : MonoBehaviour {
     private SpriteRenderer SpriteRenderer;
 
     private void Start() {
-        BodyParts = new List<BodyPart>();
+        BodyParts = new List<BodyPartRef>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
         GenerateLimbs();
@@ -34,7 +34,7 @@ public class Grave : MonoBehaviour {
                 BodyPart b = i < 2 ? 
                     allArms[UnityEngine.Random.Range(0, allArms.Length)] :
                     allLegs[UnityEngine.Random.Range(0, allLegs.Length)];
-                BodyParts.Add(b);
+                BodyParts.Add(new BodyPartRef(b));
             }
         }
     }
@@ -51,7 +51,8 @@ public class Grave : MonoBehaviour {
 
     // Only highlight the grave if the camera is not transitioning
     private void OnMouseEnter() {
-        HighlightRenderer.enabled = true;
+        if(GRManager.Instance.GraveRobs != 0)
+            HighlightRenderer.enabled = true;
     }
 
     private void OnMouseExit() {

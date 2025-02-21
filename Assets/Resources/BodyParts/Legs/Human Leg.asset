@@ -13,12 +13,19 @@ MonoBehaviour:
   m_Name: Human Leg
   m_EditorClassIdentifier: 
   Limb: 1
+  LimbRarity: 0
   Name: Human Leg
   Description: Human Leg.
+  SpeicialMoveName: 
   GraveLimbSprite: {fileID: 899686695125549701, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
   BackLimbSprite: {fileID: 0}
   FrontLimbSprite: {fileID: 0}
   Durability: 15
-  Accuracy: 90
+  DurabilityDeviation: 0
   Strength: 1
+  AttackDeviation: 0
+  HP: 0
+  HPDeviation: 0
   Evasion: 0
+  Speed: 0
+  LegAbility: 0

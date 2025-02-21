@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dfab5285dfdd7b4dbf0fcd79742d6cb, type: 3}
-  m_Name: Athlete Arm
+  m_Name: Chicken Wing
   m_EditorClassIdentifier: 
   Limb: 0
   LimbRarity: 0
-  Name: Athelete Arm
-  Description: Athlete Arm
-  SpeicialMoveName: 'Flex
+  Name: Chicken Wing
+  Description: Chicken Wing.
+  SpeicialMoveName: 'Scratch
 
-    Make next attack deal 50% more damage.
+    Cause you opponent to bleed 10 HP each turn for
+    5 turns.
 
-    Uses 2
-    durability.'
-  GraveLimbSprite: {fileID: -2712391658631171750, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
-  BackLimbSprite: {fileID: -8277236381688430301, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
-  FrontLimbSprite: {fileID: -62094745516741591, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
+    Takes 3 durability.'
+  GraveLimbSprite: {fileID: 3335552176773083455, guid: be616624e1a315841ab9f17fa35f29b1, type: 3}
+  BackLimbSprite: {fileID: 4139583719921220109, guid: be616624e1a315841ab9f17fa35f29b1, type: 3}
+  FrontLimbSprite: {fileID: 3339341494470454934, guid: be616624e1a315841ab9f17fa35f29b1, type: 3}
   Durability: 10
   DurabilityDeviation: 2
-  Strength: 40
+  Strength: 10
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
