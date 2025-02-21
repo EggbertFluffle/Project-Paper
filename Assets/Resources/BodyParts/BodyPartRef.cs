@@ -46,8 +46,7 @@ public class BodyPartRef
         SetConstants(bodyPart);
     }
 
-    public void SetConstants(BodyPart bodyPart)
-    {
+    public void SetConstants(BodyPart bodyPart) {
         Description = bodyPart.Description;
         SpecialMoveName = bodyPart.SpecialMoveName;
 
