@@ -63,9 +63,10 @@ public class LabManager : SceneLoader {
 
     public void StartFight() {
         for(int i = 0; i < BodySlots.Length; i++) {
-            Debug.Log(BodySlots[i].GetComponentInChildren<DraggableItem>());
-            GameManager.ActiveSave.EquippedParts[i] = 
-                BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
+            if(BodySlots[i].transform.childCount != 0) {
+                GameManager.ActiveSave.EquippedParts[i] = 
+                    BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
+            }
         }
 
         foreach(Transform armInventorySlot in ArmContainer) {
