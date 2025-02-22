@@ -11,18 +11,18 @@ public class CameraManager : MonoBehaviour {
     }
 
     public bool IsOpen() {
-        String currentClipName = CameraAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        string currentClipName = CameraAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         return currentClipName == "Opened";
     }
     
     public bool IsClosed() {
-        String currentClipName = CameraAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        string currentClipName = CameraAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         return currentClipName == "Closed";
     }
 
     // Ensure the camera is not moving in or out
     public bool IsTransitioning() {
-        String currentClipName = CameraAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        string currentClipName = CameraAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         return currentClipName == "ClosePanel" && currentClipName == "OpenPanel";
     }
 }

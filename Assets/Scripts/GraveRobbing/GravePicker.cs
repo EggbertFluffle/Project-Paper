@@ -24,11 +24,19 @@ public class GravePicker : MonoBehaviour {
         // Go though grave contents and change grave picker UI
         for(int i = 0; i < 4; i++) {
             LimbButtons[i].UseBodyPart(g.BodyParts[i]);
+            LimbButtons[i].Button.interactable = true;
         }
     }
 
-    public void HandleLimbPick(BodyPartRef _bodyPart) {
+    public void HandleLimbPick(BodyPartRef _bodyPart) 
+    {
         GRManager.Instance.HandleLimbPick(_bodyPart);
+
+        foreach (GravePickerButton button in LimbButtons)
+        {
+            button.Button.interactable = false;
+        }
+
         ClosePicker();
     }
 

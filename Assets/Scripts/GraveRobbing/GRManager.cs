@@ -76,4 +76,26 @@ public class GRManager : SceneLoader {
         LabButton.gameObject.GetComponent<Image>().enabled = true;
         LabButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
     }
+
+    public bool InRangeInclusive(int target, int min, int max) => target >= min && target <= max;
+
+    public BodyPartRef RandomArmWithRarity()
+    {
+        int rng = Random.Range(0, 101);
+        Debug.Log(rng);
+        if (rng == 0)
+        {
+            Debug.Log("Mythic Arm");
+            
+        }
+        if (InRangeInclusive(rng, 1, 10))
+        {
+            
+        }
+    }
+
+    public BodyPartRef RandomLegWithRarity()
+    {
+
+    }
 }

@@ -24,11 +24,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
     }
 
-    public bool IsArm() {
-        // Debug.Log(bodyPart.LimbConstants.Limb);
-        // return bodyPart.LimbConstants.Limb == BodyPart.LimbType.Arm;
-        return isArm;
-    }
+    public bool IsArm() => isArm;
 
     public void OnBeginDrag(PointerEventData eventData) {
         parentAfterDrag = transform.parent;
