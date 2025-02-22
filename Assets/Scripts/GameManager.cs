@@ -40,20 +40,20 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Awake() {
-        if (instance == null) {
+        if (instance == null) 
+        {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        } else {
+        } 
+        else 
             Destroy(gameObject);
-        }
 
-        foreach (BodyPart arm in Resources.LoadAll<BodyPart>("BodyParts/Arms")) {
+        foreach (BodyPart arm in Resources.LoadAll<BodyPart>("BodyParts/Arms")) 
             allArms[arm.Name] = arm;
-        }
-
-        foreach (BodyPart leg in Resources.LoadAll<BodyPart>("BodyParts/Legs")) {
+        
+        foreach (BodyPart leg in Resources.LoadAll<BodyPart>("BodyParts/Legs")) 
             allLegs[leg.Name] = leg;
-        }
+        
         
         bossBattles = bossOrder.Select(bossName => Resources.Load<BossBattle>($"Arena/{bossName}")).ToList();
         currentBossBattle = bossBattles[0];

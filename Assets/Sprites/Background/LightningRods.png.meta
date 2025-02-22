@@ -119,12 +119,12 @@ TextureImporter:
       name: LightningRods_0
       rect:
         serializedVersion: 2
-        x: 83
-        y: 127
-        width: 414
-        height: 349
+        x: 0
+        y: 0
+        width: 896
+        height: 476
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -137,33 +137,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: LightningRods_1
-      rect:
-        serializedVersion: 2
-        x: 451
-        y: 27
-        width: 418
-        height: 449
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 50f32f3343df319c0800000000000000
-      internalID: -3957541246876893435
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7b5cd743c3ee12b4a91d30323cba5616
     internalID: 0
     vertices: []
     indices: 

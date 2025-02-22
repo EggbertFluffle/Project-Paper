@@ -21,10 +21,8 @@ public class LabManager : SceneLoader {
         foreach(BodyPartRef bp in GameManager.ActiveSave.Inventory) {
             if(bp == null) continue;
             if(bp.IsArm()) {
-                Debug.Log("Add arm from inventory");
                 AddPartToContainer(bp, ArmContainer);
             } else if(bp.IsLeg()) {
-                Debug.Log("Add leg from inventory");
                 AddPartToContainer(bp, LegContainer);
             }
         }
