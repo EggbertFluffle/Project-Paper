@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dfab5285dfdd7b4dbf0fcd79742d6cb, type: 3}
-  m_Name: Human Arm
+  m_Name: Gorilla Leg
   m_EditorClassIdentifier: 
-  Limb: 0
-  LimbRarity: 0
-  Name: Human Arm
-  GraveLimbSprite: {fileID: -345606283706192561, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
-  BackLimbSprite: {fileID: 3530086672280056128, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
-  FrontLimbSprite: {fileID: 8212628185873528291, guid: abdf650cfd5a7f94fadd5586c5592677, type: 3}
-  Durability: 10
-  DurabilityDeviation: 2
-  Strength: 30
+  Limb: 1
+  LimbRarity: 2
+  Name: Athelete Leg
+  GraveLimbSprite: {fileID: -519780176676208610, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
+  BackLimbSprite: {fileID: 0}
+  FrontLimbSprite: {fileID: 0}
+  Durability: 0
+  DurabilityDeviation: 0
+  Strength: 0
   AttackDeviation: 0
-  HP: 0
-  HPDeviation: 0
+  HP: 50
+  HPDeviation: 5
   PrimaryAttack: 
   PrimaryAttackDurabilityCost: 0
   HasSecondaryAttack: 0
   SecondaryAttack: 
   SecondaryAttackDescription: 
   SecondaryAttackDurabilityCost: 0
-  Evasion: 0
+  Evasion: 0.02
   Speed: 0
   LegAbility: 0

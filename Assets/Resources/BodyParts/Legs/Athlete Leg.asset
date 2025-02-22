@@ -13,12 +13,23 @@ MonoBehaviour:
   m_Name: Athlete Leg
   m_EditorClassIdentifier: 
   Limb: 1
+  LimbRarity: 1
   Name: Athelete Leg
-  Description: Athelete Leg.
   GraveLimbSprite: {fileID: -519780176676208610, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
   BackLimbSprite: {fileID: 0}
   FrontLimbSprite: {fileID: 0}
-  Durability: 15
-  Accuracy: 90
-  Strength: 1
-  Evasion: 0
+  Durability: 0
+  DurabilityDeviation: 0
+  Strength: 0
+  AttackDeviation: 0
+  HP: 30
+  HPDeviation: 5
+  PrimaryAttack: 
+  PrimaryAttackDurabilityCost: 0
+  HasSecondaryAttack: 0
+  SecondaryAttack: 
+  SecondaryAttackDescription: 
+  SecondaryAttackDurabilityCost: 0
+  Evasion: 0.05
+  Speed: 0
+  LegAbility: 0

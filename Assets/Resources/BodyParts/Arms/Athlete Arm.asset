@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Athlete Arm
   m_EditorClassIdentifier: 
   Limb: 0
-  LimbRarity: 0
+  LimbRarity: 1
   Name: Athlete Arm
-  Description: Athlete Arm
-  SpecialMoveName: 
   GraveLimbSprite: {fileID: -2712391658631171750, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
   BackLimbSprite: {fileID: -8277236381688430301, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
   FrontLimbSprite: {fileID: -62094745516741591, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
@@ -26,6 +24,12 @@ MonoBehaviour:
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
+  PrimaryAttack: 
+  PrimaryAttackDurabilityCost: 0
+  HasSecondaryAttack: 1
+  SecondaryAttack: Flex
+  SecondaryAttackDescription: Gain +50% damage next turn
+  SecondaryAttackDurabilityCost: 2
   Evasion: 0
   Speed: 0
   LegAbility: 0

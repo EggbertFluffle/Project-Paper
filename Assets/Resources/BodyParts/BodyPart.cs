@@ -22,6 +22,7 @@ public class BodyPart : ScriptableObject {
     public string PrimaryAttack;
     public int PrimaryAttackDurabilityCost;
 
+    public bool HasSecondaryAttack = true;
     public string SecondaryAttack;
     public string SecondaryAttackDescription;
     public int SecondaryAttackDurabilityCost;
@@ -39,7 +40,7 @@ public class BodyPart : ScriptableObject {
 
     public enum Rarity
     {
-        Common, Uncommon, Rare
+        Common, Uncommon, Rare, Mythic
     }
 
     public enum LimbType 

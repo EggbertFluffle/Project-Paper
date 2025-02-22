@@ -29,10 +29,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
         GameObject dropped = eventData.pointerDrag;
         DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
 
-        if(draggableItem.IsArm() == armSlot) 
-        {
-            if(transform.childCount == 1) 
-            {
+        if(draggableItem.IsArm() == armSlot) {
+            if(transform.childCount == 1) {
                 Transform childTransform = transform.GetChild(0);
                 childTransform.SetParent(draggableItem.parentAfterDrag);
                 childTransform.GetComponent<DraggableItem>().Zero(childTransform.GetComponent<InventorySlot>().Reversed);

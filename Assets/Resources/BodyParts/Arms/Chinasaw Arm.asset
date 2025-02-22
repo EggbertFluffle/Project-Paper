@@ -13,19 +13,23 @@ MonoBehaviour:
   m_Name: Chinasaw Arm
   m_EditorClassIdentifier: 
   Limb: 0
-  LimbRarity: 2
+  LimbRarity: 3
   Name: Chainsaw Arm
-  Description: Chainsaw Arm
-  SpecialMoveName: 
   GraveLimbSprite: {fileID: 3552823604841287643, guid: 571e409b10558f9468db5634e15b47e4, type: 3}
   BackLimbSprite: {fileID: -8213976192466648115, guid: 571e409b10558f9468db5634e15b47e4, type: 3}
   FrontLimbSprite: {fileID: -5185089853591962442, guid: 571e409b10558f9468db5634e15b47e4, type: 3}
-  Durability: 10
+  Durability: 5
   DurabilityDeviation: 2
-  Strength: 20
+  Strength: 55
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
+  PrimaryAttack: SHRED
+  PrimaryAttackDurabilityCost: 1
+  HasSecondaryAttack: 0
+  SecondaryAttack: 
+  SecondaryAttackDescription: 
+  SecondaryAttackDurabilityCost: 0
   Evasion: 0
   Speed: 0
   LegAbility: 0

@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: Gorilla Arm
   m_EditorClassIdentifier: 
   Limb: 0
-  LimbRarity: 0
+  LimbRarity: 2
   Name: Gorilla Arm
-  Description: Gorilla Arm
-  SpeicialMoveName: 'Flex
-
-    Feel incredibly strong'
   GraveLimbSprite: {fileID: 9012488942959063395, guid: 8322db7029d2fde4783c32c393ea4c79, type: 3}
   BackLimbSprite: {fileID: -5450755423670098242, guid: 8322db7029d2fde4783c32c393ea4c79, type: 3}
   FrontLimbSprite: {fileID: -2042819080703154106, guid: 8322db7029d2fde4783c32c393ea4c79, type: 3}
@@ -28,6 +24,12 @@ MonoBehaviour:
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
+  PrimaryAttack: Punch
+  PrimaryAttackDurabilityCost: 1
+  HasSecondaryAttack: 1
+  SecondaryAttack: 
+  SecondaryAttackDescription: 
+  SecondaryAttackDurabilityCost: 0
   Evasion: 0
   Speed: 0
   LegAbility: 0

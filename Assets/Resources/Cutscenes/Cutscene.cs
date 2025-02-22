@@ -29,9 +29,9 @@ public class Cutscene
     [Space(10)]
     public UnityEvent OnCutsceneFinished;
 
-    public void Play(int eventIndex)
-    {
+    public void Play(int eventIndex) {
         ParentObject.SetActive(true);
+        AudioManager.PlaySFX("Paper Rustle");
 
         Event currentEvent = AllEvents[eventIndex];
 

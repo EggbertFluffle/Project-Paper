@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Hazabe
   m_EditorClassIdentifier: 
   Name: Hazabe
+  BattleStartText: Hazabe has entered the ring
   BossSprite: {fileID: -1164086749073644203, guid: 20bf05dd78bfe494883e5ea62d93b042, type: 3}
   Scale: 1
   Damage: 22

@@ -13,19 +13,23 @@ MonoBehaviour:
   m_Name: Crab Arm
   m_EditorClassIdentifier: 
   Limb: 0
-  LimbRarity: 2
+  LimbRarity: 3
   Name: Crab Arm
-  Description: Crab Arm
-  SpecialMoveName: 
   GraveLimbSprite: {fileID: -8753895390478436004, guid: 5126418b2836ead4d8067768afb1db0a, type: 3}
   BackLimbSprite: {fileID: -753667628804306023, guid: 5126418b2836ead4d8067768afb1db0a, type: 3}
   FrontLimbSprite: {fileID: 1390285091915171364, guid: 5126418b2836ead4d8067768afb1db0a, type: 3}
-  Durability: 10
+  Durability: 5
   DurabilityDeviation: 2
-  Strength: 20
+  Strength: 55
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
+  PrimaryAttack: Clobber
+  PrimaryAttackDurabilityCost: 1
+  HasSecondaryAttack: 0
+  SecondaryAttack: 
+  SecondaryAttackDescription: 
+  SecondaryAttackDurabilityCost: 0
   Evasion: 0
   Speed: 0
   LegAbility: 0

@@ -15,8 +15,6 @@ MonoBehaviour:
   Limb: 0
   LimbRarity: 0
   Name: Chicken Wing
-  Description: Chicken Wing.
-  SpecialMoveName: 
   GraveLimbSprite: {fileID: 3335552176773083455, guid: be616624e1a315841ab9f17fa35f29b1, type: 3}
   BackLimbSprite: {fileID: 4139583719921220109, guid: be616624e1a315841ab9f17fa35f29b1, type: 3}
   FrontLimbSprite: {fileID: 3339341494470454934, guid: be616624e1a315841ab9f17fa35f29b1, type: 3}
@@ -26,6 +24,12 @@ MonoBehaviour:
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
+  PrimaryAttack: Flap
+  PrimaryAttackDurabilityCost: 1
+  HasSecondaryAttack: 1
+  SecondaryAttack: Scratch
+  SecondaryAttackDescription: Make the enemy bleed 10 health for 5 turns
+  SecondaryAttackDurabilityCost: 3
   Evasion: 0
   Speed: 0
   LegAbility: 0

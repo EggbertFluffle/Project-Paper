@@ -10,6 +10,7 @@ public class AttackButtonContainer : MonoBehaviour {
     public TextMeshProUGUI PrimaryAttackName;
     public TextMeshProUGUI PrimaryAttackCost;
 
+    public GameObject SecondaryAttackButton;
     public TextMeshProUGUI SecondaryAttackName;
     public TextMeshProUGUI SecondaryAttackCost;
 
@@ -21,8 +22,12 @@ public class AttackButtonContainer : MonoBehaviour {
         PrimaryAttackName.text = BodyPart.PrimaryAttack;
         PrimaryAttackCost.text = $"-{BodyPart.PrimaryAttackDurabilityCost}";
 
-        SecondaryAttackName.text = BodyPart.SecondaryAttack;
-        SecondaryAttackCost.text = $"-{BodyPart.SecondaryAttackDurabilityCost}";
+        if(bodyPart.HasSecondaryAttack) {
+            SecondaryAttackName.text = BodyPart.SecondaryAttack;
+            SecondaryAttackCost.text = $"-{BodyPart.SecondaryAttackDurabilityCost}";
+        } else {
+            SecondaryAttackButton.SetActive(false);
+        }
     }
 
     public void UpdateDurability(int cost) {

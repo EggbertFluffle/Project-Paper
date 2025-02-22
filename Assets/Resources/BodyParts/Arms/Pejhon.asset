@@ -13,19 +13,23 @@ MonoBehaviour:
   m_Name: Pejhon
   m_EditorClassIdentifier: 
   Limb: 0
-  LimbRarity: 2
+  LimbRarity: 3
   Name: Pejhon
-  Description: Pejhon
-  SpecialMoveName: 
   GraveLimbSprite: {fileID: -664523130640195150, guid: 4c2d86782f3617344b88d9181936d916, type: 3}
   BackLimbSprite: {fileID: 6812730980026751054, guid: 4c2d86782f3617344b88d9181936d916, type: 3}
   FrontLimbSprite: {fileID: -6192520371232558580, guid: 4c2d86782f3617344b88d9181936d916, type: 3}
-  Durability: 10
+  Durability: 5
   DurabilityDeviation: 2
-  Strength: 20
+  Strength: 55
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
+  PrimaryAttack: Coo
+  PrimaryAttackDurabilityCost: 1
+  HasSecondaryAttack: 0
+  SecondaryAttack: 
+  SecondaryAttackDescription: 
+  SecondaryAttackDurabilityCost: 0
   Evasion: 0
   Speed: 0
   LegAbility: 0
