@@ -68,19 +68,31 @@ public class LabManager : SceneLoader {
                 BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
         }
 
-        GameManager.ActiveSave.Inventory.RemoveAll(bp => true);
-        foreach(Transform armInventorySlot in ArmContainer.GetComponentsInChildren<Transform>()) {
+        foreach(Transform armInventorySlot in ArmContainer) {
+            if (armInventorySlot.childCount == 0)
+                continue;
+
             Transform draggable = armInventorySlot.GetChild(0);
-            if(draggable == null) continue;
+
+            if(draggable == null) 
+                continue;
+
+            Debug.Log(draggable.GetComponent<DraggableItem>() == null);
             GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
         }
 
-        foreach(Transform armInventorySlot in LegContainer.GetComponentsInChildren<Transform>()) {
+        foreach(Transform armInventorySlot in LegContainer.transform) {
+            if (armInventorySlot.childCount == 0)
+                continue;
+
             Transform draggable = armInventorySlot.GetChild(0);
-            if(draggable == null) continue;
+
+            if(draggable == null) 
+                continue;
             GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
         }
 
+        AudioManager.StopMusic(1);
         LoadScene("Battle");
     }
 }

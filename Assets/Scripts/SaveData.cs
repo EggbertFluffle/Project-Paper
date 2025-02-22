@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 
 public class SaveData {
+
+    public int CurrentBoss;
+
     public List<BodyPartRef> Inventory;
     public List<BodyPartRef> EquippedParts;
 

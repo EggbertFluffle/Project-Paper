@@ -10,7 +10,9 @@ public class GRManager : SceneLoader {
 
     public Button LabButton;
 
-    public int GraveRobs = 2;
+    public int GraveRobs;
+
+    [HideInInspector]
     public int PickedLimbs;
     public int LimbSelections = 2;
 
@@ -18,23 +20,28 @@ public class GRManager : SceneLoader {
     public Animator[] GraveUIAnimations;
 
     private void Awake() {
-        if(Instance == null) Instance = this;
+        if(Instance == null) 
+            Instance = this;
+
+        for (int i = 0; i < Graves.Length; i++)
+            Graves[i].GraveIndex = i;
     }
 
     public void Start() {
+        GraveRobs = GameManager.ActiveSave.CurrentBoss == 0 ? 4 : 2;
+
         PickedLimbs = GraveRobs;
     }
 
     public void ShowUI() {
-        foreach (Animator anim in GraveUIAnimations) {
+        foreach (Animator anim in GraveUIAnimations) 
             anim.Play("OpenPanel");
-        }
+        
     }
 
     public void HideUI() {
-        foreach (Animator anim in GraveUIAnimations) {
+        foreach (Animator anim in GraveUIAnimations) 
             anim.Play("ClosePanel");
-        }
     }
 
     public void HandleGraveClick(Grave g) {

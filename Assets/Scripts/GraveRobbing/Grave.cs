@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +5,10 @@ public class Grave : MonoBehaviour {
     public List<BodyPartRef> BodyParts;
 
     public bool Robbed = false;
-    
+
+    [HideInInspector]
+    public int GraveIndex;
+
     public Sprite RobbedGraveSprite;
     public SpriteRenderer HighlightRenderer;
 
@@ -21,18 +23,38 @@ public class Grave : MonoBehaviour {
         GenerateLimbs();
     }
 
-    private void GenerateLimbs() {
+    private void GenerateLimbs() 
+    {
+        for(int i = 0; i < 4; i++) 
+        {
+            if (GameManager.ActiveSave.CurrentBoss == 0)
+            {
+                // The top graves should produce 2 random arms, and the bottom graves should have 2 random legs
 
-        for(int i = 0; i < 4; i++) {
-            if(UnityEngine.Random.Range(0.0f, 1.0f) < GRManager.NoLimbChance) {
-                // Limb did not make it lol
-                BodyParts.Add(null);
-            } else {
-                // Set the body part to a arm or leg depending on limb slot
-                BodyPart b = i < 2 ? 
-                    GameManager.AllArms[UnityEngine.Random.Range(0, GameManager.AllArms.Count)] :
-                    GameManager.AllLegs[UnityEngine.Random.Range(0, GameManager.AllLegs.Count)];
-                BodyParts.Add(new BodyPartRef(b));
+                // Top Graves
+                if (GraveIndex < 2 && i < 2)
+                {
+                    BodyParts.Add(new BodyPartRef(GameManager.AllArms[Random.Range(0, GameManager.AllArms.Count)]));
+                }
+                // Bottom Graves
+                else if (GraveIndex > 1 && i > 1)
+                {
+                    BodyParts.Add(new BodyPartRef(GameManager.AllLegs[Random.Range(0, GameManager.AllLegs.Count)]));
+                }
+                else
+                {
+                    BodyParts.Add(null);
+                }
+            }
+            else
+            {
+                BodyParts.Add(Random.Range(0.0f, 1.0f) < GRManager.NoLimbChance
+                    // Limb did not make it lol
+                    ? null
+                    // Set the body part to a arm or leg depending on limb slot
+                    : new BodyPartRef(i < 2 
+                        ? GameManager.AllArms[Random.Range(0, GameManager.AllArms.Count)] 
+                        : GameManager.AllLegs[Random.Range(0, GameManager.AllLegs.Count)]));
             }
         }
     }
