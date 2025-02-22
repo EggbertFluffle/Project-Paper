@@ -96,4 +96,11 @@ public class LabManager : SceneLoader {
     }
 
     private void LoadFightScene() => LoadScene("Battle");
+    private void StopLightning() => AudioManager.StopSFX();
+
+    public void PlayLightning()
+    {
+        AudioManager.PlaySFX("Electric Shock");
+        Invoke(nameof(StopLightning), 2.4f);
+    }
 }
