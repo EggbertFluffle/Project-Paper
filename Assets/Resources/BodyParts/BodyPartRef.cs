@@ -39,6 +39,7 @@ public class BodyPartRef
         Name = bodyPart.Name;
 
         // I think this is changing based of rarity
+        Limb = bodyPart.Limb;
         HP = bodyPart.HP + UnityEngine.Random.Range(-bodyPart.HPDeviation, bodyPart.HPDeviation);
         Strength = bodyPart.Strength + UnityEngine.Random.Range(-bodyPart.AttackDeviation, bodyPart.AttackDeviation);
         Durability = bodyPart.Durability + UnityEngine.Random.Range(-bodyPart.DurabilityDeviation, bodyPart.DurabilityDeviation);

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dfab5285dfdd7b4dbf0fcd79742d6cb, type: 3}
+  m_Name: Pejhon
+  m_EditorClassIdentifier: 
+  Limb: 0
+  LimbRarity: 2
+  Name: Pejhon
+  Description: Pejhon
+  SpecialMoveName: 
+  GraveLimbSprite: {fileID: -664523130640195150, guid: 4c2d86782f3617344b88d9181936d916, type: 3}
+  BackLimbSprite: {fileID: 6812730980026751054, guid: 4c2d86782f3617344b88d9181936d916, type: 3}
+  FrontLimbSprite: {fileID: -6192520371232558580, guid: 4c2d86782f3617344b88d9181936d916, type: 3}
+  Durability: 10
+  DurabilityDeviation: 2
+  Strength: 20
+  AttackDeviation: 5
+  HP: 0
+  HPDeviation: 0
+  Evasion: 0
+  Speed: 0
+  LegAbility: 0

@@ -165,15 +165,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.89
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.89
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.89
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_LocalPosition.x
@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553428260216077478, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 0.0627451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -341,11 +341,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -69.9
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 52
+      value: 45.71
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -362,6 +362,10 @@ PrefabInstance:
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553428260216077478, guid: efcebdceaae221048a95e4c23a357390, type: 3}
+      propertyPath: m_Color.a
+      value: 0.0627451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -759,11 +763,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 71.09
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 52
+      value: 45.71
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -780,6 +784,10 @@ PrefabInstance:
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553428260216077478, guid: efcebdceaae221048a95e4c23a357390, type: 3}
+      propertyPath: m_Color.a
+      value: 0.0627451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1056,10 +1064,6 @@ PrefabInstance:
       propertyPath: Reversed
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1211498762450523669, guid: efcebdceaae221048a95e4c23a357390, type: 3}
-      propertyPath: isReversed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1494956105045053597, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_Name
       value: LeftLegSlot
@@ -1098,15 +1102,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.89
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.89
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.89
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 1819505496741648760, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1162,7 +1166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553428260216077478, guid: efcebdceaae221048a95e4c23a357390, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 0.0627451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1262,7 +1266,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 984481305}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1145425881}
+        m_TargetAssemblyTypeName: LabManager, Assembly-CSharp
+        m_MethodName: StartFight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &984481305
 MonoBehaviour:
   m_ObjectHideFlags: 0

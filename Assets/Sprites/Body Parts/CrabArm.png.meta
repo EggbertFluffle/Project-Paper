@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 3cbe9070c21f4cd47b0f152792391b5a
+guid: 5126418b2836ead4d8067768afb1db0a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -62094745516741591
-    second: StrongBodyParts_0
+      213: 1390285091915171364
+    second: CrabArm_0
   - first:
-      213: -2712391658631171750
-    second: StrongBodyParts_1
+      213: -8753895390478436004
+    second: CrabArm_1
   - first:
-      213: -519780176676208610
-    second: StrongBodyParts_2
-  - first:
-      213: -8277236381688430301
-    second: StrongBodyParts_3
+      213: -753667628804306023
+    second: CrabArm_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,13 +119,35 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StrongBodyParts_0
+      name: CrabArm_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 595
+        x: 35
+        y: 459
+        width: 390
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4260020dce84b4310800000000000000
+      internalID: 1390285091915171364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CrabArm_1
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 219
         width: 322
-        height: 422
+        height: 610
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,42 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92c6e0f6825632ff0800000000000000
-      internalID: -62094745516741591
+      spriteID: c597a91c58ae38680800000000000000
+      internalID: -8753895390478436004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StrongBodyParts_1
+      name: CrabArm_2
       rect:
         serializedVersion: 2
-        x: 339
-        y: 359
-        width: 410
-        height: 646
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a517e874826ab5ad0800000000000000
-      internalID: -2712391658631171750
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StrongBodyParts_2
-      rect:
-        serializedVersion: 2
-        x: 771
+        x: 59
         y: 55
-        width: 406
-        height: 958
+        width: 390
+        height: 390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,30 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e10cce7eeae59c8f0800000000000000
-      internalID: -519780176676208610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StrongBodyParts_3
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 151
-        width: 322
-        height: 422
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 32185839d59512d80800000000000000
-      internalID: -8277236381688430301
+      spriteID: 99b8862e84f6a85f0800000000000000
+      internalID: -753667628804306023
       vertices: []
       indices: 
       edges: []
@@ -223,10 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      StrongBodyParts_0: -62094745516741591
-      StrongBodyParts_1: -2712391658631171750
-      StrongBodyParts_2: -519780176676208610
-      StrongBodyParts_3: -8277236381688430301
+      CrabArm_0: 1390285091915171364
+      CrabArm_1: -8753895390478436004
+      CrabArm_2: -753667628804306023
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

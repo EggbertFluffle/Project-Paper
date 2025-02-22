@@ -21,45 +21,66 @@ public class LabManager : MonoBehaviour {
         foreach(BodyPartRef bp in GameManager.ActiveSave.Inventory) {
             if(bp == null) continue;
             if(bp.IsArm()) {
-                Debug.Log("Add arm");
+                Debug.Log("Add arm from inventory");
                 AddPartToContainer(bp, ArmContainer);
             } else if(bp.IsLeg()) {
-                Debug.Log("Add leg");
+                Debug.Log("Add leg from inventory");
                 AddPartToContainer(bp, LegContainer);
             }
         }
 
-        for (int i = 0; i < BodySlots.Length; i++) {
+        for (int i = 0; i < GameManager.ActiveSave.EquippedParts.Count; i++) {
+            BodyPartRef bp = GameManager.ActiveSave.EquippedParts[i];
+            if(bp == null) continue;
             if (i < 2) {
                 GameObject newArm = Instantiate(DraggableArm, BodySlots[i].transform);
-                newArm.GetComponent<DraggableItem>().SetLimb(null);
+                DraggableItem draggableItem = newArm.GetComponent<DraggableItem>();
+                draggableItem.isArm = true;
+                draggableItem.SetLimb(bp);
             } else {
                 GameObject newLeg = Instantiate(DraggableLeg, BodySlots[i].transform);
-                newLeg.GetComponent<DraggableItem>().SetLimb(null);
+                DraggableItem draggableItem = newLeg.GetComponent<DraggableItem>();
+                draggableItem.isArm = false;
+                draggableItem.SetLimb(bp);
             }
         }
     }
 
     public void AddPartToContainer(BodyPartRef bodyPart, Transform Container) {
         if(bodyPart != null) {
+            // Create new inventory slot to hold the limb
             GameObject newSlot = Instantiate(InventorySlot);
-            Transform newSlotTransform = newSlot.transform;
-            newSlotTransform.SetParent(Container);
+            newSlot.transform.SetParent(Container);
+            newSlot.transform.localScale = Vector3.one;
             newSlot.GetComponent<InventorySlot>().armSlot = bodyPart.IsArm();
 
-            GameObject newLimb = Instantiate(
-                bodyPart.IsArm() ?  DraggableArm : DraggableLeg, 
-                newSlotTransform);
-            newLimb.GetComponent<DraggableItem>().SetLimb(bodyPart);
+            // Add the limb to the inventory slot
+            GameObject newLimb = Instantiate(bodyPart.IsArm() ? DraggableArm : DraggableLeg, newSlot.transform);
+            DraggableItem draggableItem = newLimb.GetComponent<DraggableItem>();
+            draggableItem.SetLimb(bodyPart);
         }
     }
 
     public void StartFight() {
         for(int i = 0; i < BodySlots.Length; i++) {
+            Debug.Log(BodySlots[i].GetComponentInChildren<DraggableItem>());
             GameManager.ActiveSave.EquippedParts[i] = 
-                BodySlots[i].transform.GetChild(0).GetComponent<DraggableItem>().GetBodyPart();
+                BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
         }
 
-        // Add all the other slots to the save data
+        GameManager.ActiveSave.Inventory.RemoveAll(bp => true);
+        foreach(Transform armInventorySlot in ArmContainer.GetComponentsInChildren<Transform>()) {
+            Transform draggable = armInventorySlot.GetChild(0);
+            if(draggable == null) continue;
+            GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
+        }
+
+        foreach(Transform armInventorySlot in LegContainer.GetComponentsInChildren<Transform>()) {
+            Transform draggable = armInventorySlot.GetChild(0);
+            if(draggable == null) continue;
+            GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
+        }
+    
+        GameManager.LoadScene("Battle");
     }
 }

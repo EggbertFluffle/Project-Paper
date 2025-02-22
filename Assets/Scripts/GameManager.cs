@@ -6,13 +6,12 @@ using System;
 
 using LimbType = BodyPart.LimbType;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     public static SaveData ActiveSave => instance.activeSave;
 
     public static BossBattle CurrentBossBattle => instance.currentBossBattle;
 
-    public SaveData activeSave;
+    public SaveData activeSave = new SaveData();
 
     public static List<BodyPart> AllArms => instance.allArms.Values.ToList();
     public static List<BodyPart> AllLegs => instance.allLegs.Values.ToList();
@@ -26,8 +25,7 @@ public class GameManager : MonoBehaviour
 
     private BossBattle currentBossBattle;
 
-    private readonly List<string> bossOrder = new List<string>
-    {
+    private readonly List<string> bossOrder = new List<string> {
         "Maria Sheila",
         "Frank N. Stein",
         "Heckyll and Jibe",
@@ -35,31 +33,26 @@ public class GameManager : MonoBehaviour
         "Chimera"
     };
 
-    private void OnEnable()
-    {
-        LoadInstance();
+    private void OnEnable() {
+        // LoadInstance();
         if (instance.activeSave != null) {
             Debug.Log("Successfully loaded save.");
         }
     }
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
+    private void Awake() {
+        if (instance == null) {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else
+        } else {
             Destroy(gameObject);
+        }
 
-        foreach (BodyPart arm in Resources.LoadAll<BodyPart>("BodyParts/Arms"))
-        {
+        foreach (BodyPart arm in Resources.LoadAll<BodyPart>("BodyParts/Arms")) {
             allArms[arm.Name] = arm;
         }
 
-        foreach (BodyPart leg in Resources.LoadAll<BodyPart>("BodyParts/Legs"))
-        {
+        foreach (BodyPart leg in Resources.LoadAll<BodyPart>("BodyParts/Legs")) {
             allLegs[leg.Name] = leg;
         }
         
@@ -77,61 +70,55 @@ public class GameManager : MonoBehaviour
 
     public BodyPart GetBodyPart(string key) => allArms.TryGetValue(key, out var arm) ? arm : allLegs.TryGetValue(key, out var leg) ? leg : null;
 
-    private void AssignConstants()
-    {
-        foreach (var bodyPartRef in instance.activeSave.EquippedParts)
-        {
-            Debug.Log("[" + bodyPartRef.Name + "]");
-            Debug.Log(GetBodyPart(bodyPartRef.Name) == null);
-            bodyPartRef.SetConstants(GetBodyPart(bodyPartRef.Name));
+    private void AssignConstants() {
+        foreach (BodyPartRef bodyPartRef in instance.activeSave.EquippedParts) {
+            if(bodyPartRef != null) {
+                Debug.Log(GetBodyPart(bodyPartRef.Name) == null);
+                Debug.Log(JsonUtility.ToJson(bodyPartRef));
+                bodyPartRef.SetConstants(GetBodyPart(bodyPartRef.Name));
+            }
         }
 
-        foreach (var bodyPartRef in instance.activeSave.Inventory)
-        {
+        foreach (BodyPartRef bodyPartRef in instance.activeSave.Inventory) {
+            Debug.Log("is BodyPart null in inventory: " + GetBodyPart(bodyPartRef.Name) == null);
             bodyPartRef.SetConstants(GetBodyPart(bodyPartRef.Name));
         }
     }
 
-    private void SaveInstance() {
-        string json = JsonUtility.ToJson(instance.activeSave);
-        Debug.Log(json);
-        PlayerPrefs.SetString("Save", json);
-    }
+    // private void SaveInstance() {
+    //     string json = JsonUtility.ToJson(instance.activeSave);
+    //     Debug.Log(json);
+    //     PlayerPrefs.SetString("Save", json);
+    // }
 
-    public static void Save() => instance.SaveInstance();
+    // public static void Save() => instance.SaveInstance();
 
-    private void LoadInstance() {
-        string json = PlayerPrefs.GetString("Save");
-        Debug.Log("Loading Data");
-        instance.activeSave = string.IsNullOrEmpty(json) ? new SaveData() : JsonUtility.FromJson<SaveData>(json);
-        AssignConstants();
-    }
+    // private void LoadInstance() {
+    //     string json = PlayerPrefs.GetString("Save");
+    //     Debug.Log("Loading Data");
+    //     instance.activeSave = string.IsNullOrEmpty(json) ? new SaveData() : JsonUtility.FromJson<SaveData>(json);
+    //     AssignConstants();
+    // }
 
-    public static void Load() => instance.LoadInstance();
+    // public static void Load() => instance.LoadInstance();
 
-    public void DeleteSave()
-    {
-        Debug.Log("Deleting Save.");
-        PlayerPrefs.DeleteKey("Save");
-    }
+    // public void DeleteSave() {
+    //     Debug.Log("Deleting Save.");
+    //     PlayerPrefs.DeleteKey("Save");
+    // }
 
-    public static void LoadScene(string sceneName)
-    {
-        instance.SaveInstance();
+    public static void LoadScene(string sceneName) {
+        // instance.SaveInstance();
         SceneManager.LoadScene(sceneName);
     }
 
-    private void OnApplicationQuit()
-    {
-        SaveInstance();
+    private void OnApplicationQuit() {
+        // SaveInstance();
     }
 
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Period))
-        {
-            DeleteSave();
-        }
+    private void Update() {
+        // if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Period)) {
+        //     DeleteSave();
+        // }
     }
 }

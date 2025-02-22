@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 3cbe9070c21f4cd47b0f152792391b5a
+guid: 4c2d86782f3617344b88d9181936d916
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -62094745516741591
-    second: StrongBodyParts_0
+      213: -6192520371232558580
+    second: PigeonArm_0
   - first:
-      213: -2712391658631171750
-    second: StrongBodyParts_1
+      213: -664523130640195150
+    second: PigeonArm_1
   - first:
-      213: -519780176676208610
-    second: StrongBodyParts_2
-  - first:
-      213: -8277236381688430301
-    second: StrongBodyParts_3
+      213: 6812730980026751054
+    second: PigeonArm_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 110
+  spritePixelsToUnits: 90
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StrongBodyParts_0
+      name: PigeonArm_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 595
-        width: 322
-        height: 422
+        x: 59
+        y: 475
+        width: 378
+        height: 430
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92c6e0f6825632ff0800000000000000
-      internalID: -62094745516741591
+      spriteID: c023050288fbf0aa0800000000000000
+      internalID: -6192520371232558580
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StrongBodyParts_1
+      name: PigeonArm_1
       rect:
         serializedVersion: 2
-        x: 339
-        y: 359
-        width: 410
-        height: 646
+        x: 499
+        y: 367
+        width: 294
+        height: 550
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a517e874826ab5ad0800000000000000
-      internalID: -2712391658631171750
+      spriteID: 2b12925cbb327c6f0800000000000000
+      internalID: -664523130640195150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StrongBodyParts_2
+      name: PigeonArm_2
       rect:
         serializedVersion: 2
-        x: 771
-        y: 55
-        width: 406
-        height: 958
+        x: 75
+        y: 11
+        width: 382
+        height: 430
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,30 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e10cce7eeae59c8f0800000000000000
-      internalID: -519780176676208610
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StrongBodyParts_3
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 151
-        width: 322
-        height: 422
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 32185839d59512d80800000000000000
-      internalID: -8277236381688430301
+      spriteID: e481bce1bbeab8e50800000000000000
+      internalID: 6812730980026751054
       vertices: []
       indices: 
       edges: []
@@ -223,10 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      StrongBodyParts_0: -62094745516741591
-      StrongBodyParts_1: -2712391658631171750
-      StrongBodyParts_2: -519780176676208610
-      StrongBodyParts_3: -8277236381688430301
+      PigeonArm_0: -6192520371232558580
+      PigeonArm_1: -664523130640195150
+      PigeonArm_2: 6812730980026751054
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

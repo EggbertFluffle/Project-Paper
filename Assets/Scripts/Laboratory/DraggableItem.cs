@@ -16,9 +16,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void SetLimb(BodyPartRef _bodyPart) {
         Image.enabled = _bodyPart != null;
-        if (_bodyPart != null)
-        {
+        if (_bodyPart != null) {
             bodyPart = _bodyPart;
+            isArm = _bodyPart.IsArm();
             Image.sprite = _bodyPart.GraveLimbSprite;
             Image.SetNativeSize();
         }
@@ -38,12 +38,10 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     }
 
     public void OnDrag(PointerEventData eventData) {
-        Debug.Log(parentAfterDrag.gameObject.name);
         transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData) {
-        Debug.Log(parentAfterDrag.gameObject.name);
         transform.SetParent(parentAfterDrag);
         Zero(Reversed);
 
