@@ -85,7 +85,6 @@ public class Boss : MonoBehaviour {
     }
 
     public void SendAttack(int damage) {
-        State = BossState.Wait;
         TakeDamage(damage);
     }
 
@@ -104,6 +103,7 @@ public class Boss : MonoBehaviour {
     }
 
     public void Kill() {
+        State = BossState.Dead;
         ArenaUI.Instance.MakeTextPrompt(currentBossBattle.Name + " has fallen!");
     }
 }

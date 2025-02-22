@@ -22,6 +22,9 @@ public class Player : MonoBehaviour {
     public float HealthLerpSpeed = 0.1f;
     public Animator PlayerAnimator;
 
+    public enum PlayerState { NotTurn, Wait, SelectAttack, PrimaryAttack, SecondaryAttack, Dead };
+    public PlayerState State;
+
     private Dictionary<string, Vector2> rightArmPositions = new Dictionary<string, Vector2>{
         ["Athlete Arm"] = new Vector2(2.63f, 1.51f),
         ["Chainsaw Arm"] = new Vector2(3.37f, 0.0f),
@@ -49,9 +52,20 @@ public class Player : MonoBehaviour {
     }
 
     public void Update() {
-        float diff = Mathf.Abs(Health / MaxHealth) - (PlayerHealthBar.value + 0.001f);
-        if(diff > 0.01) {
-            PlayerHealthBar.value -= diff * HealthLerpSpeed;
+        if(!ArenaUI.Instance.HasTextPrompt()) {
+            switch(State) {
+                case PlayerState.Wait:
+                    State = PlayerState.SelectAttack;
+                    break;
+                case PlayerState.PrimaryAttack:
+                    break;
+                case PlayerState.SecondaryAttack:
+                    break;
+                case PlayerState.Dead:
+                    ArenaManager.Instance.PlayerWin();
+                    State = PlayerState.NotTurn;
+                    break;
+            }
         }
     }
 
@@ -78,6 +92,7 @@ public class Player : MonoBehaviour {
             Boss.Instance.SendAttack(bodyPart.Strength);
             ArenaUI.Instance.MakeTextPrompt($"You used {bodyPart.PrimaryAttack}!");
         }
+        State = PlayerState.PrimaryAttack;
     }
     
     public void HandleSpecialAttack(BodyPartRef bodyPart) {
@@ -87,6 +102,7 @@ public class Player : MonoBehaviour {
             Boss.Instance.SendAttack(bodyPart.Strength);
             ArenaUI.Instance.MakeTextPrompt($"You used {bodyPart.PrimaryAttack}!");
         }
+        State = PlayerState.SecondaryAttack;
     }
 
     public void SendAttack(int damage) {
