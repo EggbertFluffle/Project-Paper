@@ -63,21 +63,24 @@ public class LabManager : MonoBehaviour {
 
     public void StartFight() {
         for(int i = 0; i < BodySlots.Length; i++) {
-            Debug.Log(BodySlots[i].GetComponentInChildren<DraggableItem>());
-            GameManager.ActiveSave.EquippedParts[i] = 
-                BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
+            if(BodySlots[i].transform.childCount != 0) {
+                GameManager.ActiveSave.EquippedParts[i] = 
+                    BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
+            }
         }
 
         GameManager.ActiveSave.Inventory.RemoveAll(bp => true);
         foreach(Transform armInventorySlot in ArmContainer.GetComponentsInChildren<Transform>()) {
             Transform draggable = armInventorySlot.GetChild(0);
             if(draggable == null) continue;
+            Debug.Log(draggable.GetComponent<DraggableItem>().GetBodyPart());
             GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
         }
 
         foreach(Transform armInventorySlot in LegContainer.GetComponentsInChildren<Transform>()) {
             Transform draggable = armInventorySlot.GetChild(0);
             if(draggable == null) continue;
+            Debug.Log(draggable.GetComponent<DraggableItem>().GetBodyPart());
             GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
         }
     
