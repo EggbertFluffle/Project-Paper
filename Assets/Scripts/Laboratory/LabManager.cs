@@ -15,8 +15,6 @@ public class LabManager : SceneLoader {
     public InventorySlot[] BodySlots;
 
     public void Start() {
-        Debug.Log("Inventory size: " + GameManager.ActiveSave.Inventory.Count);
-
         // Seperate each inventory limb into their own inventories
         foreach(BodyPartRef bp in GameManager.ActiveSave.Inventory) {
             if(bp == null) continue;

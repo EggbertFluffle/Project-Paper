@@ -4,7 +4,6 @@ using UnityEngine;
 public class BossBattle : ScriptableObject {
     public string Name;
     
-    [TextArea]
     public Sprite BossSprite;
     public float Scale;
     public int Damage;

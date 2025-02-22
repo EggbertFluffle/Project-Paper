@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour {
     private static GameManager instance;
 
     private List<BossBattle> bossBattles;
-
     private BossBattle currentBossBattle;
 
     private readonly List<string> bossOrder = new List<string> {
@@ -60,7 +59,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private void NextBossInstance() {
-        
+        activeSave.CurrentBoss++;
+        currentBossBattle = bossBattles[activeSave.CurrentBoss];
     }
 
     public static void NextBoss() {

@@ -17,6 +17,28 @@ public class Player : MonoBehaviour {
     public Slider PlayerHealthBar;
     public Animator PlayerAnimator;
 
+    private Dictionary<string, Vector2> rightArmPositions = new Dictionary<string, Vector2>{
+        ["Athlete Arm"] = new Vector2(2.63f, 1.51f),
+        ["Chainsaw Arm"] = new Vector2(3.37f, 0.0f),
+        ["Chicken Wing"] = new Vector2(2.94f, 0.43f),
+        ["Crab Arm"] = new Vector2(2.79f, 1.72f),
+        ["Gorilla Arm"] = new Vector2(3.19f, 1.44f),
+        ["Human Arm"] = new Vector2(2.38f, 1.72f),
+        ["Sexy Arm"] = new Vector2(2.51f, 1.66f),
+        ["Pejhon"] = new Vector2(2.99f, 0.83f),
+    };
+
+    private Dictionary<string, Vector2> leftArmPositions = new Dictionary<string, Vector2>{
+        ["Athlete Arm"] = new Vector2(-2.78f, 1.46f),
+        ["Chainsaw Arm"] = new Vector2(-3.61f, 0.0f),
+        ["Chicken Wing"] = new Vector2(-2.93f, 0.4f),
+        ["Crab Arm"] = new Vector2(-2.96f, 1.64f),
+        ["Gorilla Arm"] = new Vector2(-3.26f, 1.43f),
+        ["Human Arm"] = new Vector2(-2.73f, 1.58f),
+        ["Sexy Arm"] = new Vector2(-2.75f, 1.56f),
+        ["Pejhon"] = new Vector2(-2.96f, 0.88f),
+    };
+
     // List of BodyPartRef
     public List<BodyPartRef> BodyParts;
 
@@ -28,8 +50,23 @@ public class Player : MonoBehaviour {
         BodyParts = GameManager.ActiveSave.EquippedParts;
 
         // Set arm sprites according to equipped parts
-        if (BodyParts[0] != null) Arms[0].sprite = BodyParts[0].BackLimbSprite;
-        if (BodyParts[1] != null) Arms[1].sprite = BodyParts[1].BackLimbSprite;
+        if (BodyParts[0] != null) {
+            Arms[0].sprite = BodyParts[0].BackLimbSprite;
+            Arms[0].transform.localPosition = new Vector3(
+                leftArmPositions[BodyParts[0].Name].x,
+                leftArmPositions[BodyParts[0].Name].y,
+                0
+            );
+        }
+
+        if (BodyParts[1] != null) {
+            Arms[1].sprite = BodyParts[1].BackLimbSprite;
+            Arms[1].transform.localPosition = new Vector3(
+                rightArmPositions[BodyParts[1].Name].x,
+                rightArmPositions[BodyParts[1].Name].y,
+                0
+            );
+        }
 
         // Take into account leg stats
         MaxHealth = 100;

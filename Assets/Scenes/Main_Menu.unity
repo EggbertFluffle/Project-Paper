@@ -314,6 +314,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet.
       objectReference: {fileID: 0}
+    - target: {fileID: 3068608402571837388, guid: f7af612b6fdcc5d49ba5a889e45b269b, type: 3}
+      propertyPath: m_fontSize
+      value: 70.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3068608402571837388, guid: f7af612b6fdcc5d49ba5a889e45b269b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 70.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3116552385371050206, guid: f7af612b6fdcc5d49ba5a889e45b269b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 699
@@ -913,6 +921,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet.
       objectReference: {fileID: 0}
+    - target: {fileID: 3068608402571837388, guid: f7af612b6fdcc5d49ba5a889e45b269b, type: 3}
+      propertyPath: m_fontSize
+      value: 74.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 3068608402571837388, guid: f7af612b6fdcc5d49ba5a889e45b269b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 74.83
+      objectReference: {fileID: 0}
     - target: {fileID: 3116552385371050206, guid: f7af612b6fdcc5d49ba5a889e45b269b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 498
@@ -1010,104 +1026,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &882315274
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 882315275}
-  - component: {fileID: 882315278}
-  - component: {fileID: 882315277}
-  - component: {fileID: 882315276}
-  m_Layer: 5
-  m_Name: FadeToBlack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &882315275
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882315274}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1276982264}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &882315276
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882315274}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 519d97bdb0a1002418f7ae38e7321d8c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &882315277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882315274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &882315278
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882315274}
-  m_CullTransparentMesh: 1
 --- !u!1 &963983053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,7 +1310,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 1.38
 --- !u!222 &1164125450
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1588,7 +1506,6 @@ RectTransform:
   - {fileID: 1429250106}
   - {fileID: 1297745770}
   - {fileID: 815070888}
-  - {fileID: 882315275}
   - {fileID: 3462128620571968310}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1615,16 +1532,19 @@ MonoBehaviour:
     ParentObject: {fileID: 1216078658}
     AllEvents:
     - ActiveTextBox: 0
-      Text: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      Text: "\"You\u2019re invited to the arena, a place where other scientists such
+        as yourself can compete in a reanimated brawl.  The rules are simple:\""
       ActiveImages: 00000000
     - ActiveTextBox: 1
-      Text: sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+      Text: "\"You must win at all costs. Whether legally or less so\u2026\""
       ActiveImages: 0000000001000000
     - ActiveTextBox: 2
-      Text: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      Text: "\"You will use those limbs to craft your monster and bring it to life\u2026\""
       ActiveImages: 000000000100000002000000
     - ActiveTextBox: 3
-      Text: nisi ut aliquip ex ea commodo consequat
+      Text: "\"And you will send it to battle against others for fame and a cash
+        prize.  Good luck, and welcome to the fight.\r\nInteresting.  Nothing can
+        go wrong\u2026 right?\""
       ActiveImages: 00000000010000000200000003000000
     AllImages:
     - {fileID: 1053350905}
@@ -1652,7 +1572,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   BackgroundAnimator: {fileID: 1429250109}
-  FadeToBlack: {fileID: 882315276}
+  FadeToBlack: {fileID: 0}
 --- !u!1 &1287460048
 GameObject:
   m_ObjectHideFlags: 0

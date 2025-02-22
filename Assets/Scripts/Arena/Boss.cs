@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,10 +8,11 @@ public class Boss : MonoBehaviour {
     public int MaxHealth;
     public int Health;
     public Slider BossHealthBar;
+    public TextMeshProUGUI BossTextName;
+    public SpriteRenderer BossSprite;
     public Animator BossAnimator;
 
     private BossBattle currentBossBattle;
-    private Transform transform;
 
     // TODO: Give an indicator for bleeding
     private bool bleeding = false; 
@@ -23,10 +25,13 @@ public class Boss : MonoBehaviour {
 
     public void Start() {
         // Get current boss from the GameManager
+        Debug.Log("does this shit even run");
         currentBossBattle = GameManager.CurrentBossBattle;
         transform.localScale = new Vector3(currentBossBattle.Scale, currentBossBattle.Scale, currentBossBattle.Scale);
+        BossSprite.sprite = currentBossBattle.BossSprite;
         MaxHealth = currentBossBattle.Health;
         Health = MaxHealth;
+        BossTextName.text = currentBossBattle.Name;
     }
 
     public void TakeTurn() {
