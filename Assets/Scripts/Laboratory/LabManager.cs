@@ -90,6 +90,10 @@ public class LabManager : SceneLoader {
         }
 
         AudioManager.StopMusic(1);
-        LoadScene("Battle");
+
+        GetComponent<Animator>().enabled = true;
+        Invoke(nameof(LoadFightScene), 3.5f);
     }
+
+    private void LoadFightScene() => LoadScene("Battle");
 }
