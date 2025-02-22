@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ArenaManager : MonoBehaviour {
+public class ArenaManager : SceneLoader {
     public static ArenaManager Instance;
 
     public bool PlayerTurn;

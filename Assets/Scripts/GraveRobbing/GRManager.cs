@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GRManager : MonoBehaviour {
+public class GRManager : SceneLoader {
     public static GRManager Instance;
     public static float NoLimbChance = 0.15f;
 

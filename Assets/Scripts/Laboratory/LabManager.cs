@@ -4,7 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LabManager : MonoBehaviour {
+public class LabManager : SceneLoader {
     public GameObject InventorySlot;
     public GameObject DraggableArm;
     public GameObject DraggableLeg;
@@ -80,7 +80,7 @@ public class LabManager : MonoBehaviour {
             if(draggable == null) continue;
             GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
         }
-    
-        GameManager.LoadScene("Battle");
+
+        LoadScene("Battle");
     }
 }
