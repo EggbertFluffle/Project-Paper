@@ -5,6 +5,7 @@ using System.Linq;
 using System;
 
 using LimbType = BodyPart.LimbType;
+using System.Collections;
 
 public class GameManager : MonoBehaviour {
     public static SaveData ActiveSave => instance.activeSave;
@@ -33,11 +34,9 @@ public class GameManager : MonoBehaviour {
         "Chimera"
     };
 
-    private void OnEnable() {
-        // LoadInstance();
-        if (instance.activeSave != null) {
-            Debug.Log("Successfully loaded save.");
-        }
+    private void OnEnable()
+    {
+        AssignConstants();
     }
 
     private void Awake() {
@@ -85,6 +84,8 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+
+
     // private void SaveInstance() {
     //     string json = JsonUtility.ToJson(instance.activeSave);
     //     Debug.Log(json);
@@ -107,10 +108,7 @@ public class GameManager : MonoBehaviour {
     //     PlayerPrefs.DeleteKey("Save");
     // }
 
-    public static void LoadScene(string sceneName) {
-        // instance.SaveInstance();
-        SceneManager.LoadScene(sceneName);
-    }
+
 
     private void OnApplicationQuit() {
         // SaveInstance();

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour {
+public class MainMenu : SceneLoader {
 
     public Cutscene OpeningCutscene;
 
@@ -9,14 +9,9 @@ public class MainMenu : MonoBehaviour {
     public Animator BackgroundAnimator;
     public Animator FadeToBlack;
 
-    public void PlayFadeToBlack() {
-        FadeToBlack.Play("FadeToBlack");
-    }
+    public void LoadScene() => LoadScene("Grave_Robbing");
 
-    private void Awake()
-    {
-        OpeningCutscene.ParentObject.SetActive(false);
-    }
+    private void Awake() => OpeningCutscene.ParentObject.SetActive(false);
 
     public void Start() {
         AudioManager.PlayMusic("Main Menu");
@@ -41,7 +36,7 @@ public class MainMenu : MonoBehaviour {
         // Exit the scene once the fade to black is over
         if (FadeToBlack.GetCurrentAnimatorStateInfo(0).IsName("Finished")) {
             AudioManager.StopMusic(2);
-            GameManager.LoadScene("Grave_Robbing");
+            LoadScene("Grave_Robbing");
         }
     }
 }
