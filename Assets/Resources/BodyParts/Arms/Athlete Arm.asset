@@ -14,14 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Limb: 0
   LimbRarity: 0
-  Name: Athelete Arm
+  Name: Athlete Arm
   Description: Athlete Arm
-  SpeicialMoveName: 'Flex
-
-    Make next attack deal 50% more damage.
-
-    Uses 2
-    durability.'
+  SpecialMoveName: 
   GraveLimbSprite: {fileID: -2712391658631171750, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
   BackLimbSprite: {fileID: -8277236381688430301, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
   FrontLimbSprite: {fileID: -62094745516741591, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}

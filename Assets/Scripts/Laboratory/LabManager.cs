@@ -15,16 +15,12 @@ public class LabManager : SceneLoader {
     public InventorySlot[] BodySlots;
 
     public void Start() {
-        Debug.Log("Inventory size: " + GameManager.ActiveSave.Inventory.Count);
-
         // Seperate each inventory limb into their own inventories
         foreach(BodyPartRef bp in GameManager.ActiveSave.Inventory) {
             if(bp == null) continue;
             if(bp.IsArm()) {
-                Debug.Log("Add arm from inventory");
                 AddPartToContainer(bp, ArmContainer);
             } else if(bp.IsLeg()) {
-                Debug.Log("Add leg from inventory");
                 AddPartToContainer(bp, LegContainer);
             }
         }
