@@ -2325,6 +2325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crossfade
       objectReference: {fileID: 0}
+    - target: {fileID: 3794196275047767193, guid: 3d6fb2bdb342dc946b9bff66eaf860b0, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7485416769570607942, guid: 3d6fb2bdb342dc946b9bff66eaf860b0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
