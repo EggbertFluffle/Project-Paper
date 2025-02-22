@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
     public Animator PlayerAnimator;
 
     public enum PlayerState { NotTurn, Wait, SelectAttack, PrimaryAttack, SecondaryAttack, Dead };
-    public PlayerState State;
+    public PlayerState State = PlayerState.SelectAttack;
 
     private Dictionary<string, Vector2> rightArmPositions = new Dictionary<string, Vector2>{
         ["Athlete Arm"] = new Vector2(2.63f, 1.51f),
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour {
         State = PlayerState.PrimaryAttack;
     }
     
-    public void HandleSpecialAttack(BodyPartRef bodyPart) {
+    public void HandleSecondaryAttack(BodyPartRef bodyPart) {
         if(Random.Range(0.0f, 1.0f) > 0.9f) {
             ArenaUI.Instance.MakeTextPrompt("Attack missed!");
         } else {

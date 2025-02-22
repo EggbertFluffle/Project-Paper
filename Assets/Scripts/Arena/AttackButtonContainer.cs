@@ -36,11 +36,11 @@ public class AttackButtonContainer : MonoBehaviour {
     }
 
     public void HandlePrimary() {
-
+        Player.Instance.HandlePrimaryAttack(BodyPart);
     }
 
     public void HandleSecondary() {
-
+        Player.Instance.HandleSecondaryAttack(BodyPart);
     }
 
     public void BreakArm() {

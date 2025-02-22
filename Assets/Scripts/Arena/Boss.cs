@@ -28,8 +28,8 @@ public class Boss : MonoBehaviour {
 
     public void Start() {
         // Get current boss from the GameManager
-        ArenaUI.Instance.MakeTextPrompt(currentBossBattle.BattleStartText);
         currentBossBattle = GameManager.CurrentBossBattle;
+        ArenaUI.Instance.MakeTextPrompt(currentBossBattle.BattleStartText);
         transform.localScale = new Vector3(currentBossBattle.Scale, currentBossBattle.Scale, currentBossBattle.Scale);
         BossSprite.sprite = currentBossBattle.BossSprite;
         MaxHealth = currentBossBattle.Health;

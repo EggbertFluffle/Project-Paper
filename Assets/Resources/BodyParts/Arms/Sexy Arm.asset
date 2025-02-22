@@ -24,8 +24,8 @@ MonoBehaviour:
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
-  PrimaryAttack: 
-  PrimaryAttackDurabilityCost: 0
+  PrimaryAttack: Flaunt
+  PrimaryAttackDurabilityCost: 1
   HasSecondaryAttack: 1
   SecondaryAttack: Heal
   SecondaryAttackDescription: Heal 30% of your monster's max hp

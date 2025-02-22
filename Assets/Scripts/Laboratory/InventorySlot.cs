@@ -13,16 +13,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
     public Image BackgroundImage;
     private bool animPlaying;
 
-    private void Awake()
-    {
-        if (Animated)
-        {
+    private void Awake() {
+        if (Animated) {
             animPlaying = true;
             BackgroundImage = GetComponent<Image>();
             SlotAnimation = GetComponent<Animator>();
-        }
-        else
+        } else {
             animPlaying = false;
+        }
     }
 
     public void OnDrop(PointerEventData eventData) {
@@ -40,18 +38,13 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
         }
     }
 
-    void Update()
-    {
-        if (Animated)
-        {
-            if (animPlaying && transform.childCount > 0)
-            {
+    void Update() {
+        if (Animated) {
+            if (animPlaying && transform.childCount > 0) {
                 SlotAnimation.enabled = false;
                 animPlaying = false;
                 BackgroundImage.color = new Color(255, 255, 255, 0);
-            }
-            else if (!animPlaying && transform.childCount == 0)
-            {
+            } else if (!animPlaying && transform.childCount == 0) {
                 SlotAnimation.enabled = true;
                 animPlaying = true;
             }

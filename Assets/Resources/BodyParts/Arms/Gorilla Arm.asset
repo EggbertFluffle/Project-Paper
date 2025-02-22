@@ -26,7 +26,7 @@ MonoBehaviour:
   HPDeviation: 0
   PrimaryAttack: Punch
   PrimaryAttackDurabilityCost: 1
-  HasSecondaryAttack: 1
+  HasSecondaryAttack: 0
   SecondaryAttack: 
   SecondaryAttackDescription: 
   SecondaryAttackDurabilityCost: 0
