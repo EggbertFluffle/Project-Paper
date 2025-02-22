@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class MainMenu : SceneLoader {
+    public static MainMenu Instance;
 
     public Cutscene OpeningCutscene;
 
@@ -10,20 +11,20 @@ public class MainMenu : SceneLoader {
 
     public void LoadScene() => LoadScene("Grave_Robbing");
 
-    private void Awake() => OpeningCutscene.ParentObject.SetActive(false);
+    private void Awake() {
+        if(Instance == null) Instance = this;
+        OpeningCutscene.ParentObject.SetActive(false);
+    }
 
     public void Start() {
         AudioManager.PlayMusic("Main Menu");
     }
 
-    public void PlayCutscene()
-    {
-        if (cutsceneIndex < OpeningCutscene.AllEvents.Count)
-        {
+    public void PlayCutscene() {
+        if (cutsceneIndex < OpeningCutscene.AllEvents.Count) {
             OpeningCutscene.Play(cutsceneIndex);
             cutsceneIndex++;
-        }
-        else
+        } else
             OpeningCutscene.Finish(false);
     }
 

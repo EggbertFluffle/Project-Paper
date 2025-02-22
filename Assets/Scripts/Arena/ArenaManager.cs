@@ -13,4 +13,12 @@ public class ArenaManager : SceneLoader {
         AudioManager.PlayMusic("Battle Music");
         PlayerTurn = true;
     }
+
+    public void PlayerWin() {
+
+    }
+
+    public void PlayerLose() {
+
+    }
 }

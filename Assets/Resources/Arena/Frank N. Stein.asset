@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Frank N. Stein
   m_EditorClassIdentifier: 
   Name: Frank N. Stein
-  BossSprite: {fileID: 0}
+  BossSprite: {fileID: 3964938229115945500, guid: 56451d7957c0b8948b0819fd0d933249, type: 3}
   Scale: 1
   Damage: 15
   Health: 120

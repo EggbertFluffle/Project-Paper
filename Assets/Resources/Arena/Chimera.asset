@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chimera
   m_EditorClassIdentifier: 
   Name: Chimera
-  BossSprite: {fileID: 0}
+  BossSprite: {fileID: -7038271629089209879, guid: d39ee3bbf5f46d242a3bec86af9fe2af, type: 3}
   Scale: 1.2
   Damage: 25
   Health: 300

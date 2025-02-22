@@ -1198,6 +1198,7 @@ GameObject:
   - component: {fileID: 1164125449}
   - component: {fileID: 1164125448}
   - component: {fileID: 1164125451}
+  - component: {fileID: 1164125452}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -1269,16 +1270,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1276982265}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayCutscene
+      - m_Target: {fileID: 1164125452}
+        m_TargetAssemblyTypeName: ButtonAnimPress, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Grave_Robbing
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1164125449
@@ -1341,6 +1342,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1164125452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164125446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ee2412c5ea5f84ba26646467c39c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1216078658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,7 +1585,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   BackgroundAnimator: {fileID: 1429250109}
-  FadeToBlack: {fileID: 0}
 --- !u!1 &1287460048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,7 +1733,7 @@ GameObject:
   - component: {fileID: 1297745772}
   - component: {fileID: 1297745771}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ButtonContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2187,6 +2199,106 @@ PrefabInstance:
     - target: {fileID: 1326953772676444692, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f3b033a20079fa48b11573ff4ff70a0, type: 3}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[0].name
+      value: Dig
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ea33fef0a761ae445a68fe50f73e0a74, type: 3}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[1].name
+      value: Button Press
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 806e399a9b99a014c9d36400c9b3026d, type: 3}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[2].name
+      value: Text Blip
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ec6569c06a51364caee325f70ce6409, type: 3}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[3].name
+      value: Electric Shock
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 20a642bc1333fc44899e8a2f8db86844, type: 3}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[4].name
+      value: Paper Rustle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 20a642bc1333fc44899e8a2f8db86844, type: 3}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[5].name
+      value: Paper Rustle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[2].pitch
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[3].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[4].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[5].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[2].volume
+      value: 0.039
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[3].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[4].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[5].volume
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5090160842950470779, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
       propertyPath: Transition

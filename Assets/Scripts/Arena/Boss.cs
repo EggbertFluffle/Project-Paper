@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +15,12 @@ public class Boss : MonoBehaviour {
 
     private BossBattle currentBossBattle;
 
-    // TODO: Give an indicator for bleeding
     private bool bleeding = false; 
     private int bleedOut;
     private int bleedTimer = 0;
+
+    public enum BossState { NotTurn, Bleeding, Wait, Attack, Dead };
+    public BossState State;
 
     private void Awake() {
         if(Instance == null) Instance = this;
@@ -25,34 +28,64 @@ public class Boss : MonoBehaviour {
 
     public void Start() {
         // Get current boss from the GameManager
-        Debug.Log("does this shit even run");
+        ArenaUI.Instance.MakeTextPrompt(currentBossBattle.BattleStartText);
         currentBossBattle = GameManager.CurrentBossBattle;
         transform.localScale = new Vector3(currentBossBattle.Scale, currentBossBattle.Scale, currentBossBattle.Scale);
         BossSprite.sprite = currentBossBattle.BossSprite;
         MaxHealth = currentBossBattle.Health;
         Health = MaxHealth;
         BossTextName.text = currentBossBattle.Name;
+        State = BossState.NotTurn;
+    }
+
+    public void Update() {
+        if(!ArenaUI.Instance.HasTextPrompt()) {
+            switch(State) {
+                case BossState.Wait:
+                    if(bleeding) TakeBleed();
+                    State = BossState.Bleeding;
+                    break;
+                case BossState.Bleeding:
+                    Taunt();
+                    State = BossState.Attack;
+                    break;
+                case BossState.Attack:
+                    State = BossState.NotTurn;
+                    TakeTurn();
+                    break;
+                case BossState.Dead:
+                    ArenaManager.Instance.PlayerWin();
+                    State = BossState.NotTurn;
+                    break;
+            }
+        }
+    }
+
+    public void Taunt() {
+        // TODO: Add boss taunts
+        ArenaUI.Instance.MakeTextPrompt("I am taunting you");
     }
 
     public void TakeTurn() {
-        if(bleeding) {
-            bleedTimer--;
-            TakeDamage(bleedOut);
-            bleeding = bleedTimer != 0;
-        }
-
         Player.Instance.SendAttack(currentBossBattle.Damage);
     }
 
-    public void TakeBleed(int _bleedOut) {
+    public void TakeBleed() {
+        bleedTimer--;
+        TakeDamage(bleedOut);
+        bleeding = bleedTimer != 0;
+        ArenaUI.Instance.MakeTextPrompt($"{currentBossBattle.Name} is bleeding");
+    }
+
+    public void SendBleed(int _bleedOut) {
         bleeding = true;
         bleedOut = _bleedOut;
 
-        // How long should the bleed last
         bleedTimer = 5;
     }
 
     public void SendAttack(int damage) {
+        State = BossState.Wait;
         TakeDamage(damage);
     }
 
@@ -62,6 +95,8 @@ public class Boss : MonoBehaviour {
         if(Health <= 0.0f) {
             Kill();
         }
+        // TODO: Play some sort of animation
+        // TODO: Play some sort of sound
     }
 
     public void SetHealth() {
@@ -69,11 +104,6 @@ public class Boss : MonoBehaviour {
     }
 
     public void Kill() {
-        // Implement win
-        // IMPLEMENT ME
-        // IMPLEMENT ME
-        // IMPLEMENT ME
-        // IMPLEMENT ME
-        Debug.Log("Boss has been killed");
+        ArenaUI.Instance.MakeTextPrompt(currentBossBattle.Name + " has fallen!");
     }
 }

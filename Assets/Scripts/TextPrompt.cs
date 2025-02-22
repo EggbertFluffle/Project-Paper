@@ -6,6 +6,7 @@ public class TextPrompt : MonoBehaviour {
     public Button Button;
     public Image TextPanel;
     public TextMeshProUGUI Text;
+    public bool PlayAudio = true;
 
     [TextArea]
     public string contents;
@@ -26,6 +27,12 @@ public class TextPrompt : MonoBehaviour {
                 TypeWrite();
             }
             waitedFrames++;
+        }
+
+        if(PlayAudio) {
+            if(waitedFrames % frameWait * 2 == 0) {
+                AudioManager.PlaySFX("Text Blip");
+            }
         }
     }
 

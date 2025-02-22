@@ -23,32 +23,22 @@ public class Grave : MonoBehaviour {
         GenerateLimbs();
     }
 
-    private void GenerateLimbs() 
-    {
-        for(int i = 0; i < 4; i++) 
-        {
-            if (GameManager.ActiveSave.CurrentBoss == 0)
-            {
+    private void GenerateLimbs() {
+        for(int i = 0; i < 4; i++) {
+            if (GameManager.ActiveSave.CurrentBoss == 0) {
                 // The top graves should produce 2 random arms, and the bottom graves should have 2 random legs
 
                 // Top Graves
-                if (GraveIndex < 2 && i < 2)
-                {
+                if (GraveIndex < 2 && i < 2) {
                     BodyParts.Add(new BodyPartRef(GameManager.AllArms[Random.Range(0, GameManager.AllArms.Count)]));
                 }
                 // Bottom Graves
-                else if (GraveIndex > 1 && i > 1)
-                {
+                else if (GraveIndex > 1 && i > 1) {
                     BodyParts.Add(new BodyPartRef(GameManager.AllLegs[Random.Range(0, GameManager.AllLegs.Count)]));
-                }
-                else
-                {
+                } else {
                     BodyParts.Add(null);
                 }
-            }
-            else
-            {
-                BodyParts.Add(Random.Range(0.0f, 1.0f) < GRManager.NoLimbChance
+            } else { BodyParts.Add(Random.Range(0.0f, 1.0f) < GRManager.NoLimbChance
                     // Limb did not make it lol
                     ? null
                     // Set the body part to a arm or leg depending on limb slot
@@ -66,6 +56,7 @@ public class Grave : MonoBehaviour {
     public void Rob() {
         SpriteRenderer.sprite = RobbedGraveSprite;
         DigParticles.Play();
+        AudioManager.PlaySFX("Dig");
         Robbed = true;
     }
 

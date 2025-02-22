@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heckyll and Jibe
   m_EditorClassIdentifier: 
   Name: Heckyll and Jibe
-  BossSprite: {fileID: 0}
+  BossSprite: {fileID: 7130349404116459731, guid: b1b2764f3bf6fa143aaf4e6a9a996920, type: 3}
   Scale: 1
   Damage: 19
   Health: 180

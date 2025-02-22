@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class GRManager : SceneLoader {
     public static GRManager Instance;
     public static float NoLimbChance = 0.15f;
+    public GameObject TextPrompt;
+    public Canvas Canvas;
+    public TextMeshProUGUI GraveRobsLeft;
+    public TextMeshProUGUI GraveRobMax;
 
     public Button LabButton;
 
@@ -29,6 +33,8 @@ public class GRManager : SceneLoader {
 
     public void Start() {
         GraveRobs = GameManager.ActiveSave.CurrentBoss == 0 ? 4 : 2;
+        GraveRobMax.text = GraveRobs.ToString();
+        GraveRobsLeft.text = GraveRobs.ToString();
 
         PickedLimbs = GraveRobs;
     }
@@ -50,8 +56,10 @@ public class GRManager : SceneLoader {
             g.Rob();
             GravePicker.Instance.OpenGrave(g);
             GraveRobs--;
+            GraveRobsLeft.text = GraveRobs.ToString();
         } else if(GraveRobs == 0) {
-            // Maybe display a text box complaining
+            GameObject txt = Instantiate(TextPrompt, Canvas.transform);
+            txt.GetComponent<TextPrompt>().contents = "You can't rob anymore graves!";
         }
     }
 

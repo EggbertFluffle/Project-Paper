@@ -5,11 +5,7 @@ public class BodyPart : ScriptableObject {
     public LimbType Limb;
     public Rarity LimbRarity;
     public string Name;
-    
-    [TextArea]
-    public string Description;
-    [TextArea]
-    public string SpecialMoveName;
+
     public Sprite GraveLimbSprite;
     public Sprite BackLimbSprite;
     public Sprite FrontLimbSprite;
@@ -19,13 +15,16 @@ public class BodyPart : ScriptableObject {
 
     public int Strength;
     public int AttackDeviation;
-    
 
     public int HP;
     public int HPDeviation;
 
-    //public string PrimaryAttack;
-    //public string SecondaryAttack;
+    public string PrimaryAttack;
+    public int PrimaryAttackDurabilityCost;
+
+    public string SecondaryAttack;
+    public string SecondaryAttackDescription;
+    public int SecondaryAttackDurabilityCost;
 
     public float Evasion;
     public int Speed;

@@ -11,8 +11,12 @@ public class BodyPartRef
 
     public PassiveAbility Ability { get; private set; }
 
-    public string Description { get; private set; }
-    public string SpecialMoveName { get; private set; }
+    public string PrimaryAttack { get; private set; }
+    public int PrimaryAttackDurabilityCost { get; private set; }
+    public string SecondaryAttack { get; private set; }
+    public string SecondaryAttackDescription { get; private set; }
+    public int SecondaryAttackDurabilityCost { get; private set; }
+
     public Sprite GraveLimbSprite { get; private set; }
     public Sprite BackLimbSprite { get; private set; }
     public Sprite FrontLimbSprite { get; private set; }
@@ -48,8 +52,11 @@ public class BodyPartRef
     }
 
     public void SetConstants(BodyPart bodyPart) {
-        Description = bodyPart.Description;
-        SpecialMoveName = bodyPart.SpecialMoveName;
+        PrimaryAttack = bodyPart.PrimaryAttack;
+        PrimaryAttackDurabilityCost = bodyPart.PrimaryAttackDurabilityCost;
+        SecondaryAttack = bodyPart.SecondaryAttack;
+        SecondaryAttackDescription = bodyPart.SecondaryAttackDescription;
+        SecondaryAttackDurabilityCost = bodyPart.SecondaryAttackDurabilityCost;
 
         // Legs only
         Ability = bodyPart.LegAbility;

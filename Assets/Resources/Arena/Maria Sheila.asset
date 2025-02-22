@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Maria Sheila
   m_EditorClassIdentifier: 
   Name: Maria Sheila
-  BossSprite: {fileID: 0}
+  BossSprite: {fileID: 9108806931918892889, guid: 46cd0c4fffcff35488832011c860a3e6, type: 3}
   Scale: 0.43
   Damage: 12
   Health: 60

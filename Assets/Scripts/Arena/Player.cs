@@ -2,19 +2,24 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using System.Linq;
 
 public class Player : MonoBehaviour {
     public static Player Instance;
 
-    public int MaxHealth;
+    public int MaxHealth = 100;
     public int Health;
     public float TotalEvasion;
 
     public TextMeshProUGUI PlayerHealthCount;
     public TextMeshProUGUI PlayerHealthMax;
 
+    public AttackButtonContainer LeftArm;
+    public AttackButtonContainer RightArm;
+
     public SpriteRenderer[] Arms;
     public Slider PlayerHealthBar;
+    public float HealthLerpSpeed = 0.1f;
     public Animator PlayerAnimator;
 
     private Dictionary<string, Vector2> rightArmPositions = new Dictionary<string, Vector2>{
@@ -39,57 +44,24 @@ public class Player : MonoBehaviour {
         ["Pejhon"] = new Vector2(-2.96f, 0.88f),
     };
 
-    // List of BodyPartRef
-    public List<BodyPartRef> BodyParts;
-
     private void Awake() {
         if(Instance == null) Instance = this;
     }
 
+    public void Update() {
+        float diff = Mathf.Abs(Health / MaxHealth) - (PlayerHealthBar.value + 0.001f);
+        if(diff > 0.01) {
+            PlayerHealthBar.value -= diff * HealthLerpSpeed;
+        }
+    }
+
     public void Start() {
-        BodyParts = GameManager.ActiveSave.EquippedParts;
-
-        // Set arm sprites according to equipped parts
-        if (BodyParts[0] != null) {
-            Arms[0].sprite = BodyParts[0].BackLimbSprite;
-            Arms[0].transform.localPosition = new Vector3(
-                leftArmPositions[BodyParts[0].Name].x,
-                leftArmPositions[BodyParts[0].Name].y,
-                0
-            );
-        }
-
-        if (BodyParts[1] != null) {
-            Arms[1].sprite = BodyParts[1].BackLimbSprite;
-            Arms[1].transform.localPosition = new Vector3(
-                rightArmPositions[BodyParts[1].Name].x,
-                rightArmPositions[BodyParts[1].Name].y,
-                0
-            );
-        }
-
-        // Take into account leg stats
-        MaxHealth = 100;
-
-        // Load leg stats if applicable
-        if (BodyParts[2] != null) {
-            MaxHealth += BodyParts[2].HP;
-            TotalEvasion += BodyParts[2].Evasion;
-        }
-
-        if(BodyParts[3] != null) {
-            MaxHealth += BodyParts[3].HP;
-            TotalEvasion += BodyParts[3].Evasion;
-        }
+        SetupAttacks(GameManager.ActiveSave.EquippedParts);
+        AlignArms(GameManager.ActiveSave.EquippedParts);
+        SetupLegStats(GameManager.ActiveSave.EquippedParts);
 
         Health = MaxHealth;
         SetHealth();
-        PlayerHealthCount.text = Health.ToString();
-        PlayerHealthMax.text = MaxHealth.ToString();
-    }
-
-    public void SetupAttacks() {
-        ArenaUI.Instance.LoadAttackOptions(BodyParts);
     }
 
     public void Heal() {
@@ -99,33 +71,22 @@ public class Player : MonoBehaviour {
         SetHealth();
     }
 
-    public void AttackButtonHandle(int buttonNum) {
-        if(buttonNum == 0 || buttonNum == 1) {
-            if(UnityEngine.Random.Range(0.0f, 1.0f) > 0.9f) {
-                // Attack misses
-                // IMPLEMENT ME
-                // IMPLEMENT ME
-                // IMPLEMENT ME
-                // IMPLEMENT ME
-                // IMPLEMENT ME
-                // IMPLEMENT ME
-            } else {
-                int damage = BodyParts[buttonNum].Strength;
-                Boss.Instance.SendAttack(damage);
-                PlayerAnimator.SetTrigger("RunAttack");
-            }
+    public void HandlePrimaryAttack(BodyPartRef bodyPart) {
+        if(Random.Range(0.0f, 1.0f) > 0.9f) {
+            ArenaUI.Instance.MakeTextPrompt("Attack missed!");
         } else {
-            HandleSpecialAttack(buttonNum);
+            Boss.Instance.SendAttack(bodyPart.Strength);
+            ArenaUI.Instance.MakeTextPrompt($"You used {bodyPart.PrimaryAttack}!");
         }
     }
     
-    public void HandleSpecialAttack(int buttonNum) {
-        // Take care of the special attacks
-        // IMPLEMENT ME
-        // IMPLEMENT ME
-        // IMPLEMENT ME
-        // IMPLEMENT ME
-        // IMPLEMENT ME
+    public void HandleSpecialAttack(BodyPartRef bodyPart) {
+        if(Random.Range(0.0f, 1.0f) > 0.9f) {
+            ArenaUI.Instance.MakeTextPrompt("Attack missed!");
+        } else {
+            Boss.Instance.SendAttack(bodyPart.Strength);
+            ArenaUI.Instance.MakeTextPrompt($"You used {bodyPart.PrimaryAttack}!");
+        }
     }
 
     public void SendAttack(int damage) {
@@ -150,11 +111,53 @@ public class Player : MonoBehaviour {
     }
 
     public void SetHealth() {
+        // Somehow lerp this
         PlayerHealthBar.value = (float)Health / MaxHealth;
-        PlayerHealthCount.text = "" + Health;
+        PlayerHealthCount.text = Health.ToString();
+        PlayerHealthMax.text = MaxHealth.ToString();
     }
 
     public void Kill() {
         Debug.Log("You lost!");
+    }
+
+    public void SetupAttacks(List<BodyPartRef> bodyParts) {
+        LeftArm.SetArm(bodyParts[0], 0);
+        RightArm.SetArm(bodyParts[1], 1);
+    }
+
+    public void AlignArms(List<BodyPartRef> bodyParts) {
+        // Set arm sprites according to equipped parts
+        if (bodyParts[0] != null) {
+            Arms[0].sprite = bodyParts[0].BackLimbSprite;
+            Arms[0].transform.localPosition = new Vector3(
+                leftArmPositions[bodyParts[0].Name].x,
+                leftArmPositions[bodyParts[0].Name].y,
+                0
+            );
+        }
+
+        if (bodyParts[1] != null) {
+            Arms[1].sprite = bodyParts[1].BackLimbSprite;
+            Arms[1].transform.localPosition = new Vector3(
+                rightArmPositions[bodyParts[1].Name].x,
+                rightArmPositions[bodyParts[1].Name].y,
+                0
+            );
+        }
+    }
+
+    public void SetupLegStats(List<BodyPartRef> bodyParts) {
+        MaxHealth = 100;
+
+        if (bodyParts[2] != null) {
+            MaxHealth += bodyParts[2].HP;
+            TotalEvasion += bodyParts[2].Evasion;
+        }
+
+        if(bodyParts[3] != null) {
+            MaxHealth += bodyParts[3].HP;
+            TotalEvasion += bodyParts[3].Evasion;
+        }
     }
 }

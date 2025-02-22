@@ -169,4 +169,21 @@ public class AudioManager : MonoBehaviour
         }
         return sound;
     }
+
+    public static void SetPitch(string soundName, SoundType soundType, float pitch) {
+        instance.SetPitchInstance(soundName, soundType, pitch);
+    }  
+
+    public void SetPitchInstance(string soundName, SoundType soundType, float pitch) {
+        GetSound(soundName, soundType).pitch = pitch;
+        UpdateSounds();
+    }
+
+    public static float GetPitch(string soundName, SoundType soundType) {
+        return instance.GetPitchInstance(soundName, soundType);
+    }
+
+    public float GetPitchInstance(string soundName, SoundType soundType) {
+        return GetSound(soundName, soundType).pitch;
+    }
 }
