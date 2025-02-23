@@ -26,7 +26,7 @@ public class GRManager : SceneLoader {
     public Animator[] GraveUIAnimations;
 
     private int mythicThreshold = 0;
-    private int rareThreshold = 10;
+    private int rareThreshold = 5;
 
     private void Awake() {
         if(Instance == null) 
@@ -103,23 +103,19 @@ public class GRManager : SceneLoader {
         Debug.Log(rng);
         if (rng == mythicThreshold)
         {
-            Debug.Log("Mythic Arm");
             bodyPartRange.AddRange(GameManager.AllArms.Where(bp => bp.LimbRarity == Rarity.Mythic));
             GameManager.ActiveSave.MythicArmPulled = true;
         }
         else if (InRangeInclusive(rng, mythicThreshold + 1, mythicThreshold + rareThreshold))
         {
-            Debug.Log("Rare Arm");
             bodyPartRange.AddRange(GameManager.AllArms.Where(bp => bp.LimbRarity == Rarity.Rare));
         }
-        else if (InRangeInclusive(rng, mythicThreshold + rareThreshold + 1, mythicThreshold + rareThreshold + 40))
+        else if (InRangeInclusive(rng, mythicThreshold + rareThreshold + 1, mythicThreshold + rareThreshold + 15))
         {
-            Debug.Log("Uncommon Arm");
             bodyPartRange.AddRange(GameManager.AllArms.Where(bp => bp.LimbRarity == Rarity.Uncommon));
         }
         else
         {
-            Debug.Log("Common Arm");
             bodyPartRange.AddRange(GameManager.AllArms.Where(bp => bp.LimbRarity == Rarity.Common));
         }
 
@@ -134,17 +130,14 @@ public class GRManager : SceneLoader {
 
         if (InRangeInclusive(rng, 0, rareThreshold))
         {
-            Debug.Log("Rare Leg");
             bodyPartRange.AddRange(GameManager.AllLegs.Where(bp => bp.LimbRarity == Rarity.Rare));
         }
-        else if (InRangeInclusive(rng, rareThreshold + 1, rareThreshold + 40))
+        else if (InRangeInclusive(rng, rareThreshold + 1, rareThreshold + 15))
         {
-            Debug.Log("Uncommon Leg");
             bodyPartRange.AddRange(GameManager.AllLegs.Where(bp => bp.LimbRarity == Rarity.Uncommon));
         }
         else
         {
-            Debug.Log("Common Leg");
             bodyPartRange.AddRange(GameManager.AllLegs.Where(bp => bp.LimbRarity == Rarity.Common));
         }
 
