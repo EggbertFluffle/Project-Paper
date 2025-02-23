@@ -96,10 +96,9 @@ public class Player : MonoBehaviour {
         } else {
             Debug.Log($"Hurt{Random.Range(1, 4)}");
             AudioManager.PlaySFX($"Hurt{Random.Range(1, 4)}");
-            if(!Flexed) {
-                prompt = ArenaUI.Instance.MakeTextPrompt($"Used {bodyPart.PrimaryAttack}!");
-                Boss.Instance.SendAttack(bodyPart.Strength);
-            } else {
+
+            if (Flexed)
+            {
                 prompt = ArenaUI.Instance.MakeTextPrompt($"Used strength infused {bodyPart.PrimaryAttack}!");
                 Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.5f));
             }
