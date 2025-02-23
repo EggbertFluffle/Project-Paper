@@ -12,21 +12,14 @@ public class Player : MonoBehaviour {
     public int MaxHealth = 100;
 
     private float health;
-    public float Health
-    {
+    public float Health {
         get => health;
-        set
-        {
-            if (value > MaxHealth)
-            {
+        set {
+            if (value > MaxHealth) {
                 health = MaxHealth;
-            }
-            else if (value < 0)
-            {
+            } else if (value < 0) {
                 health = 0;
-            }
-            else
-            {
+            } else {
                 health = value;
             }
         }
@@ -107,7 +100,6 @@ public class Player : MonoBehaviour {
         if(Random.Range(0.0f, 1.0f) > 0.9f) {
             prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
         } else {
-            Debug.Log($"Hurt{Random.Range(1, 4)}");
             AudioManager.PlaySFX($"Hurt{Random.Range(1, 4)}");
 
             if (Flexed) {
@@ -129,37 +121,28 @@ public class Player : MonoBehaviour {
     
     public void HandleSecondaryAttack(BodyPartRef bodyPart) {
         TextPrompt prompt;
-        Debug.Log("Secondary move cast");
-        bool missed = Random.Range(0.0f, 1.0f) > 0.9f;
 
-        switch (bodyPart.Name) {
-            case "Athlete Arm":
-                Flexed = true;
-                break;
-            case "Chainsaw Arm":
-                SetHealth((int)(MaxHealth * 0.8f < 1 ? 1 : MaxHealth * 0.2f));
-                Charged = true;
-                break;
-            case "Sexy Arm":
-                SetHealth(-(int)Mathf.Floor(MaxHealth * 0.3f));
-                break;
-            default:
-                if (missed)
-                {
-                    prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
-                }
-                else
-                {
-                    prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
-                    if (bodyPart.Name.Equals("Chicken Wing"))
-                        Boss.Instance.SendBleed(10);
-                }
-
-                prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
-                return;
+        if(Random.Range(0.0f, 1.0f) > 0.9f) {
+            prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
+        } else {
+            switch (bodyPart.Name) {
+                case "Athlete Arm":
+                    Flexed = true;
+                    break;
+                case "Chainsaw Arm":
+                    SetHealth((int)(MaxHealth * 0.8f < 1 ? 1 : MaxHealth * 0.2f));
+                    Charged = true;
+                    break;
+                case "Sexy Arm":
+                    SetHealth(-(int)Mathf.Floor(MaxHealth * 0.3f));
+                    break;
+                case "Chicken Wing":
+                    Boss.Instance.SendBleed(10);
+                    break;
+            }
+            prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
+            Debug.Log("Literally only call this code once");
         }
-
-        prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
         prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
     }
 

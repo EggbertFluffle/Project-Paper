@@ -61,12 +61,11 @@ public class Boss : MonoBehaviour {
         ArenaUI.Instance.MakeTextPrompt("I am taunting you");
     }
 
-    public void TakeBleed() 
-    {
+    public void TakeBleed() {
         bleedTimer--;
         TakeDamage(bleedOut);
         bleeding = bleedTimer > 0;
-        ArenaUI.Instance.MakeTextPrompt($"{currentBossBattle.Name} is bleeding");
+        if(bleeding) ArenaUI.Instance.MakeTextPrompt($"{currentBossBattle.Name} is bleeding");
     }
 
     public void SendBleed(int _bleedOut) {

@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class AttackButtonContainer : MonoBehaviour {
@@ -43,11 +44,12 @@ public class AttackButtonContainer : MonoBehaviour {
     public void HandlePrimary() {
         AudioManager.PlaySFX("Button Press");
         BodyPart.Durability -= BodyPart.PrimaryAttackDurabilityCost;
+        if(BodyPart.Durability < 0) BodyPart.Durability = 0;
         UpdateArmInfo();
         UpdateDurability(0);
         Player.Instance.HandlePrimaryAttack(BodyPart);
         if(BodyPart.Durability <= 0) {
-            GameManager.ActiveSave.EquippedParts[0] = null;
+            GameManager.ActiveSave.EquippedParts[ArmIndex] = null;
             BodyPart = null;
             ArmSprite.enabled = false;
             SetArm(null, 0);
@@ -57,11 +59,12 @@ public class AttackButtonContainer : MonoBehaviour {
     public void HandleSecondary() {
         AudioManager.PlaySFX("Button Press");
         BodyPart.Durability -= BodyPart.SecondaryAttackDurabilityCost;
+        if(BodyPart.Durability < 0) BodyPart.Durability = 0;
         UpdateArmInfo();
         UpdateDurability(0);
         Player.Instance.HandleSecondaryAttack(BodyPart);
         if(BodyPart.Durability <= 0) {
-            GameManager.ActiveSave.EquippedParts[1] = null;
+            GameManager.ActiveSave.EquippedParts[ArmIndex] = null;
             BodyPart = null;
             ArmSprite.enabled = false;
             SetArm(null, 0);
