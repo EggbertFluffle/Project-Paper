@@ -2,7 +2,6 @@ using UnityEngine.UI;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
-using System.Linq;
 using System.Collections;
 
 using GameState = ArenaManager.GameState;
@@ -13,8 +12,7 @@ public class Player : MonoBehaviour {
     public int MaxHealth = 100;
 
     private float health;
-    public float Health
-    {
+    public float Health {
         get => health;
         set => health = value > MaxHealth ? MaxHealth : value;
     }
@@ -61,16 +59,16 @@ public class Player : MonoBehaviour {
         if(Instance == null) Instance = this;
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() {
         ArenaManager.OnBossWin.AddListener(OnPlayerLose);
         ArenaManager.OnPlayerWin.AddListener(OnPlayerWin);
+        ArenaManager.OnPlayerTurn.AddListener(HasArms);
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() {
         ArenaManager.OnBossWin.RemoveListener(OnPlayerLose);
         ArenaManager.OnPlayerWin.RemoveListener(OnPlayerWin);
+        ArenaManager.OnPlayerTurn.RemoveListener(HasArms);
     }
 
     public void Start() {
@@ -97,18 +95,13 @@ public class Player : MonoBehaviour {
             Debug.Log($"Hurt{Random.Range(1, 4)}");
             AudioManager.PlaySFX($"Hurt{Random.Range(1, 4)}");
 
-            if (Flexed)
-            {
+            if (Flexed) {
                 prompt = ArenaUI.Instance.MakeTextPrompt($"Used strength infused {bodyPart.PrimaryAttack}!");
                 Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.5f));
-            }
-            else if (Charged)
-            {
+            } else if (Charged) {
                 prompt = ArenaUI.Instance.MakeTextPrompt($"RIP AND TEAR!!!! {bodyPart.PrimaryAttack}!!!!");
                 Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.9f));
-            }
-            else
-            {
+            } else {
                 prompt = ArenaUI.Instance.MakeTextPrompt($"Used {bodyPart.PrimaryAttack}!");
                 Boss.Instance.SendAttack(bodyPart.Strength);
             }
@@ -117,14 +110,12 @@ public class Player : MonoBehaviour {
         prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
     }
     
-    public void HandleSecondaryAttack(BodyPartRef bodyPart) 
-    {
+    public void HandleSecondaryAttack(BodyPartRef bodyPart) {
         TextPrompt prompt;
         Debug.Log("Secondary move cast");
 
         prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
-        switch (bodyPart.Name)
-        {
+        switch (bodyPart.Name) {
             case "Athlete Arm":
                 Flexed = true;
                 break;
@@ -136,12 +127,9 @@ public class Player : MonoBehaviour {
                 SetHealth(-(int)Mathf.Floor(MaxHealth * 0.3f));
                 break;
             default:
-                if(Random.Range(0.0f, 1.0f) > 0.9f) 
-                {
+                if(Random.Range(0.0f, 1.0f) > 0.9f) {
                     prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
-                } 
-                else 
-                {
+                } else {
                     prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
                     if (bodyPart.Name.Equals("Chicken Arm"))
                         Boss.Instance.SendBleed(10);
@@ -169,8 +157,7 @@ public class Player : MonoBehaviour {
         SetHealth(dmg);
     }
 
-    public void SetHealth(int dmg) 
-    {
+    public void SetHealth(int dmg) {
         StartCoroutine(LerpHealthBar(Health, Health - dmg));
         Health -= dmg;
 
@@ -178,11 +165,14 @@ public class Player : MonoBehaviour {
         PlayerHealthMax.text = MaxHealth.ToString();
     }
 
-    private IEnumerator LerpHealthBar(float currentHP, float targetHP)
-    {
+    public void HasArms() {
+        // Nice :)
+        if(GameManager.ActiveSave.EquippedParts[0] == null || GameManager.ActiveSave.EquippedParts[1] == null) ArenaUI.Instance.MakeTextPrompt("Arms are broken!").OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
+    }
+
+    private IEnumerator LerpHealthBar(float currentHP, float targetHP) {
         float elapsedTime = 0;
-        while (Health != targetHP && elapsedTime < 1)
-        {
+        while (Health != targetHP && elapsedTime < 1) {
             elapsedTime += Time.deltaTime;
             float newHP = Mathf.Lerp(currentHP, targetHP, elapsedTime);
 
@@ -234,15 +224,13 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void OnPlayerWin()
-    {
+    public void OnPlayerWin() {
         GameManager.ActiveSave.CurrentBoss++;
         AudioManager.StopMusic(0.5f);
         ArenaManager.Instance.LoadScene("Grave_Robbing");
     }
 
-    public void OnPlayerLose()
-    {
+    public void OnPlayerLose() {
         GameManager.Restart();
         AudioManager.StopMusic(0.5f);
         ArenaManager.Instance.LoadScene("Main_Menu");
