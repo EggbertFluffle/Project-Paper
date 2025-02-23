@@ -18,16 +18,17 @@ MonoBehaviour:
   GraveLimbSprite: {fileID: -8753895390478436004, guid: 5126418b2836ead4d8067768afb1db0a, type: 3}
   BackLimbSprite: {fileID: -753667628804306023, guid: 5126418b2836ead4d8067768afb1db0a, type: 3}
   FrontLimbSprite: {fileID: 1390285091915171364, guid: 5126418b2836ead4d8067768afb1db0a, type: 3}
-  Durability: 5
+  Durability: 20
   DurabilityDeviation: 2
   Strength: 55
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
   PrimaryAttack: Clobber
-  PrimaryAttackDurabilityCost: 1
+  PrimaryAttackDurabilityCost: 2
   HasSecondaryAttack: 0
   SecondaryAttack: 
+  SecondaryAttackUse: 
   SecondaryAttackDescription: 
   SecondaryAttackDurabilityCost: 0
   Evasion: 0

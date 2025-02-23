@@ -18,16 +18,17 @@ MonoBehaviour:
   GraveLimbSprite: {fileID: -664523130640195150, guid: 4c2d86782f3617344b88d9181936d916, type: 3}
   BackLimbSprite: {fileID: 6812730980026751054, guid: 4c2d86782f3617344b88d9181936d916, type: 3}
   FrontLimbSprite: {fileID: -6192520371232558580, guid: 4c2d86782f3617344b88d9181936d916, type: 3}
-  Durability: 5
+  Durability: 30
   DurabilityDeviation: 2
   Strength: 55
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
   PrimaryAttack: Coo
-  PrimaryAttackDurabilityCost: 1
+  PrimaryAttackDurabilityCost: 2
   HasSecondaryAttack: 0
   SecondaryAttack: 
+  SecondaryAttackUse: 
   SecondaryAttackDescription: 
   SecondaryAttackDurabilityCost: 0
   Evasion: 0

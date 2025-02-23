@@ -18,18 +18,19 @@ MonoBehaviour:
   GraveLimbSprite: {fileID: 3552823604841287643, guid: 571e409b10558f9468db5634e15b47e4, type: 3}
   BackLimbSprite: {fileID: -8213976192466648115, guid: 571e409b10558f9468db5634e15b47e4, type: 3}
   FrontLimbSprite: {fileID: -5185089853591962442, guid: 571e409b10558f9468db5634e15b47e4, type: 3}
-  Durability: 5
+  Durability: 30
   DurabilityDeviation: 2
   Strength: 55
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
   PrimaryAttack: SHRED
-  PrimaryAttackDurabilityCost: 1
-  HasSecondaryAttack: 0
+  PrimaryAttackDurabilityCost: 3
+  HasSecondaryAttack: 1
   SecondaryAttack: CHARGE
+  SecondaryAttackUse: RIP AND TEAR... RIP AND TEAR
   SecondaryAttackDescription: +90% Damage Next turn, -20% HP
-  SecondaryAttackDurabilityCost: 0
+  SecondaryAttackDurabilityCost: 3
   Evasion: 0
   Speed: 0
   LegAbility: 0

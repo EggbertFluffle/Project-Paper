@@ -137,7 +137,7 @@ public class Player : MonoBehaviour {
                 Flexed = true;
                 break;
             case "Chainsaw Arm":
-                SetHealth((int)(MaxHealth * 0.8f < 1 ? 1 : MaxHealth * 0.8f));
+                SetHealth((int)(MaxHealth * 0.8f < 1 ? 1 : MaxHealth * 0.2f));
                 Charged = true;
                 break;
             case "Sexy Arm":
