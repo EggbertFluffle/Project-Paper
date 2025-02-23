@@ -14,4 +14,12 @@ public class DebugManager : MonoBehaviour {
         GameManager.ActiveSave.EquippedParts[2] = new BodyPartRef(GameManager.AllLegs[0]);
         GameManager.ActiveSave.EquippedParts[3] = new BodyPartRef(GameManager.AllLegs[0]);
     }
+
+    private void Start()
+    {
+        GameManager.ActiveSave.Inventory.AddRange(GameManager.AllArms.Select(arm => new BodyPartRef(arm)));
+        GameManager.ActiveSave.Inventory.AddRange(GameManager.AllLegs.Select(leg => new BodyPartRef(leg)));
+        GameManager.ActiveSave.Inventory.AddRange(GameManager.AllArms.Select(arm => new BodyPartRef(arm)));
+        GameManager.ActiveSave.Inventory.AddRange(GameManager.AllLegs.Select(leg => new BodyPartRef(leg)));
+    }
 }

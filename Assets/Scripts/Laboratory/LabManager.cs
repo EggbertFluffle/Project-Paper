@@ -74,10 +74,12 @@ public class LabManager : SceneLoader {
     }
 
     public void StartFight() {
-        for(int i = 0; i < BodySlots.Length; i++) {
-            if(BodySlots[i].transform.childCount != 0) {
-                GameManager.ActiveSave.EquippedParts[i] = 
-                    BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
+        for(int i = 0; i < BodySlots.Length; i++) 
+        {
+            if(BodySlots[i].transform.childCount != 0) 
+            {
+                GameManager.ActiveSave.EquippedParts[i] = BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
+                GameManager.ActiveSave.Inventory.Remove(GameManager.ActiveSave.Inventory.Find(bp => (bp.Name.Equals(GameManager.ActiveSave.EquippedParts[i].Name)) && (bp.Durability == GameManager.ActiveSave.EquippedParts[i].Durability)));
             }
         }
 
