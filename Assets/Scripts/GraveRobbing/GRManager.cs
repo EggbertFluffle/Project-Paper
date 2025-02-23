@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Rarity = BodyPart.Rarity;
+
 public class GRManager : SceneLoader {
     public static GRManager Instance;
     public static float NoLimbChance = 0.15f;
@@ -22,6 +24,9 @@ public class GRManager : SceneLoader {
 
     public Grave[] Graves;
     public Animator[] GraveUIAnimations;
+
+    private int mythicThreshold = 0;
+    private int rareThreshold = 10;
 
     private void Awake() {
         if(Instance == null) 
@@ -75,5 +80,73 @@ public class GRManager : SceneLoader {
         LabButton.enabled = true;
         LabButton.gameObject.GetComponent<Image>().enabled = true;
         LabButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = true;
+    }
+
+    public bool InRangeInclusive(int target, int min, int max) => target >= min && target <= max;
+
+    public BodyPartRef RandomArmWithRarity()
+    {
+        List<BodyPart> bodyPartRange = new List<BodyPart>();
+
+        // Pity: If by the Last boss you dont have a mythic arm, you are guarenteed one.
+        if (GameManager.ActiveSave.CurrentBoss == 4 && !GameManager.ActiveSave.MythicArmPulled)
+        {
+            bodyPartRange.AddRange(GameManager.AllArms.Where(bp => bp.LimbRarity == Rarity.Mythic));
+            GameManager.ActiveSave.MythicArmPulled = true;
+
+            return new BodyPartRef(bodyPartRange[Random.Range(0, bodyPartRange.Count)]);
+        }
+
+        int rng = Random.Range(0, 101);
+        Debug.Log(rng);
+        if (rng == mythicThreshold)
+        {
+            Debug.Log("Mythic Arm");
+            bodyPartRange.AddRange(GameManager.AllArms.Where(bp => bp.LimbRarity == Rarity.Mythic));
+            GameManager.ActiveSave.MythicArmPulled = true;
+        }
+        else if (InRangeInclusive(rng, mythicThreshold + 1, mythicThreshold + rareThreshold))
+        {
+            Debug.Log("Rare Arm");
+            bodyPartRange.AddRange(GameManager.AllArms.Where(bp => bp.LimbRarity == Rarity.Rare));
+        }
+        else if (InRangeInclusive(rng, mythicThreshold + rareThreshold + 1, mythicThreshold + rareThreshold + 40))
+        {
+            Debug.Log("Uncommon Arm");
+            bodyPartRange.AddRange(GameManager.AllArms.Where(bp => bp.LimbRarity == Rarity.Uncommon));
+        }
+        else
+        {
+            Debug.Log("Common Arm");
+            bodyPartRange.AddRange(GameManager.AllArms.Where(bp => bp.LimbRarity == Rarity.Common));
+        }
+
+        return new BodyPartRef(bodyPartRange[Random.Range(0, bodyPartRange.Count)]);
+    }
+
+    public BodyPartRef RandomLegWithRarity()
+    {
+        int rng = Random.Range(0, 101);
+        Debug.Log(rng);
+        List<BodyPart> bodyPartRange = new List<BodyPart>();
+
+        if (InRangeInclusive(rng, 0, rareThreshold))
+        {
+            Debug.Log("Rare Leg");
+            bodyPartRange.AddRange(GameManager.AllLegs.Where(bp => bp.LimbRarity == Rarity.Rare));
+        }
+        else if (InRangeInclusive(rng, rareThreshold + 1, rareThreshold + 40))
+        {
+            Debug.Log("Uncommon Leg");
+            bodyPartRange.AddRange(GameManager.AllLegs.Where(bp => bp.LimbRarity == Rarity.Uncommon));
+        }
+        else
+        {
+            Debug.Log("Common Leg");
+            bodyPartRange.AddRange(GameManager.AllLegs.Where(bp => bp.LimbRarity == Rarity.Common));
+        }
+
+        return new BodyPartRef(bodyPartRange[Random.Range(0, bodyPartRange.Count)]);
+        
     }
 }
