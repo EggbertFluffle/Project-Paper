@@ -24,10 +24,11 @@ MonoBehaviour:
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
-  PrimaryAttack: Punch
+  PrimaryAttack: Thrash
   PrimaryAttackDurabilityCost: 1
   HasSecondaryAttack: 0
   SecondaryAttack: 
+  SecondaryAttackUse: 
   SecondaryAttackDescription: 
   SecondaryAttackDurabilityCost: 0
   Evasion: 0

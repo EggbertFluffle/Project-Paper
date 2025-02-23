@@ -28,6 +28,7 @@ MonoBehaviour:
   PrimaryAttackDurabilityCost: 0
   HasSecondaryAttack: 0
   SecondaryAttack: 
+  SecondaryAttackUse: 
   SecondaryAttackDescription: 
   SecondaryAttackDurabilityCost: 0
   Evasion: 0.02

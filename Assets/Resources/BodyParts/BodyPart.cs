@@ -24,6 +24,7 @@ public class BodyPart : ScriptableObject {
 
     public bool HasSecondaryAttack = true;
     public string SecondaryAttack;
+    public string SecondaryAttackUse;
     public string SecondaryAttackDescription;
     public int SecondaryAttackDurabilityCost;
 
@@ -33,18 +34,15 @@ public class BodyPart : ScriptableObject {
 
     // Legs should have passive stat
 
-    public enum PassiveAbility
-    {
+    public enum PassiveAbility {
         None, MoreHP, DamageReduction, MoreEvasion, 
     }
 
-    public enum Rarity
-    {
+    public enum Rarity {
         Common, Uncommon, Rare, Mythic
     }
 
-    public enum LimbType 
-    {
+    public enum LimbType {
          Arm, Leg
     }
 }

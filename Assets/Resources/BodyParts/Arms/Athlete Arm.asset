@@ -24,10 +24,11 @@ MonoBehaviour:
   AttackDeviation: 5
   HP: 0
   HPDeviation: 0
-  PrimaryAttack: Punch
+  PrimaryAttack: Uppercut
   PrimaryAttackDurabilityCost: 1
   HasSecondaryAttack: 1
   SecondaryAttack: Flex
+  SecondaryAttackUse: One... two... ok thats enough.
   SecondaryAttackDescription: Gain +50% damage next turn
   SecondaryAttackDurabilityCost: 2
   Evasion: 0

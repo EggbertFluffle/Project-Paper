@@ -22,6 +22,8 @@ public class Player : MonoBehaviour {
     public float HealthLerpSpeed = 0.1f;
     public Animator PlayerAnimator;
 
+    public bool Flexed = false;
+
     public enum PlayerState { NotTurn, Wait, SelectAttack, PrimaryAttack, SecondaryAttack, Dead };
     public PlayerState State = PlayerState.SelectAttack;
 
@@ -57,10 +59,6 @@ public class Player : MonoBehaviour {
                 case PlayerState.Wait:
                     State = PlayerState.SelectAttack;
                     break;
-                case PlayerState.PrimaryAttack:
-                    break;
-                case PlayerState.SecondaryAttack:
-                    break;
                 case PlayerState.Dead:
                     ArenaManager.Instance.PlayerWin();
                     State = PlayerState.NotTurn;
@@ -70,6 +68,7 @@ public class Player : MonoBehaviour {
     }
 
     public void Start() {
+        DebugManager.Instance.Load();
         SetupAttacks(GameManager.ActiveSave.EquippedParts);
         AlignArms(GameManager.ActiveSave.EquippedParts);
         SetupLegStats(GameManager.ActiveSave.EquippedParts);
@@ -86,36 +85,47 @@ public class Player : MonoBehaviour {
     }
 
     public void HandlePrimaryAttack(BodyPartRef bodyPart) {
+        Debug.Log("Primary move cast");
         if(Random.Range(0.0f, 1.0f) > 0.9f) {
             ArenaUI.Instance.MakeTextPrompt("Attack missed!");
         } else {
-            Boss.Instance.SendAttack(bodyPart.Strength);
-            ArenaUI.Instance.MakeTextPrompt($"You used {bodyPart.PrimaryAttack}!");
+            if(!Flexed) {
+                ArenaUI.Instance.MakeTextPrompt($"Used {bodyPart.PrimaryAttack}!");
+                Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.5f));
+            } else {
+                ArenaUI.Instance.MakeTextPrompt($"Used strength infused {bodyPart.PrimaryAttack}!");
+                Boss.Instance.SendAttack(bodyPart.Strength);
+            }
         }
-        State = PlayerState.PrimaryAttack;
     }
     
     public void HandleSecondaryAttack(BodyPartRef bodyPart) {
+        Debug.Log("Secondary move cast");
         if(Random.Range(0.0f, 1.0f) > 0.9f) {
             ArenaUI.Instance.MakeTextPrompt("Attack missed!");
         } else {
-            Boss.Instance.SendAttack(bodyPart.Strength);
-            ArenaUI.Instance.MakeTextPrompt($"You used {bodyPart.PrimaryAttack}!");
+            ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
+            switch(bodyPart.Name) {
+                case "Athlete Arm":
+                    Flexed = true;
+                    break;
+                case "Chicken Arm":
+                    Boss.Instance.SendBleed(10);
+                    break;
+                case "Sexy Arm":
+                    Health += (int)Mathf.Floor(MaxHealth * 0.3f);
+                    break;
+            }
         }
-        State = PlayerState.SecondaryAttack;
     }
 
     public void SendAttack(int damage) {
         if(UnityEngine.Random.Range(0.0f, 1.0f) < TotalEvasion) {
-            // Take care of evading the attack
-            // IMPLEMENT ME
-            // IMPLEMENT ME
-            // IMPLEMENT ME
-            // IMPLEMENT ME
-            // IMPLEMENT ME
+            ArenaUI.Instance.MakeTextPrompt("Attack evaded");
         } else {
             TakeDamage(damage);
         }
+        State = PlayerState.Wait;
     }
 
     public void TakeDamage(int dmg) {
@@ -134,7 +144,7 @@ public class Player : MonoBehaviour {
     }
 
     public void Kill() {
-        Debug.Log("You lost!");
+        ArenaManager.Instance.PlayerLose();
     }
 
     public void SetupAttacks(List<BodyPartRef> bodyParts) {

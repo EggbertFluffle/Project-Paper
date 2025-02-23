@@ -28,6 +28,7 @@ MonoBehaviour:
   PrimaryAttackDurabilityCost: 1
   HasSecondaryAttack: 1
   SecondaryAttack: Heal
+  SecondaryAttackUse: Stitches tighten and energy restores.
   SecondaryAttackDescription: Heal 30% of your monster's max hp
   SecondaryAttackDurabilityCost: 3
   Evasion: 0

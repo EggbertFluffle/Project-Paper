@@ -84,7 +84,13 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public static void Restart() {
+        instance.RestartInstance();
+    }
 
+    private void RestartInstance() {
+        activeSave = new SaveData();
+    }   
 
     // private void SaveInstance() {
     //     string json = JsonUtility.ToJson(instance.activeSave);

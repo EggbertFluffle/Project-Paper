@@ -11,11 +11,17 @@ public class ArenaUI : MonoBehaviour {
     }
 
     public void MakeTextPrompt(string text) {
-        GameObject prompt = Instantiate(TextPromptPrefab, transform);
+        GameObject prompt = Instantiate(TextPromptPrefab, PromptContiainer);
         prompt.GetComponent<TextPrompt>().contents = text;
     }
 
     public bool HasTextPrompt() {
         return PromptContiainer.childCount != 0;
+    }
+
+    public void ClearTextPrompts() {
+        foreach(Transform prompt in PromptContiainer) {
+            Destroy(prompt.gameObject);
+        }
     }
 }
