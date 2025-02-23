@@ -3,12 +3,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 using System.Linq;
+using System.Collections;
+
+using GameState = ArenaManager.GameState;
 
 public class Player : MonoBehaviour {
     public static Player Instance;
 
     public int MaxHealth = 100;
-    public int Health;
+    public float Health;
     public float TotalEvasion;
 
     public TextMeshProUGUI PlayerHealthCount;
@@ -24,8 +27,6 @@ public class Player : MonoBehaviour {
 
     public bool Flexed = false;
 
-    public enum PlayerState { NotTurn, Wait, SelectAttack, PrimaryAttack, SecondaryAttack, Dead };
-    public PlayerState State = PlayerState.SelectAttack;
 
     private Dictionary<string, Vector2> rightArmPositions = new Dictionary<string, Vector2>{
         ["Athlete Arm"] = new Vector2(2.63f, 1.51f),
@@ -53,58 +54,68 @@ public class Player : MonoBehaviour {
         if(Instance == null) Instance = this;
     }
 
-    public void Update() {
-        if(!ArenaUI.Instance.HasTextPrompt()) {
-            switch(State) {
-                case PlayerState.Wait:
-                    State = PlayerState.SelectAttack;
-                    break;
-                case PlayerState.Dead:
-                    ArenaManager.Instance.PlayerWin();
-                    State = PlayerState.NotTurn;
-                    break;
-            }
-        }
+    private void OnEnable()
+    {
+        ArenaManager.OnBossWin.AddListener(OnPlayerLose);
+        ArenaManager.OnPlayerWin.AddListener(OnPlayerWin);
+    }
+
+    private void OnDisable()
+    {
+        ArenaManager.OnBossWin.RemoveListener(OnPlayerLose);
+        ArenaManager.OnPlayerWin.RemoveListener(OnPlayerWin);
     }
 
     public void Start() {
-        DebugManager.Instance.Load();
         SetupAttacks(GameManager.ActiveSave.EquippedParts);
         AlignArms(GameManager.ActiveSave.EquippedParts);
         SetupLegStats(GameManager.ActiveSave.EquippedParts);
 
         Health = MaxHealth;
-        SetHealth();
+        SetHealth(0);
     }
 
     public void Heal() {
         // TODO: add indicator for healing
         // Heal 50 percent of health
-        Health += (int)Mathf.Floor(0.5f * MaxHealth);
-        SetHealth();
+        SetHealth((int)Mathf.Floor(0.5f * MaxHealth));
     }
 
     public void HandlePrimaryAttack(BodyPartRef bodyPart) {
         Debug.Log("Primary move cast");
-        if(Random.Range(0.0f, 1.0f) > 0.9f) {
-            ArenaUI.Instance.MakeTextPrompt("Attack missed!");
-        } else {
-            if(!Flexed) {
-                ArenaUI.Instance.MakeTextPrompt($"Used {bodyPart.PrimaryAttack}!");
-                Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.5f));
-            } else {
-                ArenaUI.Instance.MakeTextPrompt($"Used strength infused {bodyPart.PrimaryAttack}!");
+        TextPrompt prompt;
+
+        if(Random.Range(0.0f, 1.0f) > 0.9f) 
+        {
+            prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
+        } 
+        else 
+        {
+            if(!Flexed) 
+            {
+                prompt = ArenaUI.Instance.MakeTextPrompt($"Used {bodyPart.PrimaryAttack}!");
                 Boss.Instance.SendAttack(bodyPart.Strength);
+            } else {
+                prompt = ArenaUI.Instance.MakeTextPrompt($"Used strength infused {bodyPart.PrimaryAttack}!");
+                Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.5f));
             }
         }
+
+        prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
     }
     
-    public void HandleSecondaryAttack(BodyPartRef bodyPart) {
+    public void HandleSecondaryAttack(BodyPartRef bodyPart) 
+    {
         Debug.Log("Secondary move cast");
-        if(Random.Range(0.0f, 1.0f) > 0.9f) {
-            ArenaUI.Instance.MakeTextPrompt("Attack missed!");
-        } else {
-            ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
+
+        TextPrompt prompt;
+        if(Random.Range(0.0f, 1.0f) > 0.9f) 
+        {
+            prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
+        } 
+        else 
+        {
+            prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
             switch(bodyPart.Name) {
                 case "Athlete Arm":
                     Flexed = true;
@@ -117,34 +128,50 @@ public class Player : MonoBehaviour {
                     break;
             }
         }
+
+        prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
     }
 
     public void SendAttack(int damage) {
-        if(UnityEngine.Random.Range(0.0f, 1.0f) < TotalEvasion) {
+        if(Random.Range(0.0f, 1.0f) < TotalEvasion) {
             ArenaUI.Instance.MakeTextPrompt("Attack evaded");
         } else {
             TakeDamage(damage);
         }
-        State = PlayerState.Wait;
     }
 
     public void TakeDamage(int dmg) {
-        Health -= dmg;
-        SetHealth();
         if(Health <= 0.0f) {
-            Kill();
+            TextPrompt prompt = ArenaUI.Instance.MakeTextPrompt("Your monster fainted!");
+            prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossWin);
         }
+
+        SetHealth(dmg);
     }
 
-    public void SetHealth() {
-        // Somehow lerp this
-        PlayerHealthBar.value = (float)Health / MaxHealth;
-        PlayerHealthCount.text = Health.ToString();
+    public void SetHealth(int dmg) 
+    {
+        StartCoroutine(LerpHealthBar(Health, Health - dmg));
+        Health -= dmg;
+
+        PlayerHealthCount.text = ((int)Health).ToString();
         PlayerHealthMax.text = MaxHealth.ToString();
     }
 
-    public void Kill() {
-        ArenaManager.Instance.PlayerLose();
+    private IEnumerator LerpHealthBar(float currentHP, float targetHP)
+    {
+        float elapsedTime = 0;
+        while (Health != targetHP && elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime;
+            float newHP = Mathf.Lerp(currentHP, targetHP, elapsedTime);
+
+            Health = newHP;
+            PlayerHealthBar.value = Health / MaxHealth;
+            yield return null;
+        }
+
+        Health = targetHP;
     }
 
     public void SetupAttacks(List<BodyPartRef> bodyParts) {
@@ -185,5 +212,19 @@ public class Player : MonoBehaviour {
             MaxHealth += bodyParts[3].HP;
             TotalEvasion += bodyParts[3].Evasion;
         }
+    }
+
+    public void OnPlayerWin()
+    {
+        GameManager.ActiveSave.CurrentBoss++;
+        AudioManager.StopMusic(0.5f);
+        ArenaManager.Instance.LoadScene("Grave_Robbing");
+    }
+
+    public void OnPlayerLose()
+    {
+        GameManager.Restart();
+        AudioManager.StopMusic(0.5f);
+        ArenaManager.Instance.LoadScene("Main_Menu");
     }
 }

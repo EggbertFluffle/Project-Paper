@@ -80,7 +80,11 @@ public class AudioManager : MonoBehaviour
         /* Find a music track by its name and plays it, if it exists. */
         Sound music = GetSoundInstance(name, SoundType.Music);
         if (music != null)
+        {
+            music.source.volume = music.volume;
             music.source.Play();
+        }
+
     }
 
     public static void StopSFX() => instance.StopSFXInstance(); 

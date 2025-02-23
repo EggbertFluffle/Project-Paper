@@ -3,12 +3,13 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Boss : MonoBehaviour {
     public static Boss Instance;
 
     public int MaxHealth;
-    public int Health;
+    public float Health;
     public Slider BossHealthBar;
     public TextMeshProUGUI BossTextName;
     public SpriteRenderer BossSprite;
@@ -20,11 +21,23 @@ public class Boss : MonoBehaviour {
     private int bleedOut;
     private int bleedTimer = 0;
 
-    public enum BossState { NotTurn, Bleeding, Wait, Attack, Dead, LeaveBattle };
-    public BossState State = BossState.NotTurn;
+    public bool IsDead = false;
 
-    private void Awake() {
-        if(Instance == null) Instance = this;
+
+    private void Awake() 
+    {
+        if(Instance == null) 
+            Instance = this;
+    }
+
+    private void OnEnable()
+    {
+        ArenaManager.OnBossTurn.AddListener(TakeRandomAction);
+    }
+
+    private void OnDisable()
+    {
+        ArenaManager.OnBossTurn.RemoveListener(TakeRandomAction);
     }
 
     public void Start() {
@@ -36,42 +49,18 @@ public class Boss : MonoBehaviour {
         MaxHealth = currentBossBattle.Health;
         Health = MaxHealth;
         BossTextName.text = currentBossBattle.Name;
-        State = BossState.NotTurn;
     }
 
-    public void Update() {
-        Debug.Log(State);
-        if(!ArenaUI.Instance.HasTextPrompt()) {
-            switch(State) {
-                case BossState.Wait:
-                    if(bleeding) TakeBleed();
-                    State = BossState.Bleeding;
-                    break;
-                case BossState.Bleeding:
-                    // Taunt();
-                    State = BossState.Attack;
-                    break;
-                case BossState.Attack:
-                    TakeTurn();
-                    State = BossState.NotTurn;
-                    break;
-                case BossState.Dead:
-                    ArenaManager.Instance.PlayerWin();
-                    break;
-                case BossState.LeaveBattle:
-                    ArenaManager.Instance.PlayerWin();
-                    break;
-            }
-        }
+    public void TakeRandomAction()
+    {
+        ArenaUI.Instance.MakeTextPrompt($"{currentBossBattle.Name} attacked");
+        Player.Instance.SendAttack(currentBossBattle.Damage);
+        ArenaManager.CurrentGameState = ArenaManager.GameState.PlayerTurn;
     }
 
     public void Taunt() {
         // TODO: Add boss taunts
         ArenaUI.Instance.MakeTextPrompt("I am taunting you");
-    }
-
-    public void TakeTurn() {
-        Player.Instance.SendAttack(currentBossBattle.Damage);
     }
 
     public void TakeBleed() {
@@ -89,28 +78,48 @@ public class Boss : MonoBehaviour {
     }
 
     public void SendAttack(int damage) {
-        if(damage != 0) TakeDamage(damage);
-        State = BossState.Wait;
+        if(damage != 0) 
+            TakeDamage(damage);
     }
 
-    public void TakeDamage(int dmg) {
-        Health -= dmg;
-        SetHealth();
-        if(Health <= 0.0f) {
+    public void TakeDamage(int dmg) 
+    {
+        Debug.Log($"Current HP: {Health}, Damage taken: {dmg}");
+
+        if(Health - dmg <= 0.0f) {
             Kill();
         }
+
+        SetHealth(dmg);
         // TODO: Play some sort of animation
         // TODO: Play some sort of sound
     }
 
-    public void SetHealth() {
-        BossHealthBar.value = (float)Health / MaxHealth;
+    public void SetHealth(int dmg) 
+    {
+        StartCoroutine(LerpHealthBar(Health, Health - dmg));
+        Health -= dmg;
+    }
+
+    private IEnumerator LerpHealthBar(float currentHP, float targetHP)
+    {
+        float elapsedTime = 0;
+        while (Health != targetHP && elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime;
+            float newHP = Mathf.Lerp(currentHP, targetHP, elapsedTime);
+
+            Health = newHP;
+            BossHealthBar.value = Health / MaxHealth;
+            yield return null;
+        }
+
+        Health = targetHP;
     }
 
     public void Kill() {
-        State = BossState.Dead;
         ArenaUI.Instance.ClearTextPrompts();
-        ArenaUI.Instance.MakeTextPrompt(currentBossBattle.Name + " has fallen!");
-        State = BossState.LeaveBattle;
+        TextPrompt prompt = ArenaUI.Instance.MakeTextPrompt(currentBossBattle.Name + " has fallen!");
+        prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = ArenaManager.GameState.PlayerWin);
     }
 }

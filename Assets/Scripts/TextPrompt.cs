@@ -1,11 +1,14 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class TextPrompt : MonoBehaviour {
     public Button Button;
     public Image TextPanel;
     public TextMeshProUGUI Text;
+
+    public UnityEvent OnClicked = new UnityEvent();
 
     [TextArea]
     public string contents;
@@ -16,7 +19,7 @@ public class TextPrompt : MonoBehaviour {
     bool typewriting = true;
 
     public void Start() {
-        Text.text = "";
+        Text.text = string.Empty;
     }
 
     public void FixedUpdate() {
@@ -37,6 +40,8 @@ public class TextPrompt : MonoBehaviour {
     }
 
     public void HandleClick() {
+        OnClicked.Invoke();
+
         if(typewriting) {
             typewriting = false;
             Text.text = contents;
