@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Limb: 1
   LimbRarity: 2
-  Name: Athelete Leg
-  GraveLimbSprite: {fileID: -519780176676208610, guid: 3cbe9070c21f4cd47b0f152792391b5a, type: 3}
+  Name: Gorilla Leg
+  GraveLimbSprite: {fileID: 5632595450179875893, guid: 8322db7029d2fde4783c32c393ea4c79, type: 3}
   BackLimbSprite: {fileID: 0}
   FrontLimbSprite: {fileID: 0}
   Durability: 0

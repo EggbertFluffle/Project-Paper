@@ -30,11 +30,11 @@ public class Grave : MonoBehaviour {
 
                 // Top Graves
                 if (GraveIndex < 2 && i < 2) {
-                    BodyParts.Add(new BodyPartRef(GameManager.AllArms[Random.Range(0, GameManager.AllArms.Count)]));
+                    BodyParts.Add(GRManager.Instance.RandomArmWithRarity());
                 }
                 // Bottom Graves
                 else if (GraveIndex > 1 && i > 1) {
-                    BodyParts.Add(new BodyPartRef(GameManager.AllLegs[Random.Range(0, GameManager.AllLegs.Count)]));
+                    BodyParts.Add(GRManager.Instance.RandomLegWithRarity());
                 } else {
                     BodyParts.Add(null);
                 }
@@ -42,9 +42,9 @@ public class Grave : MonoBehaviour {
                     // Limb did not make it lol
                     ? null
                     // Set the body part to a arm or leg depending on limb slot
-                    : new BodyPartRef(i < 2 
-                        ? GameManager.AllArms[Random.Range(0, GameManager.AllArms.Count)] 
-                        : GameManager.AllLegs[Random.Range(0, GameManager.AllLegs.Count)]));
+                    : i < 2
+                        ? GRManager.Instance.RandomArmWithRarity() 
+                        : GRManager.Instance.RandomLegWithRarity());
             }
         }
     }
