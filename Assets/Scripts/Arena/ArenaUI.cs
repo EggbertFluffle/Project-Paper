@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArenaUI : MonoBehaviour {
     public static ArenaUI Instance;
+
+    public Button[] PlayerActions;
 
     public GameObject TextPromptPrefab;
     public Transform PromptContiainer;
@@ -10,9 +13,24 @@ public class ArenaUI : MonoBehaviour {
         if(Instance == null) Instance = this;
     }
 
-    public void MakeTextPrompt(string text) {
-        GameObject prompt = Instantiate(TextPromptPrefab, PromptContiainer);
-        prompt.GetComponent<TextPrompt>().contents = text;
+    private void OnEnable() => ArenaManager.OnPlayerTurn.AddListener(() => SetButtonsInteractable(true));
+
+    private void OnDisable() => ArenaManager.OnPlayerTurn.RemoveAllListeners();
+
+    public void SetButtonsInteractable(bool interactable)
+    {
+        foreach (var button in PlayerActions)
+        {
+            button.gameObject.SetActive(interactable);
+        }
+    }
+
+    public TextPrompt MakeTextPrompt(string text) {
+        GameObject promptObj = Instantiate(TextPromptPrefab, PromptContiainer);
+        TextPrompt prompt = promptObj.GetComponent<TextPrompt>();
+
+        prompt.contents = text;
+        return prompt;
     }
 
     public bool HasTextPrompt() {

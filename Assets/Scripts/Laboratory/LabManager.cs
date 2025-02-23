@@ -74,7 +74,6 @@ public class LabManager : SceneLoader {
             if(draggable == null) 
                 continue;
 
-            Debug.Log(draggable.GetComponent<DraggableItem>() == null);
             GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
         }
 

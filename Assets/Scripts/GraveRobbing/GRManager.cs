@@ -44,6 +44,8 @@ public class GRManager : SceneLoader {
         AudioManager.PlayMusic("Graveyard");
 
         PickedLimbs = GraveRobs;
+
+        AudioManager.PlayMusic("Main Menu");
     }
 
     public void ShowUI() {
@@ -100,7 +102,6 @@ public class GRManager : SceneLoader {
         }
 
         int rng = Random.Range(0, 101);
-        Debug.Log(rng);
         if (rng == mythicThreshold)
         {
             bodyPartRange.AddRange(GameManager.AllArms.Where(bp => bp.LimbRarity == Rarity.Mythic));
@@ -125,7 +126,6 @@ public class GRManager : SceneLoader {
     public BodyPartRef RandomLegWithRarity()
     {
         int rng = Random.Range(0, 101);
-        Debug.Log(rng);
         List<BodyPart> bodyPartRange = new List<BodyPart>();
 
         if (InRangeInclusive(rng, 0, rareThreshold))
@@ -142,6 +142,5 @@ public class GRManager : SceneLoader {
         }
 
         return new BodyPartRef(bodyPartRange[Random.Range(0, bodyPartRange.Count)]);
-        
     }
 }
