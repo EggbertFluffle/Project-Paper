@@ -21,9 +21,6 @@ public class Boss : MonoBehaviour {
     private int bleedOut;
     private int bleedTimer = 0;
 
-    public bool IsDead = false;
-
-
     private void Awake() 
     {
         if(Instance == null) 
@@ -32,11 +29,13 @@ public class Boss : MonoBehaviour {
 
     private void OnEnable()
     {
+        ArenaManager.OnBossTurn.AddListener(TakeBleed);
         ArenaManager.OnBossTurn.AddListener(TakeRandomAction);
     }
 
     private void OnDisable()
     {
+        ArenaManager.OnBossTurn.RemoveListener(TakeBleed);
         ArenaManager.OnBossTurn.RemoveListener(TakeRandomAction);
     }
 
@@ -53,9 +52,7 @@ public class Boss : MonoBehaviour {
 
     public void TakeRandomAction()
     {
-        ArenaUI.Instance.MakeTextPrompt($"{currentBossBattle.Name} attacked");
-        Player.Instance.SendAttack(currentBossBattle.Damage);
-        ArenaManager.CurrentGameState = ArenaManager.GameState.PlayerTurn;
+        Player.Instance.SendAttack(currentBossBattle.Damage, currentBossBattle.Name);
     }
 
     public void Taunt() {
@@ -63,7 +60,8 @@ public class Boss : MonoBehaviour {
         ArenaUI.Instance.MakeTextPrompt("I am taunting you");
     }
 
-    public void TakeBleed() {
+    public void TakeBleed() 
+    {
         bleedTimer--;
         TakeDamage(bleedOut);
         bleeding = bleedTimer != 0;
@@ -73,7 +71,6 @@ public class Boss : MonoBehaviour {
     public void SendBleed(int _bleedOut) {
         bleeding = true;
         bleedOut = _bleedOut;
-
         bleedTimer = 5;
     }
 
@@ -84,15 +81,12 @@ public class Boss : MonoBehaviour {
 
     public void TakeDamage(int dmg) 
     {
-        Debug.Log($"Current HP: {Health}, Damage taken: {dmg}");
-
-        if(Health - dmg <= 0.0f) {
+        if(Health - dmg <= 0.0f) 
+        {
             Kill();
         }
 
         SetHealth(dmg);
-        // TODO: Play some sort of animation
-        // TODO: Play some sort of sound
     }
 
     public void SetHealth(int dmg) 

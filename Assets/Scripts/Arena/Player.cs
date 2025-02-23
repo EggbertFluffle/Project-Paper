@@ -12,9 +12,24 @@ public class Player : MonoBehaviour {
     public int MaxHealth = 100;
 
     private float health;
-    public float Health {
+    public float Health
+    {
         get => health;
-        set => health = value > MaxHealth ? MaxHealth : value;
+        set
+        {
+            if (value > MaxHealth)
+            {
+                health = MaxHealth;
+            }
+            else if (value < 0)
+            {
+                health = 0;
+            }
+            else
+            {
+                health = value;
+            }
+        }
     }
 
     public float TotalEvasion;
@@ -113,8 +128,8 @@ public class Player : MonoBehaviour {
     public void HandleSecondaryAttack(BodyPartRef bodyPart) {
         TextPrompt prompt;
         Debug.Log("Secondary move cast");
+        bool missed = Random.Range(0.0f, 1.0f) > 0.9f;
 
-        prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
         switch (bodyPart.Name) {
             case "Athlete Arm":
                 Flexed = true;
@@ -127,31 +142,48 @@ public class Player : MonoBehaviour {
                 SetHealth(-(int)Mathf.Floor(MaxHealth * 0.3f));
                 break;
             default:
-                if(Random.Range(0.0f, 1.0f) > 0.9f) {
+                if (missed)
+                {
                     prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
-                } else {
+                }
+                else
+                {
                     prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
-                    if (bodyPart.Name.Equals("Chicken Arm"))
+                    if (bodyPart.Name.Equals("Chicken Wing"))
                         Boss.Instance.SendBleed(10);
                 }
-                break;
+
+                prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
+                return;
         }
 
+        prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
         prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
     }
 
-    public void SendAttack(int damage) {
+    public void SendAttack(int damage, string attacker) {
+        TextPrompt prompt;
         if(Random.Range(0.0f, 1.0f) < TotalEvasion) {
-            ArenaUI.Instance.MakeTextPrompt("Attack evaded");
+            prompt = ArenaUI.Instance.MakeTextPrompt("Attack evaded!");
         } else {
+            prompt = ArenaUI.Instance.MakeTextPrompt($"{attacker} attacked!");
             TakeDamage(damage);
         }
+
+        prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = ArenaManager.GameState.PlayerTurn);
     }
 
-    public void TakeDamage(int dmg) {
-        if(Health <= 0.0f) {
+    public void TakeDamage(int dmg) 
+    {
+        if(Health - dmg <= 0.0f) 
+        {
             TextPrompt prompt = ArenaUI.Instance.MakeTextPrompt("Your monster fainted!");
-            prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossWin);
+            prompt.OnClicked.AddListener(() => 
+            { 
+                ArenaManager.CurrentGameState = GameState.BossWin;
+                ArenaUI.Instance.ClearTextPrompts();
+            });
+
         }
 
         SetHealth(dmg);
@@ -166,8 +198,8 @@ public class Player : MonoBehaviour {
     }
 
     public void HasArms() {
-        // Nice :)
-        if(GameManager.ActiveSave.EquippedParts[0] == null && GameManager.ActiveSave.EquippedParts[1] == null) ArenaUI.Instance.MakeTextPrompt("Arms are broken!").OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
+        if(GameManager.ActiveSave.EquippedParts[0] == null && GameManager.ActiveSave.EquippedParts[1] == null) 
+            ArenaUI.Instance.MakeTextPrompt("Arms are broken!").OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
     }
 
     private IEnumerator LerpHealthBar(float currentHP, float targetHP) {

@@ -62,6 +62,8 @@ public class ArenaManager : SceneLoader {
                 AudioManager.PlayMusic($"Battle04");
                 break;
         }
+
+        OnPlayerTurn.Invoke();
     }
 
     public void PlayerWin() {

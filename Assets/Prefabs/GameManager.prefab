@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5981d6c8e500b4e9487527bcdb61c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentBossBattle: {fileID: 0}
 --- !u!114 &2146932290497515764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,17 +57,125 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3043aa92bea39db4883897b2f3ec8674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects: []
+  soundEffects:
+  - name: Dig
+    clip: {fileID: 8300000, guid: 9f3b033a20079fa48b11573ff4ff70a0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Button Press
+    clip: {fileID: 8300000, guid: ea33fef0a761ae445a68fe50f73e0a74, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Electric Shock
+    clip: {fileID: 8300000, guid: 7ec6569c06a51364caee325f70ce6409, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Paper Rustle
+    clip: {fileID: 8300000, guid: 20a642bc1333fc44899e8a2f8db86844, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Limb Pick
+    clip: {fileID: 8300000, guid: 98d934524bb787b40b4dc2f203e88c28, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Limb Up
+    clip: {fileID: 8300000, guid: a60702cc866f56940922ea3f99936154, type: 3}
+    volume: 0.431
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Limb Down
+    clip: {fileID: 8300000, guid: a60702cc866f56940922ea3f99936154, type: 3}
+    volume: 0.416
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hurt1
+    clip: {fileID: 8300000, guid: fff71f650b5485544a39413592a98690, type: 3}
+    volume: 0.416
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: 49d64255078288c49a326055f549a597, type: 3}
+    volume: 0.416
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Flex
+    clip: {fileID: 8300000, guid: 26ec677e3403bf44db727b4f311ca7b2, type: 3}
+    volume: 0.416
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hurt2
+    clip: {fileID: 8300000, guid: 21ddf7427ec8b0945bce1a5da110abf5, type: 3}
+    volume: 0.416
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hurt3
+    clip: {fileID: 8300000, guid: 9373569f6303f764ea96d2a22549afce, type: 3}
+    volume: 0.416
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Scratch
+    clip: {fileID: 8300000, guid: 70d2b7bdf9308a447919b7d3e605bae7, type: 3}
+    volume: 0.416
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   music:
-  - name: Main Menu
-    clip: {fileID: 8300000, guid: 9d0a3fb886058b946be65360bedcf199, type: 3}
-    volume: 0.1
+  - name: Main_Menu
+    clip: {fileID: 8300000, guid: 5cf089b2487c1e44cad85e6dc55fe4e1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Graveyard
+    clip: {fileID: 8300000, guid: ecb405632e19441498f150f53c5dbc3c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Battle01
+    clip: {fileID: 8300000, guid: 233c196020c781f46b6a35f031f4b6de, type: 3}
+    volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
-  - name: Battle Music
-    clip: {fileID: 8300000, guid: 7355156ebf6fd3c439abc48b6b778825, type: 3}
-    volume: 0.3
+  - name: Battle02
+    clip: {fileID: 8300000, guid: 21ddf7427ec8b0945bce1a5da110abf5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Battle03
+    clip: {fileID: 8300000, guid: 40dc1513720d4024c8522f0cedc860aa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Battle04
+    clip: {fileID: 8300000, guid: c7d2e803c02d9ee4cbbb76ee5613c85d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Battle05
+    clip: {fileID: 8300000, guid: b44fc88588e4345499e92b6da9b7a771, type: 3}
+    volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
