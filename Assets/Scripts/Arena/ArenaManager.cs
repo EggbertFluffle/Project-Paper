@@ -11,7 +11,23 @@ public class ArenaManager : SceneLoader {
     }
 
     public void Start() {
-        AudioManager.PlayMusic($"Battle0{GameManager.ActiveSave.CurrentBoss + 1}");
+        switch(GameManager.ActiveSave.CurrentBoss) {
+            case 0:
+                AudioManager.PlayMusic($"Battle05");
+                break;
+            case 1:
+                AudioManager.PlayMusic($"Battle01");
+                break;
+            case 2:
+                AudioManager.PlayMusic($"Battle02");
+                break;
+            case 3:
+                AudioManager.PlayMusic($"Battle03");
+                break;
+            case 4:
+                AudioManager.PlayMusic($"Battle04");
+                break;
+        }
         PlayerTurn = true;
     }
 
