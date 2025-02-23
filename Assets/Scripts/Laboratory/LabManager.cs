@@ -89,6 +89,7 @@ public class LabManager : SceneLoader {
             GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
         }
 
+        AudioManager.PlaySFX("Button Press");
         AudioManager.StopMusic(1);
 
         GetComponent<Animator>().enabled = true;

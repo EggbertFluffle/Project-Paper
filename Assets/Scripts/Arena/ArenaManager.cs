@@ -50,10 +50,18 @@ public class ArenaManager : SceneLoader {
     }
 
     public void Start() {
-        AudioManager.PlayMusic("Battle Music");
+        AudioManager.PlayMusic($"Battle0{GameManager.ActiveSave.CurrentBoss + 1}");
+        PlayerTurn = true;
     }
 
     public void PlayerWin() {
+        AudioManager.StopMusic();
         LoadScene("Grave_Robbing");
+    }
+
+    public void PlayerLose() {
+        GameManager.Restart();
+        AudioManager.StopMusic();
+        LoadScene("Main_Menu");
     }
 }
