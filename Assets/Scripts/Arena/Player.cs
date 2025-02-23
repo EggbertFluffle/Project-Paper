@@ -225,7 +225,7 @@ public class Player : MonoBehaviour {
     }
 
     public void OnPlayerWin() {
-        GameManager.ActiveSave.CurrentBoss++;
+        GameManager.NextBoss();
         AudioManager.StopMusic(0.5f);
         ArenaManager.Instance.LoadScene("Grave_Robbing");
     }

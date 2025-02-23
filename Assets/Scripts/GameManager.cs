@@ -33,18 +33,22 @@ public class GameManager : MonoBehaviour {
         "Chimera"
     };
 
-    private void OnEnable()
-    {
+    private void OnEnable() {
         AssignConstants();
+
+        bossBattles = new List<BossBattle>();
+        foreach(string bossName in bossOrder) {
+            BossBattle boss = Resources.Load<BossBattle>($"Arena/{bossName}");
+            bossBattles.Add(boss);
+        }
+        currentBossBattle = bossBattles[0];
     }
 
     private void Awake() {
-        if (instance == null) 
-        {
+        if (instance == null) {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        } 
-        else 
+        } else 
             Destroy(gameObject);
 
         foreach (BodyPart arm in Resources.LoadAll<BodyPart>("BodyParts/Arms")) 
@@ -52,13 +56,10 @@ public class GameManager : MonoBehaviour {
         
         foreach (BodyPart leg in Resources.LoadAll<BodyPart>("BodyParts/Legs")) 
             allLegs[leg.Name] = leg;
-        
-        
-        bossBattles = bossOrder.Select(bossName => Resources.Load<BossBattle>($"Arena/{bossName}")).ToList();
-        currentBossBattle = bossBattles[0];
     }
 
     private void NextBossInstance() {
+        Debug.Log("NEXT BOSS IS CALLED");
         activeSave.CurrentBoss++;
         currentBossBattle = bossBattles[activeSave.CurrentBoss];
     }
