@@ -40,7 +40,6 @@ public class Boss : MonoBehaviour {
     }
 
     public void Update() {
-        Debug.Log(State);
         if(!ArenaUI.Instance.HasTextPrompt()) {
             switch(State) {
                 case BossState.Wait:

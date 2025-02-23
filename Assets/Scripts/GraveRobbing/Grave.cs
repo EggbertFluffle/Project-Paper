@@ -13,6 +13,7 @@ public class Grave : MonoBehaviour {
     public SpriteRenderer HighlightRenderer;
 
     public ParticleSystem DigParticles;
+    public Animator Animator;
 
     private SpriteRenderer SpriteRenderer;
 
@@ -56,6 +57,7 @@ public class Grave : MonoBehaviour {
     public void Rob() {
         SpriteRenderer.sprite = RobbedGraveSprite;
         DigParticles.Play();
+        Animator.SetTrigger("Shake");
         AudioManager.PlaySFX("Dig");
         Robbed = true;
     }

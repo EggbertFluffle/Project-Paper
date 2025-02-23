@@ -26,6 +26,7 @@ public class GravePickerButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if(BodyPart != null) {
             GravePicker.Instance.HandleLimbPick(BodyPart);
             LimbToolTip.Instance.DismissTooltip();
+            AudioManager.PlaySFX("Limb Pick");
             Image.enabled = false;
         }
     }

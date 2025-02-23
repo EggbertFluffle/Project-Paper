@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour {
 
     private void RestartInstance() {
         activeSave = new SaveData();
+        currentBossBattle = bossBattles[activeSave.CurrentBoss];
     }   
 
     // private void SaveInstance() {

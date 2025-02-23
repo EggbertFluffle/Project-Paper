@@ -68,7 +68,6 @@ public class Player : MonoBehaviour {
     }
 
     public void Start() {
-        DebugManager.Instance.Load();
         SetupAttacks(GameManager.ActiveSave.EquippedParts);
         AlignArms(GameManager.ActiveSave.EquippedParts);
         SetupLegStats(GameManager.ActiveSave.EquippedParts);

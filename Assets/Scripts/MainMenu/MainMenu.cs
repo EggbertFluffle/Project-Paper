@@ -9,7 +9,10 @@ public class MainMenu : SceneLoader {
 
     public Animator BackgroundAnimator;
 
-    public void LoadScene() => LoadScene("Grave_Robbing");
+    public void LoadScene() {
+        AudioManager.StopMusic();
+        LoadScene("Grave_Robbing");
+    }
 
     private void Awake() {
         if(Instance == null) Instance = this;
@@ -17,15 +20,16 @@ public class MainMenu : SceneLoader {
     }
 
     public void Start() {
-        AudioManager.PlayMusic("Main Menu");
+        AudioManager.PlayMusic("Main_Menu");
     }
 
     public void PlayCutscene() {
         if (cutsceneIndex < OpeningCutscene.AllEvents.Count) {
             OpeningCutscene.Play(cutsceneIndex);
             cutsceneIndex++;
-        } else
+        } else {
             OpeningCutscene.Finish(false);
+        }
     }
 
     public void Update() {

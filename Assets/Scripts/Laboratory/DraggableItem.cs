@@ -31,6 +31,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         Image.raycastTarget = false;
+        AudioManager.PlaySFX("Limb Up");
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -40,6 +41,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData) {
         transform.SetParent(parentAfterDrag);
         Zero(Reversed);
+        AudioManager.PlaySFX("Limb Down");
 
         Image.raycastTarget = true;
     }

@@ -41,6 +41,8 @@ public class GRManager : SceneLoader {
         GraveRobMax.text = GraveRobs.ToString();
         GraveRobsLeft.text = GraveRobs.ToString();
 
+        AudioManager.PlayMusic("Graveyard");
+
         PickedLimbs = GraveRobs;
     }
 
@@ -63,8 +65,8 @@ public class GRManager : SceneLoader {
             GraveRobs--;
             GraveRobsLeft.text = GraveRobs.ToString();
         } else if(GraveRobs == 0) {
-            GameObject txt = Instantiate(TextPrompt, Canvas.transform);
-            txt.GetComponent<TextPrompt>().contents = "You can't rob anymore graves!";
+            // GameObject txt = Instantiate(TextPrompt, Canvas.transform);
+            // txt.GetComponent<TextPrompt>().contents = "You can't rob anymore graves!";
         }
     }
 
