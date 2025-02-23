@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f405f18e7dfd9c24995cf48b41811f1a, type: 3}
-  m_Name: Heckyll and Jibe
+  m_Name: Hekyll and Jibe
   m_EditorClassIdentifier: 
-  Name: Heckyll and Jibe
-  BattleStartText: Heckyll and Jibe have entered the ring
+  Name: Hekyll and Jibe
+  BattleStartText: Hekyll and Jibe have entered the ring
   BossSprite: {fileID: 7130349404116459731, guid: b1b2764f3bf6fa143aaf4e6a9a996920, type: 3}
-  Scale: 1
+  Scale: 0.79
   Damage: 19
   Health: 180
   Accuracy: 1

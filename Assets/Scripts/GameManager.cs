@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     private readonly List<string> bossOrder = new List<string> {
         "Maria Sheila",
         "Frank N. Stein",
-        "Heckyll and Jibe",
+        "Hekyll and Jibe",
         "Hazabe",
         "Chimera"
     };

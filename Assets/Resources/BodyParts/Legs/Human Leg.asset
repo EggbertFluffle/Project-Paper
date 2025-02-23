@@ -22,12 +22,13 @@ MonoBehaviour:
   DurabilityDeviation: 0
   Strength: 0
   AttackDeviation: 0
-  HP: 0
-  HPDeviation: 0
+  HP: 25
+  HPDeviation: 5
   PrimaryAttack: 25
   PrimaryAttackDurabilityCost: 5
   HasSecondaryAttack: 0
   SecondaryAttack: 
+  SecondaryAttackUse: 
   SecondaryAttackDescription: 
   SecondaryAttackDurabilityCost: 0
   Evasion: 0.05

@@ -113,9 +113,11 @@ public class Player : MonoBehaviour {
             if (Flexed) {
                 prompt = ArenaUI.Instance.MakeTextPrompt($"Used strength infused {bodyPart.PrimaryAttack}!");
                 Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.5f));
+                Flexed = false;
             } else if (Charged) {
                 prompt = ArenaUI.Instance.MakeTextPrompt($"RIP AND TEAR!!!! {bodyPart.PrimaryAttack}!!!!");
                 Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.9f));
+                Charged = false;
             } else {
                 prompt = ArenaUI.Instance.MakeTextPrompt($"Used {bodyPart.PrimaryAttack}!");
                 Boss.Instance.SendAttack(bodyPart.Strength);

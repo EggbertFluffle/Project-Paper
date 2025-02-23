@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenu : SceneLoader {
     public static MainMenu Instance;
 
     public Cutscene OpeningCutscene;
+    public Image Credits;
 
     private int cutsceneIndex = 0;
 
@@ -30,6 +32,14 @@ public class MainMenu : SceneLoader {
         } else {
             OpeningCutscene.Finish(false);
         }
+    }
+
+    public void RollTheCredits() {
+        Credits.gameObject.SetActive(true);
+    }
+
+    public void CloseCredits() {
+        Credits.gameObject.SetActive(false);
     }
 
     public void Update() {

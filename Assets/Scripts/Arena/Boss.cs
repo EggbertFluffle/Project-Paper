@@ -48,6 +48,7 @@ public class Boss : MonoBehaviour {
         MaxHealth = currentBossBattle.Health;
         Health = MaxHealth;
         BossTextName.text = currentBossBattle.Name;
+        bleedTimer = 0;
     }
 
     public void TakeRandomAction()
@@ -64,7 +65,7 @@ public class Boss : MonoBehaviour {
     {
         bleedTimer--;
         TakeDamage(bleedOut);
-        bleeding = bleedTimer != 0;
+        bleeding = bleedTimer > 0;
         ArenaUI.Instance.MakeTextPrompt($"{currentBossBattle.Name} is bleeding");
     }
 

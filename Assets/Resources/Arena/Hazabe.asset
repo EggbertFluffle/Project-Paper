@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f405f18e7dfd9c24995cf48b41811f1a, type: 3}
   m_Name: Hazabe
   m_EditorClassIdentifier: 
-  Name: Hazabe
-  BattleStartText: Hazabe has entered the ring
+  Name: Hazambe
+  BattleStartText: Hazambe has entered the ring
   BossSprite: {fileID: -1164086749073644203, guid: 20bf05dd78bfe494883e5ea62d93b042, type: 3}
-  Scale: 1
+  Scale: 0.82
   Damage: 22
   Health: 240
   Accuracy: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Frank N. Stein
   BattleStartText: Frank N. Stein has entered the ring
   BossSprite: {fileID: 3964938229115945500, guid: 56451d7957c0b8948b0819fd0d933249, type: 3}
-  Scale: 1
+  Scale: 0.72
   Damage: 15
   Health: 120
   Accuracy: 1

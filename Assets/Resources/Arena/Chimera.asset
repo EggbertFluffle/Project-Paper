@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Chimera
   BattleStartText: Chimera has entered the ring
   BossSprite: {fileID: -7038271629089209879, guid: d39ee3bbf5f46d242a3bec86af9fe2af, type: 3}
-  Scale: 1.2
+  Scale: 0.84
   Damage: 25
   Health: 300
   Accuracy: 1
