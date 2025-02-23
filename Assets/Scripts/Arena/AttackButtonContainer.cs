@@ -7,6 +7,8 @@ public class AttackButtonContainer : MonoBehaviour {
 
     public TextMeshProUGUI ArmInfo;
 
+    public SpriteRenderer ArmSprite;
+
     public TextMeshProUGUI PrimaryAttackName;
     public TextMeshProUGUI PrimaryAttackCost;
 
@@ -42,24 +44,28 @@ public class AttackButtonContainer : MonoBehaviour {
         AudioManager.PlaySFX("Button Press");
         BodyPart.Durability -= BodyPart.PrimaryAttackDurabilityCost;
         UpdateArmInfo();
+        UpdateDurability(0);
+        Player.Instance.HandlePrimaryAttack(BodyPart);
         if(BodyPart.Durability <= 0) {
             GameManager.ActiveSave.EquippedParts[0] = null;
             BodyPart = null;
+            ArmSprite.enabled = false;
             SetArm(null, 0);
         }
-        Player.Instance.HandlePrimaryAttack(BodyPart);
     }
 
     public void HandleSecondary() {
         AudioManager.PlaySFX("Button Press");
         BodyPart.Durability -= BodyPart.SecondaryAttackDurabilityCost;
         UpdateArmInfo();
+        UpdateDurability(0);
+        Player.Instance.HandleSecondaryAttack(BodyPart);
         if(BodyPart.Durability <= 0) {
             GameManager.ActiveSave.EquippedParts[1] = null;
             BodyPart = null;
+            ArmSprite.enabled = false;
             SetArm(null, 0);
         }
-        Player.Instance.HandleSecondaryAttack(BodyPart);
     }
 
     public void UpdateArmInfo() {

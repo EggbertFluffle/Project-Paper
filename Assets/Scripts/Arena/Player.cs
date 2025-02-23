@@ -167,7 +167,7 @@ public class Player : MonoBehaviour {
 
     public void HasArms() {
         // Nice :)
-        if(GameManager.ActiveSave.EquippedParts[0] == null || GameManager.ActiveSave.EquippedParts[1] == null) ArenaUI.Instance.MakeTextPrompt("Arms are broken!").OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
+        if(GameManager.ActiveSave.EquippedParts[0] == null && GameManager.ActiveSave.EquippedParts[1] == null) ArenaUI.Instance.MakeTextPrompt("Arms are broken!").OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
     }
 
     private IEnumerator LerpHealthBar(float currentHP, float targetHP) {

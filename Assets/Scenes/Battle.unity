@@ -2613,6 +2613,7 @@ MonoBehaviour:
     HP: 0
   ArmIndex: 0
   ArmInfo: {fileID: 623698929}
+  ArmSprite: {fileID: 765966349}
   PrimaryAttackName: {fileID: 1911734116}
   PrimaryAttackCost: {fileID: 1356798930}
   SecondaryAttackButton: {fileID: 40827049}
@@ -4147,6 +4148,7 @@ MonoBehaviour:
     HP: 0
   ArmIndex: 0
   ArmInfo: {fileID: 1201842230}
+  ArmSprite: {fileID: 1662619874}
   PrimaryAttackName: {fileID: 833778465}
   PrimaryAttackCost: {fileID: 1104579601}
   SecondaryAttackButton: {fileID: 945113151}
@@ -4357,7 +4359,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 0
-  Health: 0
   TotalEvasion: 0
   PlayerHealthCount: {fileID: 814357321}
   PlayerHealthMax: {fileID: 60339789}
@@ -4370,6 +4371,7 @@ MonoBehaviour:
   HealthLerpSpeed: 0.1
   PlayerAnimator: {fileID: 0}
   Flexed: 0
+  Charged: 0
 --- !u!212 &1858954712
 SpriteRenderer:
   m_ObjectHideFlags: 0
