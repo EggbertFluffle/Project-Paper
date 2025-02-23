@@ -14,9 +14,15 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public bool isArm = true;
     public bool Reversed = false;
 
-    public void SetLimb(BodyPartRef _bodyPart) {
+    public Vector3 InitialScale;
+
+    void Awake() => InitialScale = transform.localScale;
+
+    public void SetLimb(BodyPartRef _bodyPart) 
+    {
         Image.enabled = _bodyPart != null;
-        if (_bodyPart != null) {
+        if (_bodyPart != null) 
+        {
             bodyPart = _bodyPart;
             isArm = _bodyPart.IsArm();
             Image.sprite = _bodyPart.GraveLimbSprite;
@@ -46,8 +52,14 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Image.raycastTarget = true;
     }
 
+    public void SetScale(float scale = -1)
+    {
+        transform.localScale = scale == -1 ? InitialScale : new Vector3(scale, scale, 1);
+    }
+
     public void Zero(bool isReversed) {
         Reversed = isReversed;
+
         transform.SetLocalPositionAndRotation(
             new Vector3(0, 0, 0),
             Quaternion.Euler(0.0f, isReversed ? -180 : 0, IsArm() ? -27.0f : 0.0f));
@@ -56,14 +68,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnPointerEnter(PointerEventData eventData) {
         if(bodyPart != null) {
             LimbToolTip.Instance.RequestTooltip(bodyPart);
-            // Animator.SetTrigger("Enter");
         }
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         if(bodyPart != null) {
             LimbToolTip.Instance.DismissTooltip();
-            // Animator.SetTrigger("Exit");
         }
     }
 

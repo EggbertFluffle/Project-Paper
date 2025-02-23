@@ -11,7 +11,14 @@ public class Player : MonoBehaviour {
     public static Player Instance;
 
     public int MaxHealth = 100;
-    public float Health;
+
+    private float health;
+    public float Health
+    {
+        get => health;
+        set => health = value > MaxHealth ? MaxHealth : value;
+    }
+
     public float TotalEvasion;
 
     public TextMeshProUGUI PlayerHealthCount;
@@ -26,7 +33,7 @@ public class Player : MonoBehaviour {
     public Animator PlayerAnimator;
 
     public bool Flexed = false;
-
+    public bool Charged = false;
 
     private Dictionary<string, Vector2> rightArmPositions = new Dictionary<string, Vector2>{
         ["Athlete Arm"] = new Vector2(2.63f, 1.51f),
@@ -85,19 +92,26 @@ public class Player : MonoBehaviour {
         Debug.Log("Primary move cast");
         TextPrompt prompt;
 
-        if(Random.Range(0.0f, 1.0f) > 0.9f) 
+        if(Random.Range(0.0f, 1.0f) > (Flexed || Charged ? 0.95f : 0.9f)) 
         {
             prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
         } 
         else 
         {
-            if(!Flexed) 
+            if (Flexed)
+            {
+                prompt = ArenaUI.Instance.MakeTextPrompt($"Used strength infused {bodyPart.PrimaryAttack}!");
+                Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.5f));
+            }
+            else if (Charged)
+            {
+                prompt = ArenaUI.Instance.MakeTextPrompt($"RIP AND TEAR!!!! {bodyPart.PrimaryAttack}!!!!");
+                Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.9f));
+            }
+            else
             {
                 prompt = ArenaUI.Instance.MakeTextPrompt($"Used {bodyPart.PrimaryAttack}!");
                 Boss.Instance.SendAttack(bodyPart.Strength);
-            } else {
-                prompt = ArenaUI.Instance.MakeTextPrompt($"Used strength infused {bodyPart.PrimaryAttack}!");
-                Boss.Instance.SendAttack(bodyPart.Strength + (int)Mathf.Floor(bodyPart.Strength * 0.5f));
             }
         }
 
@@ -106,27 +120,34 @@ public class Player : MonoBehaviour {
     
     public void HandleSecondaryAttack(BodyPartRef bodyPart) 
     {
+        TextPrompt prompt;
         Debug.Log("Secondary move cast");
 
-        TextPrompt prompt;
-        if(Random.Range(0.0f, 1.0f) > 0.9f) 
+        prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
+        switch (bodyPart.Name)
         {
-            prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
-        } 
-        else 
-        {
-            prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
-            switch(bodyPart.Name) {
-                case "Athlete Arm":
-                    Flexed = true;
-                    break;
-                case "Chicken Arm":
-                    Boss.Instance.SendBleed(10);
-                    break;
-                case "Sexy Arm":
-                    Health += (int)Mathf.Floor(MaxHealth * 0.3f);
-                    break;
-            }
+            case "Athlete Arm":
+                Flexed = true;
+                break;
+            case "Chainsaw Arm":
+                SetHealth((int)(MaxHealth * 0.8f < 1 ? 1 : MaxHealth * 0.8f));
+                Charged = true;
+                break;
+            case "Sexy Arm":
+                SetHealth(-(int)Mathf.Floor(MaxHealth * 0.3f));
+                break;
+            default:
+                if(Random.Range(0.0f, 1.0f) > 0.9f) 
+                {
+                    prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
+                } 
+                else 
+                {
+                    prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
+                    if (bodyPart.Name.Equals("Chicken Arm"))
+                        Boss.Instance.SendBleed(10);
+                }
+                break;
         }
 
         prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);

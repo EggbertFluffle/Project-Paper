@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class LabManager : SceneLoader {
     public GameObject InventorySlot;
@@ -14,30 +15,45 @@ public class LabManager : SceneLoader {
 
     public InventorySlot[] BodySlots;
 
-    public void Start() {
+    public void Start() 
+    {
         // Seperate each inventory limb into their own inventories
-        foreach(BodyPartRef bp in GameManager.ActiveSave.Inventory) {
-            if(bp == null) continue;
-            if(bp.IsArm()) {
+
+        foreach (BodyPartRef bp in GameManager.ActiveSave.Inventory) 
+        {
+            if (bp == null) 
+                continue;
+
+            if (bp.IsArm()) 
                 AddPartToContainer(bp, ArmContainer);
-            } else if(bp.IsLeg()) {
+            else if (bp.IsLeg()) 
                 AddPartToContainer(bp, LegContainer);
-            }
         }
 
-        for (int i = 0; i < GameManager.ActiveSave.EquippedParts.Count; i++) {
+        for (int i = 0; i < GameManager.ActiveSave.EquippedParts.Count; i++) 
+        {
             BodyPartRef bp = GameManager.ActiveSave.EquippedParts[i];
-            if(bp == null) continue;
+            if (bp == null) 
+                continue;
+
             if (i < 2) {
                 GameObject newArm = Instantiate(DraggableArm, BodySlots[i].transform);
                 DraggableItem draggableItem = newArm.GetComponent<DraggableItem>();
                 draggableItem.isArm = true;
                 draggableItem.SetLimb(bp);
-            } else {
+
+                draggableItem.Zero(BodySlots[i].Reversed);
+                draggableItem.SetScale(0.28f);
+            } 
+            else 
+            {
                 GameObject newLeg = Instantiate(DraggableLeg, BodySlots[i].transform);
                 DraggableItem draggableItem = newLeg.GetComponent<DraggableItem>();
                 draggableItem.isArm = false;
                 draggableItem.SetLimb(bp);
+
+                draggableItem.Zero(BodySlots[i].Reversed);
+                draggableItem.SetScale(0.26f);
             }
         }
     }

@@ -8,6 +8,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
     public bool Reversed = false;
 
     public bool Animated;
+
     [HideInInspector]
     public Animator SlotAnimation;
     public Image BackgroundImage;
@@ -27,8 +28,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
         GameObject dropped = eventData.pointerDrag;
         DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
 
-        if(draggableItem.IsArm() == armSlot) {
-            if(transform.childCount == 1) {
+        if(draggableItem.IsArm() == armSlot) 
+        {
+            if(transform.childCount == 1) 
+            {
                 Transform childTransform = transform.GetChild(0);
                 childTransform.SetParent(draggableItem.parentAfterDrag);
                 childTransform.GetComponent<DraggableItem>().Zero(Reversed);
@@ -39,12 +42,16 @@ public class InventorySlot : MonoBehaviour, IDropHandler {
     }
 
     void Update() {
-        if (Animated) {
-            if (animPlaying && transform.childCount > 0) {
+        if (Animated) 
+        {
+            if (animPlaying && transform.childCount > 0) 
+            {
                 SlotAnimation.enabled = false;
                 animPlaying = false;
                 BackgroundImage.color = new Color(255, 255, 255, 0);
-            } else if (!animPlaying && transform.childCount == 0) {
+            } 
+            else if (!animPlaying && transform.childCount == 0) 
+            {
                 SlotAnimation.enabled = true;
                 animPlaying = true;
             }
