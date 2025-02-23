@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using UnityEngine.Events;
-using UnityEngine;
 
 public class ArenaManager : SceneLoader {
     public static ArenaManager Instance;
@@ -13,14 +11,11 @@ public class ArenaManager : SceneLoader {
     public static readonly UnityEvent OnPlayerWin = new UnityEvent();
     public static readonly UnityEvent OnBossWin = new UnityEvent();
 
-    public static GameState CurrentGameState
-    {
+    public static GameState CurrentGameState {
         get => Instance.currentGameState;
 
-        set
-        {
-            switch (value)
-            {
+        set {
+            switch (value) {
                 case GameState.PlayerTurn:
                     OnPlayerTurn.Invoke();
                     break;
@@ -67,11 +62,11 @@ public class ArenaManager : SceneLoader {
                 AudioManager.PlayMusic($"Battle04");
                 break;
         }
-        PlayerTurn = true;
     }
 
     public void PlayerWin() {
         AudioManager.StopMusic();
+        GameManager.NextBoss();
         LoadScene("Grave_Robbing");
     }
 

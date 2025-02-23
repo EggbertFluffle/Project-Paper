@@ -2206,7 +2206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
       propertyPath: soundEffects.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
       propertyPath: music.Array.data[0].clip
@@ -2415,7 +2415,7 @@ PrefabInstance:
     - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
       propertyPath: soundEffects.Array.data[10].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 26ec677e3403bf44db727b4f311ca7b2, type: 3}
+      objectReference: {fileID: 8300000, guid: 21ddf7427ec8b0945bce1a5da110abf5, type: 3}
     - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
       propertyPath: soundEffects.Array.data[10].name
       value: Hurt2
@@ -2427,6 +2427,14 @@ PrefabInstance:
     - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
       propertyPath: soundEffects.Array.data[11].name
       value: Hurt3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[12].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 70d2b7bdf9308a447919b7d3e605bae7, type: 3}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[12].name
+      value: Scratch
       objectReference: {fileID: 0}
     - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
       propertyPath: soundEffects.Array.data[1].pitch
@@ -2477,6 +2485,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[12].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
       propertyPath: soundEffects.Array.data[1].volume
       value: 1
       objectReference: {fileID: 0}
@@ -2518,6 +2530,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
       propertyPath: soundEffects.Array.data[11].volume
+      value: 0.416
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146932290497515764, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}
+      propertyPath: soundEffects.Array.data[12].volume
       value: 0.416
       objectReference: {fileID: 0}
     - target: {fileID: 5090160842950470779, guid: 7ebf78194df04094bb4466875cfca7af, type: 3}

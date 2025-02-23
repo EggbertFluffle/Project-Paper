@@ -15,6 +15,9 @@ public class AttackButtonContainer : MonoBehaviour {
     public TextMeshProUGUI SecondaryAttackCost;
 
     public void SetArm(BodyPartRef bodyPart, int armIndex) {
+        gameObject.SetActive(bodyPart != null);
+        if(bodyPart == null) return;
+        
         BodyPart = bodyPart;
         ArmIndex = armIndex;
         UpdateDurability(0);
@@ -22,7 +25,7 @@ public class AttackButtonContainer : MonoBehaviour {
         PrimaryAttackName.text = BodyPart.PrimaryAttack;
         PrimaryAttackCost.text = $"-{BodyPart.PrimaryAttackDurabilityCost}";
 
-        if(bodyPart.HasSecondaryAttack) {
+        if(BodyPart.HasSecondaryAttack) {
             SecondaryAttackName.text = BodyPart.SecondaryAttack;
             SecondaryAttackCost.text = $"-{BodyPart.SecondaryAttackDurabilityCost}";
         } else {
@@ -36,11 +39,37 @@ public class AttackButtonContainer : MonoBehaviour {
     }
 
     public void HandlePrimary() {
+        AudioManager.PlaySFX("Button Press");
+        BodyPart.Durability -= BodyPart.PrimaryAttackDurabilityCost;
+        UpdateArmInfo();
+        if(BodyPart.Durability <= 0) {
+            GameManager.ActiveSave.EquippedParts[0] = null;
+            BodyPart = null;
+            SetArm(null, 0);
+        }
         Player.Instance.HandlePrimaryAttack(BodyPart);
     }
 
     public void HandleSecondary() {
+        AudioManager.PlaySFX("Button Press");
+        BodyPart.Durability -= BodyPart.SecondaryAttackDurabilityCost;
+        UpdateArmInfo();
+        if(BodyPart.Durability <= 0) {
+            GameManager.ActiveSave.EquippedParts[1] = null;
+            BodyPart = null;
+            SetArm(null, 0);
+        }
         Player.Instance.HandleSecondaryAttack(BodyPart);
+    }
+
+    public void UpdateArmInfo() {
+        PrimaryAttackName.text = BodyPart.PrimaryAttack;
+        PrimaryAttackCost.text = $"-{BodyPart.PrimaryAttackDurabilityCost}";
+
+        if(BodyPart.HasSecondaryAttack) {
+            SecondaryAttackName.text = BodyPart.SecondaryAttack;
+            SecondaryAttackCost.text = $"-{BodyPart.SecondaryAttackDurabilityCost}";
+        }
     }
 
     public void BreakArm() {

@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour {
     public BodyPart GetBodyPart(string key) => allArms.TryGetValue(key, out var arm) ? arm : allLegs.TryGetValue(key, out var leg) ? leg : null;
 
     private void AssignConstants() {
-        foreach (BodyPartRef bodyPartRef in instance.activeSave.EquippedParts) {
+        foreach(BodyPartRef bodyPartRef in instance.activeSave.EquippedParts) {
             if(bodyPartRef != null) {
                 Debug.Log(GetBodyPart(bodyPartRef.Name) == null);
                 Debug.Log(JsonUtility.ToJson(bodyPartRef));
@@ -92,38 +92,4 @@ public class GameManager : MonoBehaviour {
         activeSave = new SaveData();
         currentBossBattle = bossBattles[activeSave.CurrentBoss];
     }   
-
-    // private void SaveInstance() {
-    //     string json = JsonUtility.ToJson(instance.activeSave);
-    //     Debug.Log(json);
-    //     PlayerPrefs.SetString("Save", json);
-    // }
-
-    // public static void Save() => instance.SaveInstance();
-
-    // private void LoadInstance() {
-    //     string json = PlayerPrefs.GetString("Save");
-    //     Debug.Log("Loading Data");
-    //     instance.activeSave = string.IsNullOrEmpty(json) ? new SaveData() : JsonUtility.FromJson<SaveData>(json);
-    //     AssignConstants();
-    // }
-
-    // public static void Load() => instance.LoadInstance();
-
-    // public void DeleteSave() {
-    //     Debug.Log("Deleting Save.");
-    //     PlayerPrefs.DeleteKey("Save");
-    // }
-
-
-
-    private void OnApplicationQuit() {
-        // SaveInstance();
-    }
-
-    private void Update() {
-        // if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Period)) {
-        //     DeleteSave();
-        // }
-    }
 }

@@ -82,17 +82,14 @@ public class Player : MonoBehaviour {
     }
 
     public void HandlePrimaryAttack(BodyPartRef bodyPart) {
-        Debug.Log("Primary move cast");
         TextPrompt prompt;
 
-        if(Random.Range(0.0f, 1.0f) > 0.9f) 
-        {
+        if(Random.Range(0.0f, 1.0f) > 0.9f) {
             prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
-        } 
-        else 
-        {
-            if(!Flexed) 
-            {
+        } else {
+            Debug.Log($"Hurt{Random.Range(1, 4)}");
+            AudioManager.PlaySFX($"Hurt{Random.Range(1, 4)}");
+            if(!Flexed) {
                 prompt = ArenaUI.Instance.MakeTextPrompt($"Used {bodyPart.PrimaryAttack}!");
                 Boss.Instance.SendAttack(bodyPart.Strength);
             } else {
@@ -104,27 +101,24 @@ public class Player : MonoBehaviour {
         prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
     }
     
-    public void HandleSecondaryAttack(BodyPartRef bodyPart) 
-    {
-        Debug.Log("Secondary move cast");
-
+    public void HandleSecondaryAttack(BodyPartRef bodyPart) {
         TextPrompt prompt;
-        if(Random.Range(0.0f, 1.0f) > 0.9f) 
-        {
+        if(Random.Range(0.0f, 1.0f) > 0.9f) {
             prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
-        } 
-        else 
-        {
+        } else {
             prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
             switch(bodyPart.Name) {
                 case "Athlete Arm":
                     Flexed = true;
+                    AudioManager.PlaySFX("Flex");
                     break;
                 case "Chicken Arm":
                     Boss.Instance.SendBleed(10);
+                    AudioManager.PlaySFX("Scratch");
                     break;
                 case "Sexy Arm":
                     Health += (int)Mathf.Floor(MaxHealth * 0.3f);
+                    AudioManager.PlaySFX("Heal");
                     break;
             }
         }
