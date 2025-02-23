@@ -16,6 +16,7 @@ public class BodyPartRef
      
     public bool HasSecondaryAttack { get; private set; }
     public string SecondaryAttack { get; private set; }
+    public string SecondaryAttackUse { get; private set; }
     public string SecondaryAttackDescription { get; private set; }
     public int SecondaryAttackDurabilityCost { get; private set; }
 
@@ -58,6 +59,7 @@ public class BodyPartRef
         PrimaryAttackDurabilityCost = bodyPart.PrimaryAttackDurabilityCost;
         HasSecondaryAttack = bodyPart.HasSecondaryAttack;
         SecondaryAttack = bodyPart.SecondaryAttack;
+        SecondaryAttackUse = bodyPart.SecondaryAttackUse;
         SecondaryAttackDescription = bodyPart.SecondaryAttackDescription;
         SecondaryAttackDurabilityCost = bodyPart.SecondaryAttackDurabilityCost;
 

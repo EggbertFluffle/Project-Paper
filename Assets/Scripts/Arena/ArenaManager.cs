@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ArenaManager : SceneLoader {
@@ -15,10 +16,11 @@ public class ArenaManager : SceneLoader {
     }
 
     public void PlayerWin() {
-
+        LoadScene("Grave_Robbing");
     }
 
     public void PlayerLose() {
-
+        GameManager.Restart();
+        LoadScene("Main_Menu");
     }
 }

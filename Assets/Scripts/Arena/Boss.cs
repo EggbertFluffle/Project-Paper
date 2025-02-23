@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,8 +20,8 @@ public class Boss : MonoBehaviour {
     private int bleedOut;
     private int bleedTimer = 0;
 
-    public enum BossState { NotTurn, Bleeding, Wait, Attack, Dead };
-    public BossState State;
+    public enum BossState { NotTurn, Bleeding, Wait, Attack, Dead, LeaveBattle };
+    public BossState State = BossState.NotTurn;
 
     private void Awake() {
         if(Instance == null) Instance = this;
@@ -55,7 +56,9 @@ public class Boss : MonoBehaviour {
                     break;
                 case BossState.Dead:
                     ArenaManager.Instance.PlayerWin();
-                    State = BossState.NotTurn;
+                    break;
+                case BossState.LeaveBattle:
+                    ArenaManager.Instance.PlayerWin();
                     break;
             }
         }
@@ -85,7 +88,8 @@ public class Boss : MonoBehaviour {
     }
 
     public void SendAttack(int damage) {
-        TakeDamage(damage);
+        if(damage != 0) TakeDamage(damage);
+        State = BossState.Wait;
     }
 
     public void TakeDamage(int dmg) {
@@ -104,6 +108,8 @@ public class Boss : MonoBehaviour {
 
     public void Kill() {
         State = BossState.Dead;
+        ArenaUI.Instance.ClearTextPrompts();
         ArenaUI.Instance.MakeTextPrompt(currentBossBattle.Name + " has fallen!");
+        State = BossState.LeaveBattle;
     }
 }
