@@ -125,6 +125,7 @@ public class Player : MonoBehaviour {
         } else {
             TakeDamage(damage);
         }
+        State = PlayerState.Wait;
     }
 
     public void TakeDamage(int dmg) {
@@ -143,7 +144,7 @@ public class Player : MonoBehaviour {
     }
 
     public void Kill() {
-        Debug.Log("You lost!");
+        ArenaManager.Instance.PlayerLose();
     }
 
     public void SetupAttacks(List<BodyPartRef> bodyParts) {

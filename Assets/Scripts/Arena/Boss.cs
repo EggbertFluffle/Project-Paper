@@ -40,6 +40,7 @@ public class Boss : MonoBehaviour {
     }
 
     public void Update() {
+        Debug.Log(State);
         if(!ArenaUI.Instance.HasTextPrompt()) {
             switch(State) {
                 case BossState.Wait:
@@ -47,12 +48,12 @@ public class Boss : MonoBehaviour {
                     State = BossState.Bleeding;
                     break;
                 case BossState.Bleeding:
-                    Taunt();
+                    // Taunt();
                     State = BossState.Attack;
                     break;
                 case BossState.Attack:
-                    State = BossState.NotTurn;
                     TakeTurn();
+                    State = BossState.NotTurn;
                     break;
                 case BossState.Dead:
                     ArenaManager.Instance.PlayerWin();
