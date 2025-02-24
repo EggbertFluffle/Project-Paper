@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         "Maria Sheila",
         "Frank N. Stein",
         "Hekyll and Jibe",
-        "Hazabe",
+        "Hazambe",
         "Chimera"
     };
 

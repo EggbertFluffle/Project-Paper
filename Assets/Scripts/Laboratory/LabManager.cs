@@ -73,6 +73,7 @@ public class LabManager : SceneLoader {
     public void StartFight() {
         for(int i = 0; i < BodySlots.Length; i++) 
         {
+            // sets equipped limbs
             if(BodySlots[i].transform.childCount != 0) 
             {
                 GameManager.ActiveSave.EquippedParts[i] = BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
@@ -102,7 +103,7 @@ public class LabManager : SceneLoader {
                 continue;
             GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
         }
-
+        Debug.Log($"{BodySlots[0].GetComponentInChildren<DraggableItem>().GetBodyPart().Name}, {BodySlots[1].GetComponentInChildren<DraggableItem>().GetBodyPart().Name}");
         AudioManager.PlaySFX("Button Press");
         AudioManager.StopMusic(1);
 

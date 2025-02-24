@@ -25,6 +25,9 @@ public class Boss : MonoBehaviour {
     {
         if(Instance == null) 
             Instance = this;
+
+        // one more time for good measure
+        bleeding = false;
     }
 
     private void OnEnable()

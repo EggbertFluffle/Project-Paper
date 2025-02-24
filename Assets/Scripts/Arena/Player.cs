@@ -41,7 +41,7 @@ public class Player : MonoBehaviour {
     public bool Flexed = false;
     public bool Charged = false;
 
-    private Dictionary<string, Vector2> rightArmPositions = new Dictionary<string, Vector2>{
+    private Dictionary<string, Vector2> leftArmPositions = new Dictionary<string, Vector2>{
         ["Athlete Arm"] = new Vector2(2.63f, 1.51f),
         ["Chainsaw Arm"] = new Vector2(3.37f, 0.0f),
         ["Chicken Wing"] = new Vector2(2.94f, 0.43f),
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour {
         ["Pejhon"] = new Vector2(2.99f, 0.83f),
     };
 
-    private Dictionary<string, Vector2> leftArmPositions = new Dictionary<string, Vector2>{
+    private Dictionary<string, Vector2> rightArmPositions = new Dictionary<string, Vector2>{
         ["Athlete Arm"] = new Vector2(-2.78f, 1.46f),
         ["Chainsaw Arm"] = new Vector2(-3.61f, 0.0f),
         ["Chicken Wing"] = new Vector2(-2.93f, 0.4f),
@@ -122,7 +122,7 @@ public class Player : MonoBehaviour {
     public void HandleSecondaryAttack(BodyPartRef bodyPart) {
         TextPrompt prompt;
 
-        if(Random.Range(0.0f, 1.0f) > 0.9f) {
+        if((Random.Range(0.0f, 1.0f) > 0.9f) && (bodyPart.Name != "Athlete Arm" && bodyPart.Name != "Sexy Arm")) {
             prompt = ArenaUI.Instance.MakeTextPrompt("Attack missed!");
         } else {
             switch (bodyPart.Name) {
@@ -201,26 +201,28 @@ public class Player : MonoBehaviour {
     }
 
     public void SetupAttacks(List<BodyPartRef> bodyParts) {
-        LeftArm.SetArm(bodyParts[0], 0);
-        RightArm.SetArm(bodyParts[1], 1);
+        RightArm.SetArm(bodyParts[0], 0);
+        Debug.Log($"part 0/right arm is {bodyParts[0].Name}");
+        LeftArm.SetArm(bodyParts[1], 1);
+        Debug.Log($"part 1/left arm is {bodyParts[1].Name}");
     }
 
     public void AlignArms(List<BodyPartRef> bodyParts) {
         // Set arm sprites according to equipped parts
         if (bodyParts[0] != null) {
-            Arms[0].sprite = bodyParts[0].BackLimbSprite;
+            Arms[0].sprite = bodyParts[1].BackLimbSprite;
             Arms[0].transform.localPosition = new Vector3(
-                leftArmPositions[bodyParts[0].Name].x,
-                leftArmPositions[bodyParts[0].Name].y,
+                rightArmPositions[bodyParts[1].Name].x,
+                rightArmPositions[bodyParts[1].Name].y,
                 0
             );
         }
 
         if (bodyParts[1] != null) {
-            Arms[1].sprite = bodyParts[1].BackLimbSprite;
+            Arms[1].sprite = bodyParts[0].BackLimbSprite;
             Arms[1].transform.localPosition = new Vector3(
-                rightArmPositions[bodyParts[1].Name].x,
-                rightArmPositions[bodyParts[1].Name].y,
+                leftArmPositions[bodyParts[0].Name].x,
+                leftArmPositions[bodyParts[0].Name].y,
                 0
             );
         }
