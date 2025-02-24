@@ -12,6 +12,8 @@ public class ArenaManager : SceneLoader {
     public static readonly UnityEvent OnPlayerWin = new UnityEvent();
     public static readonly UnityEvent OnBossWin = new UnityEvent();
 
+    public bool bossHasBeenBeat = false;
+
     public static GameState CurrentGameState {
         get => Instance.currentGameState;
 
@@ -69,7 +71,10 @@ public class ArenaManager : SceneLoader {
 
     public void PlayerWin() {
         AudioManager.StopMusic();
-        GameManager.NextBoss();
+        if(!bossHasBeenBeat) {
+            GameManager.NextBoss();
+            bossHasBeenBeat = true;
+        }
         LoadScene("Grave_Robbing");
     }
 

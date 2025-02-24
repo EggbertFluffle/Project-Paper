@@ -51,7 +51,7 @@ public class Grave : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        GRManager.Instance.HandleGraveClick(this);
+        if(!Robbed) GRManager.Instance.HandleGraveClick(this);
     }
 
     public void Rob() {

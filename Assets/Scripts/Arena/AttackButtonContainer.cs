@@ -82,8 +82,6 @@ public class AttackButtonContainer : MonoBehaviour {
     }
 
     public void BreakArm() {
-        // Play some arm breaking audio
-        // Probably display a text prompt
         GameManager.ActiveSave.EquippedParts[ArmIndex] = null;
     }
 }

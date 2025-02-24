@@ -141,7 +141,6 @@ public class Player : MonoBehaviour {
                     break;
             }
             prompt = ArenaUI.Instance.MakeTextPrompt(bodyPart.SecondaryAttackUse);
-            Debug.Log("Literally only call this code once");
         }
         prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = GameState.BossTurn);
     }

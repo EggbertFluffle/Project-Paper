@@ -166,9 +166,7 @@ public class AudioManager : MonoBehaviour
          */
 
         Sound sound = Array.Find(soundType == SoundType.Music ? music : soundEffects, s => s.name.Equals(name));
-        if (sound == null)
-        {
-            Debug.LogWarning("Sound: " + name + " does not exist!");
+        if (sound == null) {
             return null;
         }
         return sound;

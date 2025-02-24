@@ -7,7 +7,8 @@ using System;
 using LimbType = BodyPart.LimbType;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
     public static SaveData ActiveSave => instance.activeSave;
 
     public static BossBattle CurrentBossBattle => instance.currentBossBattle;
@@ -18,8 +19,8 @@ public class GameManager : MonoBehaviour {
     public static List<BodyPart> AllLegs => instance.allLegs.Values.ToList();
 
     private readonly Dictionary<string, BodyPart> allArms = new Dictionary<string, BodyPart>();
-    private readonly Dictionary<string, BodyPart> allLegs = new Dictionary<string, BodyPart>(); 
-    
+    private readonly Dictionary<string, BodyPart> allLegs = new Dictionary<string, BodyPart>();
+
     private static GameManager instance;
 
     private List<BossBattle> bossBattles;
@@ -33,28 +34,33 @@ public class GameManager : MonoBehaviour {
         "Chimera"
     };
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         AssignConstants();
 
         bossBattles = new List<BossBattle>();
-        foreach(string bossName in bossOrder) {
+        foreach (string bossName in bossOrder)
+        {
             BossBattle boss = Resources.Load<BossBattle>($"Arena/{bossName}");
             bossBattles.Add(boss);
         }
         currentBossBattle = bossBattles[0];
     }
 
-    private void Awake() {
-        if (instance == null) {
+    private void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        } else 
+        }
+        else
             Destroy(gameObject);
 
-        foreach (BodyPart arm in Resources.LoadAll<BodyPart>("BodyParts/Arms")) 
+        foreach (BodyPart arm in Resources.LoadAll<BodyPart>("BodyParts/Arms"))
             allArms[arm.Name] = arm;
-        
-        foreach (BodyPart leg in Resources.LoadAll<BodyPart>("BodyParts/Legs")) 
+
+        foreach (BodyPart leg in Resources.LoadAll<BodyPart>("BodyParts/Legs"))
             allLegs[leg.Name] = leg;
     }
 
@@ -64,33 +70,34 @@ public class GameManager : MonoBehaviour {
         currentBossBattle = bossBattles[activeSave.CurrentBoss];
     }
 
-    public static void NextBoss() {
+    public static void NextBoss()
+    {
         instance.NextBossInstance();
     }
 
     public BodyPart GetBodyPart(string key) => allArms.TryGetValue(key, out var arm) ? arm : allLegs.TryGetValue(key, out var leg) ? leg : null;
 
-    private void AssignConstants() {
-        foreach(BodyPartRef bodyPartRef in instance.activeSave.EquippedParts) {
-            if(bodyPartRef != null) {
-                Debug.Log(GetBodyPart(bodyPartRef.Name) == null);
-                Debug.Log(JsonUtility.ToJson(bodyPartRef));
+    private void AssignConstants()
+    {
+        foreach (BodyPartRef bodyPartRef in instance.activeSave.EquippedParts) {
+            if (bodyPartRef != null) {
                 bodyPartRef.SetConstants(GetBodyPart(bodyPartRef.Name));
             }
         }
 
         foreach (BodyPartRef bodyPartRef in instance.activeSave.Inventory) {
-            Debug.Log("is BodyPart null in inventory: " + GetBodyPart(bodyPartRef.Name) == null);
             bodyPartRef.SetConstants(GetBodyPart(bodyPartRef.Name));
         }
     }
 
-    public static void Restart() {
+    public static void Restart()
+    {
         instance.RestartInstance();
     }
 
-    private void RestartInstance() {
+    private void RestartInstance()
+    {
         activeSave = new SaveData();
         currentBossBattle = bossBattles[activeSave.CurrentBoss];
-    }   
+    }
 }
