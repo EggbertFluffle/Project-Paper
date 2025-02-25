@@ -1,8 +1,8 @@
-using UnityEngine;
 using UnityEngine.Events;
 
 public class ArenaManager : SceneLoader {
     public static ArenaManager Instance;
+    public UnityEngine.UI.Image MouseBlock;
 
     public GameState currentGameState;
 
@@ -67,20 +67,5 @@ public class ArenaManager : SceneLoader {
         }
 
         OnPlayerTurn.Invoke();
-    }
-
-    public void PlayerWin() {
-        AudioManager.StopMusic();
-        if(!bossHasBeenBeat) {
-            GameManager.NextBoss();
-            bossHasBeenBeat = true;
-        }
-        LoadScene("Grave_Robbing");
-    }
-
-    public void PlayerLose() {
-        GameManager.Restart();
-        AudioManager.StopMusic();
-        LoadScene("Main_Menu");
     }
 }

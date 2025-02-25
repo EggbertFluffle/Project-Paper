@@ -49,7 +49,6 @@ public class AttackButtonContainer : MonoBehaviour {
         UpdateDurability(0);
         Player.Instance.HandlePrimaryAttack(BodyPart);
         if(BodyPart.Durability <= 0) {
-            Debug.Log($"deleted arm {ArmIndex}");
             GameManager.ActiveSave.EquippedParts[ArmIndex] = null;
             BodyPart = null;
             ArmSprite.enabled = false;
@@ -65,7 +64,6 @@ public class AttackButtonContainer : MonoBehaviour {
         UpdateDurability(0);
         Player.Instance.HandleSecondaryAttack(BodyPart);
         if(BodyPart.Durability <= 0) {
-            Debug.Log($"deleted arm {ArmIndex}");
             GameManager.ActiveSave.EquippedParts[ArmIndex] = null;
             BodyPart = null;
             ArmSprite.enabled = false;

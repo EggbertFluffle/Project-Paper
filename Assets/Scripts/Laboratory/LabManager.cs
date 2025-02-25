@@ -71,14 +71,13 @@ public class LabManager : SceneLoader {
     }
 
     public void StartFight() {
-        for(int i = 0; i < BodySlots.Length; i++) 
-        {
+        GameManager.ActiveSave.Inventory.Clear();
+        GameManager.ActiveSave.EquippedParts = new List<BodyPartRef>{null, null, null, null};
+        
+        for(int i = 0; i < BodySlots.Length; i++) {
             // sets equipped limbs
-            if(BodySlots[i].transform.childCount != 0) 
-            {
-                GameManager.ActiveSave.EquippedParts[i] = BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
-                GameManager.ActiveSave.Inventory.Remove(GameManager.ActiveSave.Inventory.Find(bp => (bp.Name.Equals(GameManager.ActiveSave.EquippedParts[i].Name)) && (bp.Durability == GameManager.ActiveSave.EquippedParts[i].Durability)));
-            }
+            Debug.Log("accessing index: " + i);
+            GameManager.ActiveSave.EquippedParts[i] = BodySlots[i].transform.childCount == 0 ? null : BodySlots[i].GetComponentInChildren<DraggableItem>().GetBodyPart();
         }
 
         foreach(Transform armInventorySlot in ArmContainer) {
@@ -103,7 +102,6 @@ public class LabManager : SceneLoader {
                 continue;
             GameManager.ActiveSave.Inventory.Add(draggable.GetComponent<DraggableItem>().GetBodyPart());
         }
-        Debug.Log($"{BodySlots[0].GetComponentInChildren<DraggableItem>().GetBodyPart().Name}, {BodySlots[1].GetComponentInChildren<DraggableItem>().GetBodyPart().Name}");
         AudioManager.PlaySFX("Button Press");
         AudioManager.StopMusic(1);
 

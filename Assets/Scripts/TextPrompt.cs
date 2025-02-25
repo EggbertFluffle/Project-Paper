@@ -9,6 +9,7 @@ public class TextPrompt : MonoBehaviour {
     public TextMeshProUGUI Text;
 
     public UnityEvent OnClicked = new UnityEvent();
+    public bool Disabled = false;
 
     [TextArea]
     public string contents;
@@ -40,7 +41,8 @@ public class TextPrompt : MonoBehaviour {
     }
 
     public void HandleClick() {
-        OnClicked.Invoke();
+        if(!Disabled) OnClicked.Invoke();
+        Disabled = true;
 
         if(typewriting) {
             typewriting = false;

@@ -65,7 +65,6 @@ public class GameManager : MonoBehaviour
     }
 
     private void NextBossInstance() {
-        Debug.Log("NEXT BOSS IS CALLED");
         activeSave.CurrentBoss++;
         currentBossBattle = bossBattles[activeSave.CurrentBoss];
     }

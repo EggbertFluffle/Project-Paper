@@ -202,9 +202,7 @@ public class Player : MonoBehaviour {
 
     public void SetupAttacks(List<BodyPartRef> bodyParts) {
         RightArm.SetArm(bodyParts[0], 0);
-        Debug.Log($"part 0/right arm is {bodyParts[0].Name}");
         LeftArm.SetArm(bodyParts[1], 1);
-        Debug.Log($"part 1/left arm is {bodyParts[1].Name}");
     }
 
     public void AlignArms(List<BodyPartRef> bodyParts) {
