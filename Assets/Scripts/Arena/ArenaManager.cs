@@ -20,9 +20,11 @@ public class ArenaManager : SceneLoader {
         set {
             switch (value) {
                 case GameState.PlayerTurn:
+                    Cursor.lockState = CursorLockMode.None;
                     OnPlayerTurn.Invoke();
                     break;
                 case GameState.BossTurn:
+                    Cursor.lockState = CursorLockMode.Locked;
                     OnBossTurn.Invoke();
                     break;
                 case GameState.PlayerWin:
