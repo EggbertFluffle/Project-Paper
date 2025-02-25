@@ -118,5 +118,6 @@ public class Boss : MonoBehaviour {
         ArenaUI.Instance.ClearTextPrompts();
         TextPrompt prompt = ArenaUI.Instance.MakeTextPrompt(currentBossBattle.Name + " has fallen!");
         prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = ArenaManager.GameState.PlayerWin);
+        
     }
 }

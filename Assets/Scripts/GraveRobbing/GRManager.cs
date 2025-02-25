@@ -37,6 +37,7 @@ public class GRManager : SceneLoader {
     }
 
     public void Start() {
+        Cursor.lockState = CursorLockMode.None;
         GraveRobs = GameManager.ActiveSave.CurrentBoss == 0 ? 4 : 2;
         GraveRobMax.text = GraveRobs.ToString();
         GraveRobsLeft.text = GraveRobs.ToString();

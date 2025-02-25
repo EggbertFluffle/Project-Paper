@@ -244,6 +244,7 @@ public class Player : MonoBehaviour {
 
     public void OnPlayerWin() {
         GameManager.NextBoss();
+        Cursor.lockState = CursorLockMode.Locked;
         AudioManager.StopMusic(0.5f);
         ArenaManager.Instance.LoadScene("Grave_Robbing");
     }
