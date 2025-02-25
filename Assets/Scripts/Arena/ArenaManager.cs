@@ -1,4 +1,5 @@
 using UnityEngine.Events;
+using UnityEngine;
 
 public class ArenaManager : SceneLoader {
     public static ArenaManager Instance;
