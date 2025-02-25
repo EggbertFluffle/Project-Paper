@@ -153,7 +153,7 @@ public class Player : MonoBehaviour {
             prompt = ArenaUI.Instance.MakeTextPrompt($"{attacker} attacked!");
             TakeDamage(damage);
         }
-
+        Cursor.lockState = CursorLockMode.None;
         prompt.OnClicked.AddListener(() => ArenaManager.CurrentGameState = ArenaManager.GameState.PlayerTurn);
     }
 
