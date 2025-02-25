@@ -2100,18 +2100,19 @@ MonoBehaviour:
     AllEvents:
     - ActiveTextBox: 0
       Text: "\"You\u2019re invited to the arena, a place where other scientists such
-        as yourself can compete in a reanimated brawl.  The rules are simple:\""
+        as yourself can compete in a reanimated brawl.  The rules are simple:"
       ActiveImages: 00000000
     - ActiveTextBox: 1
-      Text: "\"You must win at all costs. Whether legally or less so\u2026\""
+      Text: "\"You must win at all costs. Whether legally or less so\u2026"
       ActiveImages: 0000000001000000
     - ActiveTextBox: 2
-      Text: "\"You will use those limbs to craft your monster and bring it to life\u2026\""
+      Text: "\"You will use the limbs you find to craft your monster and bring it
+        to life\u2026"
       ActiveImages: 000000000100000002000000
     - ActiveTextBox: 3
       Text: "\"And you will send it to battle against others for fame and a cash
-        prize.  Good luck, and welcome to the fight.\r\nInteresting.  Nothing can
-        go wrong\u2026 right?\""
+        prize.  Good luck, and welcome to the fight.\"\r\nInteresting.  Nothing can
+        go wrong\u2026 right?"
       ActiveImages: 00000000010000000200000003000000
     AllImages:
     - {fileID: 1053350905}
