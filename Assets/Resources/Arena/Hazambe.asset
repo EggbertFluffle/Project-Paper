@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f405f18e7dfd9c24995cf48b41811f1a, type: 3}
-  m_Name: Hazabe
+  m_Name: Hazambe
   m_EditorClassIdentifier: 
   Name: Hazambe
   BattleStartText: Hazambe has entered the ring
